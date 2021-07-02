@@ -1,0 +1,1035 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="记录一些学习工作中的知识技能，方便后续查阅！">
+  <meta name="author" content="XiangLin">
+  <meta name="keywords" content="Java">
+  
+  <title>XiangLin</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>XiangLin</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/46.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="优秀的同学，绝对是优秀的同学！">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/09/06/javaweb%E8%BF%9B%E9%98%B6/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/19.jpg" srcset="/img/loading.gif" lazyload alt="javaweb进阶">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/06/javaweb%E8%BF%9B%E9%98%B6/" target="_self">
+          javaweb进阶
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/06/javaweb%E8%BF%9B%E9%98%B6/" target="_self">
+          
+          
+            
+          
+          JSON入门JSON语法规则
+JavaScript Object Notation
+JSON是轻量级的数据交换格式
+独立于语言、自解释、易于理解书写
+
+JavaScript与JSON
+JSON.parse()将json格式的字符串转为JSON对象
+JSON.stringify()将JSON对象转为json字符串
+
+Java与JSON
+Java 的JSON工具包：FastJson、Jackson、G
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-06 22:54" pubdate>
+              2020-09-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/learn/">learn</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+              <a href="/tags/web/">web</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/09/06/javaweb%E5%9F%BA%E7%A1%80/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/19.jpg" srcset="/img/loading.gif" lazyload alt="javaweb基础">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/06/javaweb%E5%9F%BA%E7%A1%80/" target="_self">
+          javaweb基础
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/06/javaweb%E5%9F%BA%E7%A1%80/" target="_self">
+          
+          
+            
+          
+          XML入门XML的作用
+XML（EXtensible Makup Language）是可扩展标记语言
+编写XML就是编写标签，XML没有预定义标签
+XML重在保存和传输数据
+良好的可读性
+
+XML用途
+用于Java程序的配置文件（web.xml）
+用于保存、传输程序产生的数据（EJB调用、WebService的soap协议）
+
+XML的语法规则
+XML第一行必须是XML声明；XML声明说明XML文
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-06 22:54" pubdate>
+              2020-09-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/learn/">learn</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+              <a href="/tags/web/">web</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/09/06/web%E5%9F%BA%E7%A1%80/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/19.jpg" srcset="/img/loading.gif" lazyload alt="web基础">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/06/web%E5%9F%BA%E7%A1%80/" target="_self">
+          web基础
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/06/web%E5%9F%BA%E7%A1%80/" target="_self">
+          
+          
+            
+          
+          HTMLCSS 基础CSS 基本样式CSS 浮动CSS 定位
+css定位属性position有如下属性值：relative、absolute、static、fixed
+相对定位的偏移参考元素是元素本身，不会使元素脱离文档流。元素初始位置占据的空间会被保留。
+绝对定位的参照物是最近的祖先元素，如果没有已定位的祖先元素，则参照物为body。
+固定定位相对于浏览器窗口进行定位。
+
+JavaScript 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-06 22:54" pubdate>
+              2020-09-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/learn/">learn</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/09/06/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/19.jpg" srcset="/img/loading.gif" lazyload alt="java设计模式">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/06/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_self">
+          java设计模式
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/06/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_self">
+          
+          
+            
+          
+          设计模式
+设计模式是前人总结的设计经验
+设计模式的目标是代码更容易理解和维护
+设计模式可以让代码更可靠
+
+设计模式分类创建型模式结构型模式行为型模式单例模式工厂模式
+工厂模式用于隐藏创建对象的细节
+工厂模式的核心：工厂类（factory）
+工厂模式可细分为：简单工厂、工厂方法、抽象工厂
+
+简单工厂
+
+编写一个自动按区域获取标题语言的工厂方法
+
+抽象出一个接口，用于获取标题描述
+123public 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-06 22:50" pubdate>
+              2020-09-06
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/09/06/java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/19.jpg" srcset="/img/loading.gif" lazyload alt="java面向对象基础">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/06/java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" target="_self">
+          java面向对象基础
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/06/java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" target="_self">
+          
+          
+            
+          
+          Java 面向对象对象
+在 Java 中，万物皆对象，只要是现实存在的，都可以是对象。
+
+面向对象类
+类是模型，确定对象将会有的属性（特征）和方法（行为）
+
+对象是类的实例体现。
+
+定义一个类Cat描述猫
+1234567891011121314151617181920212223242526272829303132333435363738394041public class Cat &#123; 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-06 22:50" pubdate>
+              2020-09-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/learn/">learn</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/09/06/java%E6%96%B9%E6%B3%95/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/19.jpg" srcset="/img/loading.gif" lazyload alt="java方法">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/06/java%E6%96%B9%E6%B3%95/" target="_self">
+          java方法
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/06/java%E6%96%B9%E6%B3%95/" target="_self">
+          
+          
+            
+          
+          面试题JVM 内存组成
+垃圾回收算法Java 的内存泄漏
+静态集合类
+各种连接
+
+实现深拷贝12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273import java.io.By
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-06 22:50" pubdate>
+              2020-09-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/learn/">learn</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/09/06/java%E6%95%B0%E7%BB%84/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/19.jpg" srcset="/img/loading.gif" lazyload alt="java数组">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/06/java%E6%95%B0%E7%BB%84/" target="_self">
+          java数组
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/06/java%E6%95%B0%E7%BB%84/" target="_self">
+          
+          
+            
+          
+          Java 数组
+数组是相同类型的数据按顺序组成的一种引用数据类型
+
+一维数组数组声明
+语法格式：数据类型[] 数组名;
+
+数组创建
+先声明后创建
+数据类型[] 数组名;
+数组名 = new 数据类型[]&#123;&#125;
+
+声明时创建数组
+数据类型[] 数组名 = new 数据类型[数组大小];
+
+
+数组在内存中的存储
+数组会被分配连续的内存空间
+
+数组的初始化
+声明数组的同事给数组赋值，叫
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-06 22:49" pubdate>
+              2020-09-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/learn/">learn</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/09/06/java%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/19.jpg" srcset="/img/loading.gif" lazyload alt="java控制流程">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/06/java%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B/" target="_self">
+          java控制流程
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/06/java%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B/" target="_self">
+          
+          
+            
+          
+          Java 流程控制三大流程控制语句：顺序、选择、循环
+选择结构if 结构
+判断条件是布尔类型，且是一个范围
+
+1234567891011121314Scanner scanner = new Scanner(System.in);int score = scanner.nextInt();if (score &gt;= 90) &#123;  System.out.println(&quot;优&
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-06 22:49" pubdate>
+              2020-09-06
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/09/06/java%E8%BF%90%E7%AE%97%E7%AC%A6/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/19.jpg" srcset="/img/loading.gif" lazyload alt="java运算符">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/06/java%E8%BF%90%E7%AE%97%E7%AC%A6/" target="_self">
+          java运算符
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/06/java%E8%BF%90%E7%AE%97%E7%AC%A6/" target="_self">
+          
+          
+            
+          
+          Java 运算符表达式
+表达式由运算符和操作数组成
+
+运算符算术运算符
+算术运算符主要用于进行基本的算术运算，包括加减乘除
+
+
+
+算术运算符
+名称
+举例
+
+
+
++
+加法
+5+10=15
+
+
+-
+减法
+10-5=5
+
+
+*
+乘法
+3*6=18
+
+
+/
+除法
+10/2=5
+
+
+%
+取余数
+3%2=1
+
+
+++
+自增1
+int n;n++;
+
+
+–
+自减1
+int n=4;–n;
+
+
+
+自增自减运算符
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-06 22:49" pubdate>
+              2020-09-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/learn/">learn</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/09/06/java%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/19.jpg" srcset="/img/loading.gif" lazyload alt="java变量与常量">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/06/java%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/" target="_self">
+          java变量与常量
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/06/java%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/" target="_self">
+          
+          
+            
+          
+          Java 常量与变量标识符
+标识符可以由字母、数字、下划线_和美元符$组成，且不能以数字开头
+标识符完全区分大小写，即void是关键字，Void是合法的标识符
+标识符不能是 Java 关键字和保留字
+标识符命名最好能见名知意
+
+关键字
+goto、const在 Java 中被定义为保留字，暂未使用
+变量
+变量是程序中数据的零时存放场所
+变量的三元素：变量类型、变量名和变量值
+
+变量的命名规则
+满足标
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-06 22:49" pubdate>
+              2020-09-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/learn/">learn</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鄂ICP备20008384号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>鄂ICP备20008384号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

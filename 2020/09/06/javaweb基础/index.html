@@ -1,0 +1,731 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="记录一些学习工作中的知识技能，方便后续查阅！">
+  <meta name="author" content="XiangLin">
+  <meta name="keywords" content="Java">
+  
+  <title>javaweb基础 - XiangLin</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>XiangLin</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/45.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="javaweb基础">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-06 22:54" pubdate>
+        2020年9月6日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      17
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">javaweb基础</h1>
+            
+            <div class="markdown-body">
+              <h1 id="XML入门"><a href="#XML入门" class="headerlink" title="XML入门"></a>XML入门</h1><h2 id="XML的作用"><a href="#XML的作用" class="headerlink" title="XML的作用"></a>XML的作用</h2><ul>
+<li>XML（EXtensible Makup Language）是可扩展标记语言</li>
+<li>编写XML就是编写标签，XML没有预定义标签</li>
+<li>XML重在保存和传输数据</li>
+<li>良好的可读性</li>
+</ul>
+<h3 id="XML用途"><a href="#XML用途" class="headerlink" title="XML用途"></a>XML用途</h3><ol>
+<li>用于Java程序的配置文件（<code>web.xml</code>）</li>
+<li>用于保存、传输程序产生的数据（EJB调用、WebService的soap协议）</li>
+</ol>
+<h2 id="XML的语法规则"><a href="#XML的语法规则" class="headerlink" title="XML的语法规则"></a>XML的语法规则</h2><ol>
+<li><p>XML第一行必须是XML声明；XML声明说明XML文档的基本信息，包括版本号与字符集。</p>
+<p><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</code></p>
+</li>
+<li><p>XML只有一个根节点</p>
+</li>
+</ol>
+<h3 id="XML书写规则"><a href="#XML书写规则" class="headerlink" title="XML书写规则"></a>XML书写规则</h3><ul>
+<li><p>合法的标签名</p>
+</li>
+<li><p>适当的注释与缩进可以让XML文档易于阅读理解</p>
+</li>
+<li><p>合理使用属性</p>
+</li>
+<li><p>处理特殊字符：</p>
+<ol>
+<li><p>实体引用：</p>
+<table>
+<thead>
+<tr>
+<th>实体引用</th>
+<th>对应符号</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&amp;lt;</code></td>
+<td><code>&lt;</code></td>
+<td>小于</td>
+</tr>
+<tr>
+<td><code>&amp;gt;</code></td>
+<td><code>&gt;</code></td>
+<td>大于</td>
+</tr>
+<tr>
+<td><code>&amp;amp;</code></td>
+<td><code>&amp;</code></td>
+<td>和号</td>
+</tr>
+<tr>
+<td><code>&amp;apos;</code></td>
+<td><code>&#39;&#39;</code></td>
+<td>单引号</td>
+</tr>
+<tr>
+<td><code>&amp;quot;</code></td>
+<td><code>&quot;&quot;</code></td>
+<td>双引号</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>使用CDATA标签：CDATA指的是不应该由XML解析器进行解析的文本数据</p>
+<p><code>&lt;![CDATA[1+1&lt;3]]&gt;</code></p>
+</li>
+</ol>
+</li>
+<li><p>有序的子元素</p>
+</li>
+</ul>
+<h2 id="Java解析XML"><a href="#Java解析XML" class="headerlink" title="Java解析XML"></a>Java解析XML</h2><ul>
+<li>DOM文档对象模型：定义了访问和操作XML文档的标准方法</li>
+<li>Dom4j是一个易用的，开源的库，用于解析XML。</li>
+<li>Dom4j将XML视为一个Document对象</li>
+<li>XML标签被Dom4j定义为Element对象</li>
+</ul>
+<h2 id="XML语义约束"><a href="#XML语义约束" class="headerlink" title="XML语义约束"></a>XML语义约束</h2><ul>
+<li>XML文档结构正确，但可能不是有效的</li>
+<li>XML语义约束的两种方式：DTD、Schema</li>
+</ul>
+<h3 id="DTD"><a href="#DTD" class="headerlink" title="DTD"></a>DTD</h3><ul>
+<li>DTD（Document Type Definition），是一种简单易用的语义约束方式。</li>
+<li>DTD文件的扩展名为<code>.dtd</code></li>
+<li>在XML中使用<code>&lt;!DOCTYPE&gt;</code>标签来引用DTD</li>
+<li>利用DTD中的<code>&lt;!ELEMENT&gt;</code>标签，定义XML中运行出现的节点及数量</li>
+</ul>
+<h3 id="XML-Schema"><a href="#XML-Schema" class="headerlink" title="XML Schema"></a>XML Schema</h3><ul>
+<li>XML Schema提供了数据类型，格式限定，数据范围等特性</li>
+<li>XML Schema是W3C标准</li>
+</ul>
+<h2 id="XPath路径表达式"><a href="#XPath路径表达式" class="headerlink" title="XPath路径表达式"></a>XPath路径表达式</h2><ul>
+<li><p>XPath路径表达式是XML文档中查找数据的语言</p>
+</li>
+<li><p>最常用的基本表达式</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>nodename</code></td>
+<td>选取此节点的所有子节点</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>从根节点选取</td>
+</tr>
+<tr>
+<td><code>//</code></td>
+<td>从匹配的当前节点选择文档中的节点，而不考虑它们的位置</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>选取当前节点</td>
+</tr>
+<tr>
+<td><code>..</code></td>
+<td>选取当前节点的父节点</td>
+</tr>
+<tr>
+<td><code>@</code></td>
+<td>选取属性</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>XPath谓语表达式</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/225704.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>Jaxen：Jaxen的是一个Java编写的开源的XPath库。</p>
+</li>
+<li><p>适应多种不同的对象模型，包括DOM，XOM，dom4j和JDOM。</p>
+</li>
+</ul>
+<h1 id="Servlet入门"><a href="#Servlet入门" class="headerlink" title="Servlet入门"></a>Servlet入门</h1><h3 id="J2EE"><a href="#J2EE" class="headerlink" title="J2EE"></a>J2EE</h3><ul>
+<li>J2EE（Java 2 Platform Enterprise Edition）是指Java 2 企业版</li>
+<li>J2EE是一组技术规范与指南，具体实现由软件厂商实现</li>
+<li>开发Web应用程序是J2EE最核心功能</li>
+<li>J2EE是由13个功能模块组成的<ul>
+<li>Servlet、JSP、JDBC、XML、EJB、RMI、JNDI、JMS、JTA、JavaMail、JAF、CORBA、JTS</li>
+</ul>
+</li>
+</ul>
+<h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><ul>
+<li>Tomcat是J2EE Web标准实现</li>
+</ul>
+<h2 id="Servlet-开发技巧"><a href="#Servlet-开发技巧" class="headerlink" title="Servlet 开发技巧"></a>Servlet 开发技巧</h2><ul>
+<li><p>Servlet（Server Applet）服务器小程序，主要用于生成动态Web内容</p>
+</li>
+<li><p>标准Java WEB工程目录</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202008/235805.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h3 id="Servlet开发步骤"><a href="#Servlet开发步骤" class="headerlink" title="Servlet开发步骤"></a>Servlet开发步骤</h3><ol>
+<li>创建类，继承自<code>javax.servlet.http.HttpServlet</code></li>
+<li>在<code>service</code>方法中处理事件</li>
+<li>在<code>web.xml</code>中配置servlet访问路径和servlet实现类的映射</li>
+</ol>
+<h2 id="Servlet执行原理"><a href="#Servlet执行原理" class="headerlink" title="Servlet执行原理"></a>Servlet执行原理</h2><h3 id="Servlet生命周期"><a href="#Servlet生命周期" class="headerlink" title="Servlet生命周期"></a>Servlet生命周期</h3><ol>
+<li>装载–扫描<code>web.xml</code>和<code>@Servlet</code>注解</li>
+<li>执行构造函数创建实例</li>
+<li>执行初始化方法<code>init()</code>进行初始化</li>
+<li>通过<code>service()</code>方法提供服务</li>
+<li>Servlet销毁时执行<code>destroy()</code>方法</li>
+</ol>
+<h3 id="使用注解简化Servlet配置"><a href="#使用注解简化Servlet配置" class="headerlink" title="使用注解简化Servlet配置"></a>使用注解简化Servlet配置</h3><ul>
+<li>在Servlet3.x之后引用了注解特性</li>
+<li>Servlet核心注解：<code>@Servlet</code></li>
+</ul>
+<h3 id="启动时加载Servlet"><a href="#启动时加载Servlet" class="headerlink" title="启动时加载Servlet"></a>启动时加载Servlet</h3><ul>
+<li>在<code>web.xml</code>中使用<code>&lt;load-on-startup&gt;</code></li>
+<li>启动时加载在工作中常用于系统预处理</li>
+</ul>
+<h2 id="Servlet核心对象"><a href="#Servlet核心对象" class="headerlink" title="Servlet核心对象"></a>Servlet核心对象</h2><h1 id="JSP入门"><a href="#JSP入门" class="headerlink" title="JSP入门"></a>JSP入门</h1><h2 id="JSP用途"><a href="#JSP用途" class="headerlink" title="JSP用途"></a>JSP用途</h2><h3 id="Servlet的缺点"><a href="#Servlet的缺点" class="headerlink" title="Servlet的缺点"></a>Servlet的缺点</h3><ul>
+<li>静态的HTML和和Java代码柔和在一起，难以维护</li>
+<li>Servlet利用<code>out.pringln()</code>输出HTML代码，效率低下</li>
+<li>JSP全称是：Java Server Page，本质就是Servlert</li>
+</ul>
+<h2 id="JSP执行原理"><a href="#JSP执行原理" class="headerlink" title="JSP执行原理"></a>JSP执行原理</h2><h3 id="JSP的执行过程"><a href="#JSP的执行过程" class="headerlink" title="JSP的执行过程"></a>JSP的执行过程</h3><ul>
+<li>浏览器请求</li>
+<li>Tomcat找到对应的JSP（index.jsp），将其转译为Servlet ( index_jsp.java)</li>
+<li>Servlet编译成Java字节码 (index_jsp.class)</li>
+</ul>
+<h2 id="JSP基本语法规则"><a href="#JSP基本语法规则" class="headerlink" title="JSP基本语法规则"></a>JSP基本语法规则</h2><h3 id="JSP代码块"><a href="#JSP代码块" class="headerlink" title="JSP代码块"></a>JSP代码块</h3><p>用于在JSP中嵌入Java代码</p>
+<p>JSP代码块的语法：<code>&lt;% code %&gt;</code></p>
+<h3 id="JSP声明构造块"><a href="#JSP声明构造块" class="headerlink" title="JSP声明构造块"></a>JSP声明构造块</h3><p>JSP声明构造块用于定义声明方法和变量</p>
+<p>JSP声明语法块语法：<code>&lt;%! code %&gt;</code></p>
+<h3 id="JSP输出指令"><a href="#JSP输出指令" class="headerlink" title="JSP输出指令"></a>JSP输出指令</h3><p>JSP输出指令用于在JSP页面中显示Java代码执行的结果</p>
+<p>JSP输出指令语法：<code>&lt;%= code %&gt;</code></p>
+<h3 id="JSP处理指令"><a href="#JSP处理指令" class="headerlink" title="JSP处理指令"></a>JSP处理指令</h3><p>JSP处理指令用于提供JSP执行过程中的辅助信息</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;%@page%&gt;</code></td>
+<td>定义当前JSP页面的全局设置</td>
+</tr>
+<tr>
+<td><code>&lt;%@include%&gt;</code></td>
+<td>将其他JSP页面与当前JSP页面合并</td>
+</tr>
+<tr>
+<td><code>&lt;%@taglib%&gt;</code></td>
+<td>引入JSP标签库</td>
+</tr>
+</tbody></table>
+<h3 id="JSP中的注释"><a href="#JSP中的注释" class="headerlink" title="JSP中的注释"></a>JSP中的注释</h3><ol>
+<li>JSP注释：<code>&lt;%-- statment --%&gt;</code></li>
+<li>Java注释：<code>// /* */</code></li>
+<li>HTML注释：<code>&lt;!-- --&gt;</code></li>
+</ol>
+<h2 id="JavaWeb核心特性"><a href="#JavaWeb核心特性" class="headerlink" title="JavaWeb核心特性"></a>JavaWeb核心特性</h2><h3 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h3><h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><h3 id="ServletContext"><a href="#ServletContext" class="headerlink" title="ServletContext"></a>ServletContext</h3><h3 id="Tomcat乱码问题"><a href="#Tomcat乱码问题" class="headerlink" title="Tomcat乱码问题"></a>Tomcat乱码问题</h3><ul>
+<li>Tomcat默认使用ISO-8859-1编码规则</li>
+<li>Tomcat的<code>server.xml</code>中配置<code>URLEncoding=&quot;UTF-8&quot;</code></li>
+</ul>
+<h2 id="JSP九大内置对象"><a href="#JSP九大内置对象" class="headerlink" title="JSP九大内置对象"></a>JSP九大内置对象</h2><p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202008/235816.png" srcset="/img/loading.gif" lazyload alt="image-20200802132136208"></p>
+<h1 id="JSTL和EL表达式"><a href="#JSTL和EL表达式" class="headerlink" title="JSTL和EL表达式"></a>JSTL和EL表达式</h1><h2 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h2><ul>
+<li><p>Expression Language，用于简化JSP的输出</p>
+</li>
+<li><p>EL表达式的基本语法：<code>$&#123;expression&#125;</code></p>
+</li>
+<li><p>作用域对象，忽略作用域对象时，EL表达式默认会按作用域范围从小到大依次尝试获取</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202008/235821.png" srcset="/img/loading.gif" lazyload alt="image-20200802140924186"></p>
+</li>
+<li><p>EL表达式输出：<code>$&#123;[scope.]attr[.subAttr]&#125;</code></p>
+</li>
+<li><p>EL表达式支持运算</p>
+</li>
+</ul>
+<h2 id="JSTL常用标签"><a href="#JSTL常用标签" class="headerlink" title="JSTL常用标签"></a>JSTL常用标签</h2><ul>
+<li><p>JSP Standard Tag Library，JSP标准标签库</p>
+</li>
+<li><p>JSTL由Sun定义规范，由Apache Tomcat进行实现</p>
+</li>
+<li><p>JSTL下载地址：<a target="_blank" rel="noopener" href="https://tomcat.apache.org/download-taglibs.cgi">https://tomcat.apache.org/download-taglibs.cgi</a></p>
+</li>
+<li><p>JSTL按功能划分为五类标签库</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202008/235854.png" srcset="/img/loading.gif" lazyload alt="image-20200802205819340"></p>
+</li>
+<li><p>核心标签库Core是JSTL标签库中最重要的标签库，提供了JSTL的基础功能</p>
+</li>
+<li><p><code>&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;</code>：<code>taglibs-standard-impl-1.2.5.jar!\META-INF\c.tld</code></p>
+<ul>
+<li><code>&lt;c:if&gt;</code>单分支判断</li>
+<li><code>&lt;c:when&gt; &lt;c:choose&gt; &lt;c:otherwise&gt;</code>多分支判断</li>
+<li><code>&lt;c:forEach&gt;</code>遍历集合中的每一个对象</li>
+</ul>
+</li>
+<li><p>格式化标签库</p>
+</li>
+<li><p><code>&lt;%@ taglib prefix=&quot;fmt&quot; uri=&quot;http://java.sun.com/jsp/jstl/fmt&quot; %&gt;</code></p>
+<ul>
+<li><code>&lt;fmt:formatDate&gt;</code></li>
+<li><code>&lt;fmt:formatNumber&gt;</code></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/learn/">learn</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/web/">web</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/09/06/javaweb%E8%BF%9B%E9%98%B6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">javaweb进阶</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/06/web%E5%9F%BA%E7%A1%80/">
+                        <span class="hidden-mobile">web基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鄂ICP备20008384号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>鄂ICP备20008384号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

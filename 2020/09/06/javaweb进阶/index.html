@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="记录一些学习工作中的知识技能，方便后续查阅！">
+  <meta name="author" content="XiangLin">
+  <meta name="keywords" content="Java">
+  
+  <title>javaweb进阶 - XiangLin</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>XiangLin</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/45.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="javaweb进阶">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-06 22:54" pubdate>
+        2020年9月6日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">javaweb进阶</h1>
+            
+            <div class="markdown-body">
+              <h1 id="JSON入门"><a href="#JSON入门" class="headerlink" title="JSON入门"></a>JSON入门</h1><h2 id="JSON语法规则"><a href="#JSON语法规则" class="headerlink" title="JSON语法规则"></a>JSON语法规则</h2><ul>
+<li>JavaScript Object Notation</li>
+<li>JSON是轻量级的数据交换格式</li>
+<li>独立于语言、自解释、易于理解书写</li>
+</ul>
+<h2 id="JavaScript与JSON"><a href="#JavaScript与JSON" class="headerlink" title="JavaScript与JSON"></a>JavaScript与JSON</h2><ul>
+<li><code>JSON.parse()</code>将json格式的字符串转为JSON对象</li>
+<li><code>JSON.stringify()</code>将JSON对象转为json字符串</li>
+</ul>
+<h2 id="Java与JSON"><a href="#Java与JSON" class="headerlink" title="Java与JSON"></a>Java与JSON</h2><ul>
+<li>Java 的JSON工具包：FastJson、Jackson、Gson、Json-lib</li>
+<li>fastjson是阿里巴巴的开源JSON解析库，它可以解析JSON格式的字符串，支持将Java Bean序列化为JSON字符串，也可以从JSON字符串反序列化到JavaBean。</li>
+<li><code>JSON.toJSONString(Object object)</code></li>
+<li><code>JSON.parseObject(String text, Class&lt;T&gt; clazz)</code></li>
+<li><code>JSON.parseArray(String text, Class&lt;T&gt; clazz)</code></li>
+</ul>
+<h1 id="jQuery-amp-Ajax"><a href="#jQuery-amp-Ajax" class="headerlink" title="jQuery&amp;Ajax"></a>jQuery&amp;Ajax</h1><h2 id="jQuery使用"><a href="#jQuery使用" class="headerlink" title="jQuery使用"></a>jQuery使用</h2><ul>
+<li>jQuery是一个轻量级的js库，使用简便</li>
+<li>jQuery的核心是选择器，用于获取页面的元素</li>
+<li>jQuery<a target="_blank" rel="noopener" href="https://jquery.com/">官网</a>，采用独立JS文件发布</li>
+</ul>
+<h3 id="jQuery选择器"><a href="#jQuery选择器" class="headerlink" title="jQuery选择器"></a>jQuery选择器</h3><ul>
+<li><p>jQuery选择器用于选中需要操作的页面元素：<code>$(expression)</code></p>
+</li>
+<li><p>jQuery基础选择器</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202008/235955.png" srcset="/img/loading.gif" lazyload alt="image-20200808105406866"></p>
+</li>
+<li><p>jQuery层叠选择器</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/225741.png" srcset="/img/loading.gif" lazyload alt="image-20200808110521981"></p>
+</li>
+<li><p>jQuery属性选择器</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/225744.png" srcset="/img/loading.gif" lazyload alt="image-20200808111327519"></p>
+</li>
+<li><p>位置选择器</p>
+<p><img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/20200808125830.png" srcset="/img/loading.gif" lazyload alt="image-20200808125829925"></p>
+</li>
+<li><p>表单选择器</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/225746.png" srcset="/img/loading.gif" lazyload alt="image-20200808130313340"></p>
+</li>
+</ul>
+<h3 id="jQuery操作元素"><a href="#jQuery操作元素" class="headerlink" title="jQuery操作元素"></a>jQuery操作元素</h3><ul>
+<li>操作元素的属性：<code>$().attr()</code>、<code>$().removeAttr(name)</code></li>
+<li>操作元素的样式：<code>css()</code>、<code>addClass()</code>、<code>removeClass()</code></li>
+<li>操作元素的内容：<code>val()</code>、<code>text()</code>、<code>html()</code></li>
+</ul>
+<h3 id="jQuery处理事件"><a href="#jQuery处理事件" class="headerlink" title="jQuery处理事件"></a>jQuery处理事件</h3><ul>
+<li><p><code>on(&#39;eventName&#39;,function(event)&#123;&#125;)</code></p>
+</li>
+<li><p>jQuery常用事件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/225747.png" srcset="/img/loading.gif" lazyload alt="image-20200808134153452"></p>
+</li>
+</ul>
+<h2 id="Ajax原理"><a href="#Ajax原理" class="headerlink" title="Ajax原理"></a>Ajax原理</h2><ul>
+<li>Ajax:Asynchronous JavaScript and XML（异步的JavaScript和XML）</li>
+</ul>
+<h3 id="XMLHttpRequest使用步骤和属性及方法"><a href="#XMLHttpRequest使用步骤和属性及方法" class="headerlink" title="XMLHttpRequest使用步骤和属性及方法"></a>XMLHttpRequest使用步骤和<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest">属性及方法</a></h3><ol>
+<li><p>创建 XMLHttpRequest</p>
+</li>
+<li><p>发送请求</p>
+</li>
+<li><p>处理服务类响应</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> xhr;<br> <span class="hljs-comment">// 创建请求</span><br> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.XMLHttpRequest) &#123;<br>   xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();<br> &#125; <span class="hljs-keyword">else</span> &#123;<br>   xhr = <span class="hljs-keyword">new</span> ActiveXObject(<span class="hljs-string">&quot;Microsoft.XMLHTTP&quot;</span>);<br> &#125;<br> <span class="hljs-comment">// 发送请求</span><br> xhr.open(<span class="hljs-string">&#x27;GET&#x27;</span>, <span class="hljs-string">&#x27;http://localhost:8080/ajax/ajax&#x27;</span>, <span class="hljs-literal">true</span>);<br> xhr.send();<br> <span class="hljs-comment">// 处理响应</span><br> xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>   <span class="hljs-comment">// 响应已被接收且服务器处理成功</span><br>   <span class="hljs-keyword">if</span> (xhr.readyState === <span class="hljs-number">4</span> &amp;&amp; xhr.status === <span class="hljs-number">200</span>) &#123;<br>     <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;divContent&quot;</span>).innerHTML = xhr.responseText;<br>   &#125;<br> &#125;<br></code></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<ul>
+<li><p>XMLHttpRequest状态</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/225748.png" srcset="/img/loading.gif" lazyload alt="image-20200808215829083"></p>
+</li>
+</ul>
+<h3 id="jQuery-对-Ajax-的支持"><a href="#jQuery-对-Ajax-的支持" class="headerlink" title="jQuery 对 Ajax 的支持"></a>jQuery 对 Ajax 的支持</h3><ul>
+<li><p>Ajax 常用设置项</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/225750.png" srcset="/img/loading.gif" lazyload alt="截屏2020-08-08 22.32.33"></p>
+</li>
+<li><p>使用方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript">$.ajax(&#123;<br>  url: <span class="hljs-string">&#x27;/ajax/news&#x27;</span>,<br>  type: <span class="hljs-string">&#x27;get&#x27;</span>,<br>  dataType: <span class="hljs-string">&#x27;json&#x27;</span>,<br>  success: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">json</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(json);<br>    $.each(json, <span class="hljs-function">(<span class="hljs-params">i, news</span>) =&gt;</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(news);<br>      <span class="hljs-built_in">console</span>.log(i);<br>      <span class="hljs-keyword">let</span> content = $(<span class="hljs-string">&#x27;#divContent&#x27;</span>);<br>      content.html(content.html() + <span class="hljs-string">`&lt;h2&gt;<span class="hljs-subst">$&#123;i + <span class="hljs-number">1</span>&#125;</span>.<span class="hljs-subst">$&#123;news.title&#125;</span>&lt;/h2&gt;&lt;br&gt;&lt;p&gt;<span class="hljs-subst">$&#123;news.date&#125;</span>:<span class="hljs-subst">$&#123;news.content&#125;</span>&lt;/p&gt;`</span>);<br>    &#125;);<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h1 id="Java正则表达式"><a href="#Java正则表达式" class="headerlink" title="Java正则表达式"></a>Java正则表达式</h1><h2 id="正则表达式语法"><a href="#正则表达式语法" class="headerlink" title="正则表达式语法"></a>正则表达式语法</h2><ul>
+<li><p>正则表达式是检查、匹配字符串的表达式</p>
+</li>
+<li><p>字符串的查找、替换是正则表达式的主要用途</p>
+</li>
+<li><p>字符范围匹配，正则表达式<a target="_blank" rel="noopener" href="https://tool.oschina.net/regex">测试工具</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202008/101942.png" srcset="/img/loading.gif" lazyload alt="image-20200809101941816"></p>
+</li>
+<li><p>元字符</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/225754.png" srcset="/img/loading.gif" lazyload alt="image-20200809102743977"></p>
+</li>
+<li><p>多次重复匹配</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/225755.png" srcset="/img/loading.gif" lazyload alt="image-20200809103658986"></p>
+</li>
+<li><p>定位匹配</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/225756.png" srcset="/img/loading.gif" lazyload alt="image-20200809104705932"></p>
+</li>
+<li><p>贪婪模式和非贪婪模式</p>
+</li>
+<li><p>表达式分组</p>
+</li>
+</ul>
+<h2 id="使用正则表达式"><a href="#使用正则表达式" class="headerlink" title="使用正则表达式"></a>使用正则表达式</h2><ul>
+<li><p>Java 使用正则表达式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RegexSample</span> </span>&#123;<br>    <span class="hljs-comment">// 1. 创建正则表达式</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Pattern PATTERN = Pattern.compile(<span class="hljs-string">&quot;&lt;li&gt;([\\u4e00-\\u9fa5]&#123;2,8&#125;)([a-zA-Z]&#123;1,10&#125;)&lt;/li&gt;&quot;</span>);<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>        <span class="hljs-comment">// 2. 获取内容</span><br>        String source = <span class="hljs-string">&quot;/Users/xianglin/Documents/IdeaProjects/JavaWeb/json-ajax-reg-filter-listener/web/sample.html&quot;</span>;<br>        BufferedReader reader = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> FileReader(source, StandardCharsets.UTF_8));<br>        StringBuilder content = <span class="hljs-keyword">new</span> StringBuilder();<br>        String lineText;<br>        <span class="hljs-keyword">while</span> ((lineText = reader.readLine()) != <span class="hljs-keyword">null</span>) &#123;<br>            content.append(lineText);<br>        &#125;<br>        <span class="hljs-comment">// 3. 匹配正则表达式</span><br>        Matcher matcher = PATTERN.matcher(content);<br>        <span class="hljs-comment">// 4. 分析处理结果</span><br>        <span class="hljs-keyword">while</span> (matcher.find()) &#123;<br>            <span class="hljs-comment">// 匹配完整字符串</span><br>            System.out.println(matcher.group(<span class="hljs-number">0</span>));<br><br>            String chineseName = matcher.group(<span class="hljs-number">1</span>);<br>            String englishName = matcher.group(<span class="hljs-number">2</span>);<br>            System.out.println(chineseName + <span class="hljs-string">&quot;-&quot;</span> + englishName);<br>        &#125;<br><br>        reader.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h1 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h1><h2 id="过滤器的作用和使用场景"><a href="#过滤器的作用和使用场景" class="headerlink" title="过滤器的作用和使用场景"></a>过滤器的作用和使用场景</h2><ul>
+<li>过滤器是 J2EE Servlet 模块下的标准组件</li>
+<li>Filter 的作用是对 URL进行统一的拦截处理</li>
+<li>Filter通常用于应用程序层面的全局处理</li>
+<li>任何过滤器都要实现接口：<code>javax.servlet.Filter</code></li>
+<li>在Filter 实现类中的<code>doFilter</code>方法编写过滤器的功能代码</li>
+<li>在 <code>web.xml </code>中对过滤器进行配置，说明拦截 URL 的范围</li>
+<li>在<code>web.xml</code>中配置<code>&lt;init-param&gt;</code>为 Filter 提供参数</li>
+</ul>
+<h2 id="过滤器开发和原理"><a href="#过滤器开发和原理" class="headerlink" title="过滤器开发和原理"></a>过滤器开发和原理</h2><h3 id="过滤器的生命周期"><a href="#过滤器的生命周期" class="headerlink" title="过滤器的生命周期"></a>过滤器的生命周期</h3><ol>
+<li>初始化：Filter 创建 <code>Filter.init()</code></li>
+<li>提供服务：<code>Filter.doFilter()</code></li>
+<li>销毁：<code>Filter.destroy()</code></li>
+</ol>
+<h3 id="过滤链"><a href="#过滤链" class="headerlink" title="过滤链"></a>过滤链</h3><ul>
+<li>每个过滤器应该只有单独的职能</li>
+<li>过滤器的执行顺序是以<code>&lt;filter-mapping&gt;</code>配置为准</li>
+<li>注解形式的过滤链是按照过滤器的类名的字母升序的顺序依次执行的而不是filterName名称</li>
+<li><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/225758.png" srcset="/img/loading.gif" lazyload alt="image-20200809134059344"></li>
+</ul>
+<h1 id="监听器"><a href="#监听器" class="headerlink" title="监听器"></a>监听器</h1><h2 id="监听器的作用"><a href="#监听器的作用" class="headerlink" title="监听器的作用"></a>监听器的作用</h2><ul>
+<li>监听器 Listener 是 J2EE Servlet 中的标准模块</li>
+<li>Listener的作用是对Web 应用对象的行为进行监控</li>
+<li>三种监听对象<ol>
+<li><code>ServletContext</code>:<code>javax.servlet.ServletContextListener</code></li>
+<li><code>HttpSession</code>:<code>javax.servlet.http.HttpSessionListener</code></li>
+<li><code>ServletRequest</code>:<code>javax.servlet.ServletRequestListener</code></li>
+</ol>
+</li>
+<li>属性监听接口<ol>
+<li><code>javax.servlet.ServletContextAttributeListener</code></li>
+<li><code>javax.servlet.http.HttpSessionAttributeListener</code></li>
+<li><code>javax.servlet.ServletRequestAttributeListener</code></li>
+</ol>
+</li>
+</ul>
+<h2 id="监听器的使用"><a href="#监听器的使用" class="headerlink" title="监听器的使用"></a>监听器的使用</h2><ul>
+<li>实现 XXXListener 接口，不同接口对应不同的监听对象</li>
+<li>实现监听器中的独有方法</li>
+<li>在<code>web.xml</code>对监听器进行配置</li>
+</ul>
+<h2 id="重定向与请求转发"><a href="#重定向与请求转发" class="headerlink" title="重定向与请求转发"></a>重定向与请求转发</h2><ul>
+<li>请求转发是服务器跳转，只会产生一次请求</li>
+<li>请求转发语句是：<code>request.getRequestDispatcher().forward()</code></li>
+<li>重定向是浏览器端的跳转，会产生两次请求 </li>
+<li><code>Status Code 302</code> <code>Location: /sb</code></li>
+<li>重定向语句是：<code>response.sendRedirect()</code></li>
+</ul>
+<h2 id="Session原理"><a href="#Session原理" class="headerlink" title="Session原理"></a>Session原理</h2><h1 id="Freemarker"><a href="#Freemarker" class="headerlink" title="Freemarker"></a>Freemarker</h1><h2 id="模板引擎的实现过程"><a href="#模板引擎的实现过程" class="headerlink" title="模板引擎的实现过程"></a>模板引擎的实现过程</h2><ul>
+<li>数据+模板=结果</li>
+<li>将数据与展示解耦</li>
+<li>JSP、Freemarker</li>
+</ul>
+<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="HTTP-请求结构"><a href="#HTTP-请求结构" class="headerlink" title="HTTP 请求结构"></a>HTTP 请求结构</h2><ul>
+<li>HTTP 请求包含三个结构：请求行、请求头、请求体</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/learn/">learn</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/web/">web</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/09/06/MySQL%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MySQL与数据库</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/06/javaweb%E5%9F%BA%E7%A1%80/">
+                        <span class="hidden-mobile">javaweb基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鄂ICP备20008384号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>鄂ICP备20008384号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

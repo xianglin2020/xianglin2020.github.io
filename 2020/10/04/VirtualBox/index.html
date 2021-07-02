@@ -1,0 +1,568 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="记录一些学习工作中的知识技能，方便后续查阅！">
+  <meta name="author" content="XiangLin">
+  <meta name="keywords" content="Java">
+  
+  <title>VirtualBox - XiangLin</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>XiangLin</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/45.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="VirtualBox">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-10-04 21:16" pubdate>
+        2020年10月4日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">VirtualBox</h1>
+            
+            <div class="markdown-body">
+              <h1 id="VirtualBox"><a href="#VirtualBox" class="headerlink" title="VirtualBox"></a>VirtualBox</h1><h2 id="为-CentOS7-安装增强功能"><a href="#为-CentOS7-安装增强功能" class="headerlink" title="为 CentOS7 安装增强功能"></a>为 CentOS7 安装增强功能</h2><p>CentOS Server 无法从【设备】–【安装增强功能】菜单为其安装增强功能，可以手动安装。</p>
+<ul>
+<li><p>安装依赖包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# yum install -y gcc gcc-c++ make kernel-headers kernel-devel<br>[root@localhost ~]# reboot<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>从菜单中挂载<code>VBoxGuestAdditions.iso</code></p>
+<p>确保正确设置光驱</p>
+<img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202012/120454.png" srcset="/img/loading.gif" lazyload alt="image-20201205120454258" style="zoom:50%;" />
+
+<p>![image-20201205120535941](/Users/xianglin/Library/Application Support/typora-user-images/image-20201205120535941.png)</p>
+</li>
+<li><p>挂载光驱</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 创建挂载点</span><br>[root@localhost ~]# mkdir /media/cdrom<br><span class="hljs-meta">#</span><span class="bash"> 挂载光驱</span><br>[root@localhost ~]# mount /dev/sr0 /media/cdrom<br>mount: /dev/sr0 写保护，将以只读方式挂载<br><br>[root@localhost ~]# ll /media/cdrom/<br>总用量 46826<br>-r--r--r--. 1 root root      763 2月  20 2020 AUTORUN.INF<br>-r-xr-xr-x. 1 root root     6384 10月 15 22:42 autorun.sh<br>dr-xr-xr-x. 2 root root      792 10月 15 22:48 cert<br>dr-xr-xr-x. 2 root root     1824 10月 15 22:48 NT3x<br>dr-xr-xr-x. 2 root root     2652 10月 15 22:48 OS2<br>-r-xr-xr-x. 1 root root     4821 10月 15 22:42 runasroot.sh<br>-r--r--r--. 1 root root      547 10月 15 22:48 TRANS.TBL<br>-r--r--r--. 1 root root  3830063 10月 15 22:41 VBoxDarwinAdditions.pkg<br>-r-xr-xr-x. 1 root root     3949 10月 15 22:41 VBoxDarwinAdditionsUninstall.tool<br>-r-xr-xr-x. 1 root root  7413172 10月 15 22:42 VBoxLinuxAdditions.run<br>-r--r--r--. 1 root root  9401856 10月 15 23:41 VBoxSolarisAdditions.pkg<br>-r-xr-xr-x. 1 root root 16950792 10月 15 22:45 VBoxWindowsAdditions-amd64.exe<br>-r-xr-xr-x. 1 root root   270616 10月 15 22:42 VBoxWindowsAdditions.exe<br>-r-xr-xr-x. 1 root root 10057608 10月 15 22:43 VBoxWindowsAdditions-x86.exe<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>执行安装命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost cdrom]# sh ./VBoxLinuxAdditions.run<br>Verifying archive integrity... All good.<br>Uncompressing VirtualBox 6.1.16 Guest Additions for Linux........<br>VirtualBox Guest Additions installer<br>Removing installed version 6.1.16 of VirtualBox Guest Additions...<br>Copying additional installer modules ...<br>Installing additional modules ...<br>VirtualBox Guest Additions: Starting.<br>VirtualBox Guest Additions: Building the VirtualBox Guest Additions kernel<br>modules.  This may take a while.<br>VirtualBox Guest Additions: To build modules for other installed kernels, run<br>VirtualBox Guest Additions:   /sbin/rcvboxadd quicksetup &lt;version&gt;<br>VirtualBox Guest Additions: or<br>VirtualBox Guest Additions:   /sbin/rcvboxadd quicksetup all<br>VirtualBox Guest Additions: Building the modules for kernel<br>3.10.0-1160.6.1.el7.x86_64.<br>VirtualBox Guest Additions: Running kernel modules will not be replaced until<br>the system is restarted<br><br>[root@localhost ~]# reboot<br></code></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="为-CentOS7-的Host-Only网络指定静态-IP"><a href="#为-CentOS7-的Host-Only网络指定静态-IP" class="headerlink" title="为 CentOS7 的Host-Only网络指定静态 IP"></a>为 CentOS7 的<code>Host-Only</code>网络指定静态 IP</h2><ul>
+<li><p>查看 <code>host-only</code>的网卡</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 使用 ip addr 同理</span><br>[root@localhost ~]# ifconfig<br>enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500<br>        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255<br><br>enp0s8: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500<br>        inet 192.168.56.106  netmask 255.255.255.0  broadcast 192.168.56.255<br><br>lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536<br>        inet 127.0.0.1  netmask 255.0.0.0<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>编辑位于<code>/etc/sysconfig/network-scripts</code>的配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# vim /etc/sysconfig/network-scripts/ifcfg-enp0s8<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>修改为如下配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs shell">TYPE=Ethernet<br>PROXY_METHOD=none<br>BROWSER_ONLY=no<br><span class="hljs-meta">#</span><span class="bash"> 设置为静态 IP</span><br>BOOTPROTO=static<br>DEFROUTE=yes<br>IPV4_FAILURE_FATAL=no<br>IPV6INIT=yes<br>IPV6_AUTOCONF=yes<br>IPV6_DEFROUTE=yes<br>IPV6_FAILURE_FATAL=no<br>IPV6_ADDR_GEN_MODE=stable-privacy<br>NAME=enp0s8<br>UUID=76b90704-1ecd-4c8e-a411-9c776cb7834d<br>DEVICE=enp0s8<br><span class="hljs-meta">#</span><span class="bash"> 设置开启启动</span><br>ONBOOT=yes<br><br><span class="hljs-meta">#</span><span class="bash"> 添加静态 IP 项</span><br>IPADDR=192.168.56.106<br>NETMASK=255.255.255.0<br>GATEWAY=192.168.56.1<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>可以在<code>/etc/sysconfig/network</code>中添加 DNS 配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> Created by anaconda</span><br>DNS1=192.168.56.1<br>DNS2=8.8.8.8<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>重启网络配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# service network restart<br>Restarting network (via systemctl):                        [  确定  ]<br></code></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="VBoxManage-基础命令"><a href="#VBoxManage-基础命令" class="headerlink" title="VBoxManage 基础命令"></a>VBoxManage 基础命令</h2><h3 id="VBoxManage-list"><a href="#VBoxManage-list" class="headerlink" title="VBoxManage list"></a><code>VBoxManage list</code></h3><ul>
+<li><p>列出已安装的虚拟机</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">➜  ~ VBoxManage list vms<br>&quot;fedora&quot; &#123;b9daec39-7e85-485f-969b-629fa52bd549&#125;<br>&quot;centos&quot; &#123;49074fd5-386b-42ca-9e25-af29f5e42f1f&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>列出正在运行的虚拟机</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">➜  ~ VBoxManage list runningvms<br>&quot;centos&quot; &#123;49074fd5-386b-42ca-9e25-af29f5e42f1f&#125;<br></code></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="VBoxManage-startvm"><a href="#VBoxManage-startvm" class="headerlink" title="VBoxManage startvm"></a><code>VBoxManage startvm</code></h3><ul>
+<li><p>命令格式</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">➜  ~ VBoxManage startvm<br>Usage:<br><br>VBoxManage startvm          &lt;uuid|vmname&gt;...<br>                            [--type gui|headless|separate]<br>                            [-E|--putenv &lt;NAME&gt;[=&lt;VALUE&gt;]]<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>以窗口模式启动虚拟机</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">➜  ~ VBoxManage startvm fedora --type  gui<br>Waiting for VM &quot;fedora&quot; to power on...<br>VM &quot;fedora&quot; has been successfully started.<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>以无窗口模式启动虚拟机</p>
+<p><code>Starts a VM without a window for remote display only.</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">➜  ~ VBoxManage startvm centos --type headless<br></code></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="VBoxManage-controlvm"><a href="#VBoxManage-controlvm" class="headerlink" title="VBoxManage controlvm"></a><code>VBoxManage controlvm</code></h3><ul>
+<li><p>命令格式</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">➜  ~ VBoxManage controlvm<br>Usage:<br><br>VBoxManage controlvm        &lt;uuid|vmname&gt;<br>                            pause|resume|reset|poweroff|savestate|<br>                            acpipowerbutton|acpisleepbutton|<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>暂停虚拟机</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">➜  ~ VBoxManage controlvm fedora pause<br></code></pre></td></tr></table></figure>
+
+<img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202012/114348.png" srcset="/img/loading.gif" lazyload alt="image-20201205114348345" style="zoom:50%;" />
+</li>
+<li><p>恢复已暂停的虚拟机</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">➜  ~ VBoxManage controlvm fedora resume<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>关闭虚拟机：相当于拉闸断电</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">➜  ~ VBoxManage controlvm fedora poweroff<br><span class="hljs-meta">0%</span><span class="bash">...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>关闭虚拟机：正常关闭</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">➜  ~ VBoxManage controlvm fedora acpipowerbutton<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>休眠虚拟机</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">➜  ~ VBoxManage controlvm fedora savestate<br><span class="hljs-meta">0%</span><span class="bash">...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%</span><br></code></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="VBoxManage-guestproperty"><a href="#VBoxManage-guestproperty" class="headerlink" title="VBoxManage guestproperty"></a><code>VBoxManage guestproperty</code></h2><ul>
+<li><p>获取或者设置正在运行的虚拟机的属性</p>
+</li>
+<li><p>命令格式</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs shell">➜  ~ VBoxManage guestproperty<br>Usage:<br><br>VBoxManage guestproperty    get &lt;uuid|vmname&gt;<br>                            &lt;property&gt; [--verbose]<br><br>VBoxManage guestproperty    set &lt;uuid|vmname&gt;<br>                            &lt;property&gt; [&lt;value&gt; [--flags &lt;flags&gt;]]<br><br>VBoxManage guestproperty    delete|unset &lt;uuid|vmname&gt;<br>                            &lt;property&gt;<br><br>VBoxManage guestproperty    enumerate &lt;uuid|vmname&gt;<br>                            [--patterns &lt;patterns&gt;]<br><br>VBoxManage guestproperty    wait &lt;uuid|vmname&gt; &lt;patterns&gt;<br>                            [--timeout &lt;msec&gt;] [--fail-on-timeout]<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>获取当前运行虚拟机的 IP 地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">➜  ~ VBoxManage guestproperty enumerate centos | grep &quot;Net.*V4.*IP&quot;<br>Name: /VirtualBox/GuestInfo/Net/0/V4/IP, value: 10.0.2.15, timestamp: 1607138767607688000, flags:<br>Name: /VirtualBox/GuestInfo/Net/1/V4/IP, value: 192.168.56.106, timestamp: 1607138767607908000, flags:<br><br>➜  ~ VBoxManage guestproperty get centos &#x27;/VirtualBox/GuestInfo/Net/1/V4/IP&#x27;<br>Value: 192.168.56.106<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/daily/">daily</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/virtual-box/">virtual box</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/10/06/SpringMVC/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SpringMVC</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/10/04/Spring%E5%9F%BA%E7%A1%80/">
+                        <span class="hidden-mobile">Spring基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鄂ICP备20008384号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>鄂ICP备20008384号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

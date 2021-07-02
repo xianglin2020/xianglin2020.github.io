@@ -1,0 +1,991 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="记录一些学习工作中的知识技能，方便后续查阅！">
+  <meta name="author" content="XiangLin">
+  <meta name="keywords" content="Java">
+  
+  <title>XiangLin</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>XiangLin</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/46.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="优秀的同学，绝对是优秀的同学！">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/04/23/%E6%8E%A5%E5%8F%A3%E6%89%93%E5%8C%85%E3%80%81%E5%AE%89%E8%A3%85%E5%88%B0%E6%9C%AC%E5%9C%B0%E3%80%81%E4%B8%8A%E4%BC%A0%E8%87%B3%E4%BB%93%E5%BA%93/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/19.jpg" srcset="/img/loading.gif" lazyload alt="接口打包、安装到本地、上传至仓库">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/23/%E6%8E%A5%E5%8F%A3%E6%89%93%E5%8C%85%E3%80%81%E5%AE%89%E8%A3%85%E5%88%B0%E6%9C%AC%E5%9C%B0%E3%80%81%E4%B8%8A%E4%BC%A0%E8%87%B3%E4%BB%93%E5%BA%93/" target="_self">
+          接口打包、安装到本地、上传至仓库
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/23/%E6%8E%A5%E5%8F%A3%E6%89%93%E5%8C%85%E3%80%81%E5%AE%89%E8%A3%85%E5%88%B0%E6%9C%AC%E5%9C%B0%E3%80%81%E4%B8%8A%E4%BC%A0%E8%87%B3%E4%BB%93%E5%BA%93/" target="_self">
+          
+          
+            
+          
+          使用jar命令将 class 文件打包成 jar 文件1jar cvf lc_o2ozx_w-1.0.2.jar .\gov\gdntax\o2ozx\csi\
+
+
+将生成的 jar 文件安装至本地仓库1mvn install:install-file -Dfile=C:\Users\xianglin\Documents\MyDocuments\servyou\IdeaProjects\o2o\o
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-23 09:48" pubdate>
+              2021-04-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/work-record/">work record</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+              <a href="/tags/maven/">maven</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/04/06/Oracle-11g/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/19.jpg" srcset="/img/loading.gif" lazyload alt="Oracle-11g">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/06/Oracle-11g/" target="_self">
+          Oracle-11g
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/06/Oracle-11g/" target="_self">
+          
+          
+            
+          
+          Docker 安装 Oracle-11g参考链接
+DockerHub：jaspeen/oracle-11g (docker.com)
+Oracle Database：适用于 Linux x86-64 的 Oracle Database 11g 第 2 版 | Oracle 中国
+Docker CE 清华源：docker-ce | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua O
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-06 10:18" pubdate>
+              2021-04-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/learn/">learn</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/docker/">docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/02/27/Redis-Sentinel/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/19.jpg" srcset="/img/loading.gif" lazyload alt="Redis Sentinel">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/27/Redis-Sentinel/" target="_self">
+          Redis Sentinel
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/27/Redis-Sentinel/" target="_self">
+          
+          
+            
+          
+          Redis SentinelRedis Sentinel 的作用Redis 的 Sentinel 系统用于管理多个 Redis 服务器（instance），Redis Sentinel 主要有三个作用：
+
+监控（Monitoring）：Sentinel 会不断的检查 Redis 主服务器和从服务器是否运行正常。
+提醒（Notification）：当被监控的某个 Redis 服务器出现问题时，Sen
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-27 10:44" pubdate>
+              2021-02-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/learn/">learn</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/redis/">redis</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/17/JVM%E5%9F%BA%E7%A1%80/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/JVM.png" srcset="/img/loading.gif" lazyload alt="JVM基础">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/17/JVM%E5%9F%BA%E7%A1%80/" target="_self">
+          JVM基础
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/17/JVM%E5%9F%BA%E7%A1%80/" target="_self">
+          
+          
+            
+          
+          JVM 基础Java 基础知识谈谈对 Java 的理解
+平台无关性
+GC
+语言特性：泛型、反射、Lambda
+面向对象：封装、继承、多态
+类库：网络、IO、集合、多线程
+异常处理
+
+Java 的平台无关性是如何实现的javac 命令将 Java 源程序编译成平台无关的字节码文件（.class），java 命令执行 Java 程序时通过不同平台上的 JVM 解析成机器指令。
+Java 平台无关性是建
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-17 14:55" pubdate>
+              2021-01-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/interview/">interview</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/jvm/">jvm</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/12/26/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202101/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93.png" srcset="/img/loading.gif" lazyload alt="MySQL数据库知识">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/26/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86/" target="_self">
+          MySQL数据库知识
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/26/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86/" target="_self">
+          
+          
+            
+          
+          
+数据库模块划分关键语法GROUP BY
+满足 SELECT 子句中的列名必须为分组列或列函数
+列函数对于 GROUP BY 子句定义的每一个组各返回一个结果
+
+HAVING
+通常与 GROUP BY 子句一起使用
+WHERE 过滤行，HAVING 过滤组
+关键字的顺序：WHERE – GROUP BY – HAVING
+
+索引相关内容为什么要使用索引全表扫描适用范围窄，借助字典的思想，使用索引可
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-26 18:58" pubdate>
+              2020-12-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/interview/">interview</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/MySQL/">MySQL</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/12/20/%E7%BD%91%E5%85%B3%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202102/172139.png" srcset="/img/loading.gif" lazyload alt="网络相关知识总结">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/20/%E7%BD%91%E5%85%B3%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" target="_self">
+          网络相关知识总结
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/20/%E7%BD%91%E5%85%B3%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" target="_self">
+          
+          
+            
+          
+          
+网络基础知识国际标准化组织 ISO 提出的开放系统互联基本参考模型（Open Systems Interconnection Reference Model），简称为 OSI ，是一个概念模型。TCP/IP 是一个四层的体系结构，它包含应用层、 运输层、网际层和网络接口层。在阐述计算机网络原理时，通常综合 OSI 和 TCP/IP 的优点，采用一种只有五层协议的体系结构。
+
+应用层（applic
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-20 11:01" pubdate>
+              2020-12-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/interview/">interview</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/12/13/Zookeeper/" target="_self">
+          <img src="https://zookeeper.apache.org/images/zookeeper_small.gif" srcset="/img/loading.gif" lazyload alt="Zookeeper">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/13/Zookeeper/" target="_self">
+          Zookeeper
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/13/Zookeeper/" target="_self">
+          
+          
+            
+          
+          Zookeeper理解 Zookeeper为什么需要 Zookeeper
+用起来像单机但是又比单机更可靠
+类似于 Leader 在团队里面的协调作用
+在多节点中尽量压缩数据同步时间
+
+Zookeeper 是什么
+Zookeeper 是开源的高性能的分布式应用协调系统，一个高性能的分布式数据一致性解决方案
+它的设计目标是将那些复杂的容易出错的分布式一致性服务封装起来，构成一个高效可靠的原语集，并以一
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-13 13:25" pubdate>
+              2020-12-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/learn/">learn</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Zookeeper/">Zookeeper</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/12/06/SpringCloud%E5%92%8C%E5%BE%AE%E6%9C%8D%E5%8A%A1/" target="_self">
+          <img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/19.jpg" srcset="/img/loading.gif" lazyload alt="SpringCloud和微服务">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/06/SpringCloud%E5%92%8C%E5%BE%AE%E6%9C%8D%E5%8A%A1/" target="_self">
+          SpringCloud和微服务
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/06/SpringCloud%E5%92%8C%E5%BE%AE%E6%9C%8D%E5%8A%A1/" target="_self">
+          
+          
+            
+          
+          微服务微服务的基础概念单体应用的不足
+部署效率低下：依赖众多、应用体积较大、启动时间较长
+团队协作开发成本高
+系统可用性差
+
+服务化
+把传统的单机应用中的本地方法调用，改造成通过 RPC、HTTP 产生的远程方法调用
+把模块从单体应用中拆分出来，独立成一个服务部署
+
+微服务概念
+一种架构风格
+开发单个应用作为一系列小型服务的套件，其中每个服务都运行在自己的进程中，并且通过轻量级的机制实现彼此间的通
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-06 12:15" pubdate>
+              2020-12-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/learn/">learn</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/spring-cloud/">spring cloud</a>
+            
+              <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/12/05/RabbitMQ/" target="_self">
+          <img src="https://www.rabbitmq.com/img/logo-rabbitmq.svg" srcset="/img/loading.gif" lazyload alt="RabbitMQ">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/05/RabbitMQ/" target="_self">
+          RabbitMQ
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/05/RabbitMQ/" target="_self">
+          
+          
+            
+          
+          RabbitMQ消息队列
+MQ（Message Queue）：MQ 的模型大致如下
+
+
+
+
+
+
+消息队列的特性
+业务无关性
+FIFO
+容灾
+性能
+
+使用消息队列的原因
+系统解耦
+异步调用
+流量削峰
+
+RabbitMQ 介绍RabbitMQ 基础思想
+核心思想：接收并转发消息，可以类比于邮局
+producer：生产者、消息发送者
+queue：消息存储队列
+consumer：消费者
+
+RabbitMQ
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-05 13:20" pubdate>
+              2020-12-05
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/mq/">mq</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/12/03/Nginx/" target="_self">
+          <img src="https://nginx.org/nginx.png" srcset="/img/loading.gif" lazyload alt="Nginx">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/03/Nginx/" target="_self">
+          Nginx
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/03/Nginx/" target="_self">
+          
+          
+            
+          
+          NginxNginx 是一款轻量级的 Web 服务器、反向代理服务器及电子邮件代理服务器，其特点是占用内存小，并发能力强。
+Nginx 使用场景HTTP 的反向代理服务器
+正向代理
+
+
+反向代理
+
+
+Nginx 的反向代理
+
+
+正向代理：是一个位于客户端和原始服务器之间的服务器，为了从原始服务器取得内容，客户端向代理发送请求并指定原始服务器，然后代理向原始服务器转发请求并将获得的内容返回给客户端。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-03 20:39" pubdate>
+              2020-12-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/learn/">learn</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/nginx/">nginx</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鄂ICP备20008384号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>鄂ICP备20008384号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,597 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="记录一些学习工作中的知识技能，方便后续查阅！">
+  <meta name="author" content="XiangLin">
+  <meta name="keywords" content="Java">
+  
+  <title>Docker基础 - XiangLin</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>XiangLin</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/45.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Docker基础">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-01 22:38" pubdate>
+        2020年12月1日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Docker基础</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="Docker-基础概念"><a href="#Docker-基础概念" class="headerlink" title="Docker 基础概念"></a>Docker 基础概念</h2><ul>
+<li>Docker 是一个用来装程序及其环境的容器，属于Linux 容器的一种封装，提供简单易用的容器使用接口。它是目前最流行的 Linux 容器解决方案。</li>
+</ul>
+<h3 id="Docker-的用途"><a href="#Docker-的用途" class="headerlink" title="Docker 的用途"></a>Docker 的用途</h3><ul>
+<li>提供统一的环境</li>
+<li>提供快速拓展、弹性伸缩的云服务</li>
+<li>防止其他用户的进程把服务器资源占用过多</li>
+</ul>
+<h3 id="Docker-的特点"><a href="#Docker-的特点" class="headerlink" title="Docker 的特点"></a>Docker 的特点</h3><ul>
+<li>标准化<ol>
+<li>运输方式：把程序和环境从一个机器运到另一个机器</li>
+<li>存储方法：程序和环境的存储</li>
+<li>API 接口</li>
+</ol>
+</li>
+<li>灵活：即使是最复杂的应用也可以集装箱化</li>
+<li>轻量级：容器利用并共享主机内核</li>
+<li>便携式：可以在本地构造，部署到云，并可以在任何地方运行</li>
+</ul>
+<h2 id="Docker-组成"><a href="#Docker-组成" class="headerlink" title="Docker 组成"></a>Docker 组成</h2><p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202012/214528.png" srcset="/img/loading.gif" lazyload alt="image-20201202214527746"></p>
+<h2 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h2><p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202012/214925.png" srcset="/img/loading.gif" lazyload alt="image-20201202214925288"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202012/215018.png" srcset="/img/loading.gif" lazyload alt="image-20201202215018108"></p>
+<ul>
+<li>镜像存储：联合文件系统，UnionFS</li>
+</ul>
+<h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><ul>
+<li>镜像类似于 Java 中的类，而容器类似于实例</li>
+<li>容器层可以修改，镜像是不可以修改的</li>
+<li>同一个镜像可以生成多个独立的容器，容器之间互不干扰</li>
+</ul>
+<h2 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h2><ul>
+<li>hub.docker.com</li>
+<li>私有、共有仓库</li>
+</ul>
+<h2 id="Client、Deamon"><a href="#Client、Deamon" class="headerlink" title="Client、Deamon"></a>Client、Deamon</h2><ul>
+<li>client 提供给用户一个终端，用户输入 Docker 提供的命令来管理本地或远程的服务器</li>
+<li>deamon：服务端守护进程，接收 client 发送的命令并执行相应的操作</li>
+</ul>
+<h3 id="Docker-的网络模式"><a href="#Docker-的网络模式" class="headerlink" title="Docker 的网络模式"></a>Docker 的网络模式</h3><ul>
+<li>Bridge</li>
+<li>Host</li>
+<li>None</li>
+</ul>
+<h2 id="Docker-安装"><a href="#Docker-安装" class="headerlink" title="Docker 安装"></a>Docker 安装</h2><h3 id="Docker-在-CentOS7-的安装"><a href="#Docker-在-CentOS7-的安装" class="headerlink" title="Docker 在 CentOS7 的安装"></a>Docker 在 CentOS7 的安装</h3><ul>
+<li><p>查看 CentOS版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# cat /etc/redhat-release<br>CentOS Linux release 7.9.2009 (Core)<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>设置阿里云的 yum 源</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo<br>--2020-12-02 22:36:00--  http://mirrors.aliyun.com/repo/Centos-7.repo<br>正在解析主机 mirrors.aliyun.com (mirrors.aliyun.com)... 157.148.73.246, 157.148.73.241, 157.148.73.242, ...<br>正在连接 mirrors.aliyun.com (mirrors.aliyun.com)|157.148.73.246|:80... 已连接。<br>已发出 HTTP 请求，正在等待回应... 200 OK<br>长度：2523 (2.5K) [application/octet-stream]<br>正在保存至: “/etc/yum.repos.d/CentOS-Base.repo”<br><br><span class="hljs-meta">100%</span><span class="bash">[======================================&gt;] 2,523       --.-K/s 用时 0s</span><br><br>2020-12-02 22:36:00 (499 MB/s) - 已保存 “/etc/yum.repos.d/CentOS-Base.repo” [2523/2523])<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>更新 yum</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# yum clean all<br>已加载插件：fastestmirror<br>正在清理软件源： base docker-ce-stable extras updates<br>Cleaning up list of fastest mirrors<br><br>[root@localhost ~]# yum makecache<br>已加载插件：fastestmirror<br>Determining fastest mirrors<br> * base: mirrors.aliyun.com<br> * extras: mirrors.aliyun.com<br> * updates: mirrors.aliyun.com<br>base                                                     | 3.6 kB     00:00<br>docker-ce-stable                                         | 3.5 kB     00:00<br>extras                                                   | 2.9 kB     00:00<br>updates                                                  | 2.9 kB     00:00<br>(1/14): base/7/x86_64/group_gz                             | 153 kB   00:00<br>(2/14): base/7/x86_64/filelists_db                         | 7.2 MB   00:00<br><span class="hljs-meta">#</span><span class="bash"> .....</span><br>(14/14): updates/7/x86_64/other_db                         | 225 kB   00:00<br>元数据缓存已建立<br><br>[root@localhost ~]# yum check-update<br><br>[root@localhost ~]# yum update<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>安装所需的软件包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# yum install -y yum-utils device-mapper-persistent-data lvm2<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>为 Docker 指定稳定的存储库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo<br>已加载插件：fastestmirror<br>adding repo from: http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo<br>grabbing file http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo to /etc/yum.repos.d/docker-ce.repo<br>repo saved to /etc/yum.repos.d/docker-ce.repo<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看 Docker 版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# yum list docker-ce --showduplicates | sort -r<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>安装（可指定版本）Docker</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# yum install docker-ce docker-ce-cli containerd.io<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>启动 Docker</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# systemctl start docker<br><br><span class="hljs-meta">#</span><span class="bash"> 设置开机自启</span><br>[root@localhost ~]# systemctl enable docker<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>验证是否安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker version<br>[root@localhost ~]# docker info<br></code></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="运行第一个-Docker-容器"><a href="#运行第一个-Docker-容器" class="headerlink" title="运行第一个 Docker 容器"></a>运行第一个 Docker 容器</h3><ul>
+<li><p>下载镜像</p>
+<p><code>docker pull [OPTIONS] NAME[:TAG|@DIGEST]</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker pull hello-world<br>Using default tag: latest<br>latest: Pulling from library/hello-world<br>0e03bdcc26d7: Pull complete<br>Digest: sha256:e7c70bb24b462baa86c102610182e3efcb12a04854e8c582838d92970a09f323<br>Status: Downloaded newer image for hello-world:latest<br>docker.io/library/hello-world:latest<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看镜像</p>
+<p><code>docker images [OPTIONS] [REPOSITORY[:TAG]]</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker images<br>REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE<br>hello-world         latest              bf756fb1ae65        11 months ago       13.3kB<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>运行镜像</p>
+<p><code>docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker run hello-world<br><br>Hello from Docker!<br>This message shows that your installation appears to be working correctly.<br><br>To generate this message, Docker took the following steps:<br> 1. The Docker client contacted the Docker daemon.<br> 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.<br>    (amd64)<br> 3. The Docker daemon created a new container from that image which runs the<br>    executable that produces the output you are currently reading.<br> 4. The Docker daemon streamed that output to the Docker client, which sent it<br>    to your terminal.<br><br>To try something more ambitious, you can run an Ubuntu container with:<br><span class="hljs-meta"> $</span><span class="bash"> docker run -it ubuntu bash</span><br><br>Share images, automate workflows, and more with a free Docker ID:<br> https://hub.docker.com/<br><br>For more examples and ideas, visit:<br> https://docs.docker.com/get-started/<br></code></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="运行-Nginx-容器"><a href="#运行-Nginx-容器" class="headerlink" title="运行 Nginx 容器"></a>运行 Nginx 容器</h3><ul>
+<li><p>拉取 Nginx 镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker pull hub.c.163.com/library/nginx:latest<br>latest: Pulling from library/nginx<br>5de4b4d551f8: Pull complete<br>d4b36a5e9443: Pull complete<br>0af1f0713557: Pull complete<br>Digest: sha256:f84932f738583e0169f94af9b2d5201be2dbacc1578de73b09a6dfaaa07801d6<br>Status: Downloaded newer image for hub.c.163.com/library/nginx:latest<br>hub.c.163.com/library/nginx:latest<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>运行 Nginx 容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker run -d hub.c.163.com/library/nginx:latest<br>0708d1119dfedcd40371935d901fc460682d6eb8cc0177b510b47eaa8ffeb506<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>登入容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker exec -it 0708 bash<br>root@0708d1119dfe:/#<br><br><br>root@0708d1119dfe:/# which nginx<br>/usr/sbin/nginx<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>停止容器</p>
+<p><code>docker stop [OPTIONS] CONTAINER [CONTAINER...]</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker stop 0708<br>0708<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>使用端口映射</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker run -d -p 8080:80 hub.c.163.com/library/nginx:latest<br>8dc5cef54fcf00dc4f5e428d1de14c8efe6c867b9e2f4870078d99bf3c0e0cef<br></code></pre></td></tr></table></figure>
+
+<p><code>-p, --publish list     Publish a container&#39;s port(s) to the host  -P, --publish-all        Publish all exposed ports to random ports</code></p>
+</li>
+<li><p>查看进行端口映射的容器信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker ps<br>CONTAINER ID        IMAGE                                COMMAND                  CREATED              STATUS              PORTS                  NAMES<br>8dc5cef54fcf        hub.c.163.com/library/nginx:latest   &quot;nginx -g &#x27;daemon of…&quot;   About a minute ago   Up About a minute   0.0.0.0:8080-&gt;80/tcp   dreamy_ritchie<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# netstat -na| grep 8080<br>tcp6       0      0 :::8080                 :::*                    LISTEN<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在浏览器访问 Nginx</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202012/232056.png" srcset="/img/loading.gif" lazyload alt="image-20201202232056733"></p>
+</li>
+</ul>
+<h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><h3 id="简单的-Dockerfile"><a href="#简单的-Dockerfile" class="headerlink" title="简单的 Dockerfile"></a>简单的 Dockerfile</h3><ul>
+<li><p>编写 Dockerfile</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-keyword">FROM</span> alpine:latest<br><span class="hljs-keyword">MAINTAINER</span> xianglin<br><span class="hljs-keyword">CMD</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;hello my dockerfile&#x27;</span></span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>构建镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker build -t hello-docker .<br>Sending build context to Docker daemon  15.36kB<br>Step 1/3 : FROM alpine:latest<br><span class="hljs-meta"> ---&gt;</span><span class="bash"> d6e46aa2470d</span><br>Step 2/3 : MAINTAINER xianglin<br><span class="hljs-meta"> ---&gt;</span><span class="bash"> Using cache</span><br><span class="hljs-meta"> ---&gt;</span><span class="bash"> 5b2571b3eae2</span><br>Step 3/3 : CMD echo &#x27;hello my dockerfile&#x27;<br><span class="hljs-meta"> ---&gt;</span><span class="bash"> Using cache</span><br><span class="hljs-meta"> ---&gt;</span><span class="bash"> 465286d0513b</span><br>Successfully built 465286d0513b<br>Successfully tagged hello-docker:latest<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看镜像、运行容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker images<br>REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE<br>hello-docker                  latest              465286d0513b        41 seconds ago      5.57MB<br>alpine                        latest              d6e46aa2470d        5 weeks ago         5.57MB<br>hello-world                   latest              bf756fb1ae65        11 months ago       13.3kB<br>hub.c.163.com/library/nginx   latest              46102226f2fd        3 years ago         109MB<br><span class="hljs-meta">#</span><span class="bash"> hello-docker 基于 alpine 构建</span><br>[root@localhost ~]# docker run hello-docker<br>hello my dockerfile<br></code></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/learn/">learn</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/docker/">docker</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/12/03/Nginx/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Nginx</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/01/%E5%88%86%E5%B8%83%E5%BC%8F%E5%9F%BA%E7%A1%80/">
+                        <span class="hidden-mobile">分布式基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鄂ICP备20008384号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>鄂ICP备20008384号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

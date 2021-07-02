@@ -1,0 +1,750 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="记录一些学习工作中的知识技能，方便后续查阅！">
+  <meta name="author" content="XiangLin">
+  <meta name="keywords" content="Java">
+  
+  <title>ubuntu-linux - XiangLin</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>XiangLin</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/45.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="ubuntu-linux">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-06 22:45" pubdate>
+        2020年9月6日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      28
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">ubuntu-linux</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Linux-介绍"><a href="#Linux-介绍" class="headerlink" title="Linux 介绍"></a>Linux 介绍</h1><h2 id="GNU-项目"><a href="#GNU-项目" class="headerlink" title="GNU 项目"></a>GNU 项目</h2><p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212626.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>GNU 是GNU is Not Unix 的递归缩写。</p>
+<h2 id="Linus-Torvalds"><a href="#Linus-Torvalds" class="headerlink" title="Linus Torvalds"></a>Linus Torvalds</h2><p>1991 年，Linus Torvalds完成了 Linux 内核的第一个版本。Linux 可以说是 Linus 和 Unix 的合并，也可以说是 Linux is Not Unix 的递归缩写。</p>
+<ol>
+<li>操作系统的核心称为“内核”，但内核并不等于操作系统。内核提供系统服务，比如文件管理、虚拟内存、设备 I/O等。</li>
+<li>单独的 Linux 内核是没办法工作的，必须要有 GNU 项目的众多应用程序来添砖加瓦。</li>
+<li>Linux 内核的官网是<a target="_blank" rel="noopener" href="https://www.kernel.org/">https://www.kernel.org</a>。Linux 的官方称谓是 GNU/Linux。</li>
+</ol>
+<h2 id="Linux-发行版"><a href="#Linux-发行版" class="headerlink" title="Linux 发行版"></a>Linux 发行版</h2><p>Linux 发展至今，已经是一个相当复杂和丰富的操作系统了，其大部分源代码还是 GNU 项目的。为了简化安装过程，以及提供一些基本的软件，产生了不少的 Linux 发行版，不同 Linux 发行版的主要区别有：</p>
+<ol>
+<li>安装方法不一样；</li>
+<li>安装应用程序的方法不一样，及软件包的管理方式不一样。</li>
+<li>不同的 Linux预装的应用程序不一样。</li>
+</ol>
+<h3 id="众多的-Linux-发行版"><a href="#众多的-Linux-发行版" class="headerlink" title="众多的 Linux 发行版"></a>众多的 Linux 发行版</h3><p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212634.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="Debian-一组"><a href="#Debian-一组" class="headerlink" title="Debian 一组"></a>Debian 一组</h3><p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224549.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="继承自-Debian-的-Ubuntu-发行版"><a href="#继承自-Debian-的-Ubuntu-发行版" class="headerlink" title="继承自 Debian 的 Ubuntu 发行版"></a>继承自 Debian 的 Ubuntu 发行版</h3><p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212642.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h1 id="Linux-终端和文件操作"><a href="#Linux-终端和文件操作" class="headerlink" title="Linux 终端和文件操作"></a>Linux 终端和文件操作</h1><h2 id="命令提示符"><a href="#命令提示符" class="headerlink" title="命令提示符"></a>命令提示符</h2><p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224550.png" srcset="/img/loading.gif" lazyload alt="image-20200510160128347"></p>
+<h3 id="对tomcat-VM-0-2-ubuntu-的解释"><a href="#对tomcat-VM-0-2-ubuntu-的解释" class="headerlink" title="对tomcat@VM-0-2-ubuntu:~$的解释"></a>对<code>tomcat@VM-0-2-ubuntu:~$</code>的解释</h3><ul>
+<li><code>tomcat</code>是当前登录用户的名字，Linux 是一个完全的多用户多进程的操作系统。</li>
+<li><code>@</code>就是英语中 <code>at</code> 的意思，<code>@</code>前面是用户名，后面是所在的域。</li>
+<li><code>VM-0-2-ubuntu</code>是当前主机的名称，因为这是腾讯云的虚拟主机，所以默认名称是这样。</li>
+<li><code>:</code>就是分隔符，没有特殊的含义。</li>
+<li><code>~</code>是当前所在目录的名称，会随着用户进入不同的目录而改变，<code>~</code>表示当前用户的家目录。</li>
+<li><code>$/#</code>指示当前用户权限的字符。<code>$</code>表示普通用户，有权限的限制；<code>#</code>表示超级用户，即<code>root</code>,拥有所有的权限。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224551.png" srcset="/img/loading.gif" lazyload alt="截屏2020-05-10 16.13.49"></p>
+<h2 id="命令和命令参数"><a href="#命令和命令参数" class="headerlink" title="命令和命令参数"></a>命令和命令参数</h2><h3 id="简单的命令"><a href="#简单的命令" class="headerlink" title="简单的命令"></a>简单的命令</h3><ul>
+<li><p><code>date</code>显示当前日期及时间</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212657.png" srcset="/img/loading.gif" lazyload alt="截屏2020-05-10 16.22.38"></p>
+</li>
+<li><p><code>ls</code> 是<code>list</code>的缩写，显示当前目录下的文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212707.png" srcset="/img/loading.gif" lazyload alt="image-20200510162839664"></p>
+</li>
+</ul>
+<h3 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数"></a>命令参数</h3><p>命令参数就是写在命令后的一些补充选项，命令和参数之间用空格隔开。</p>
+<ol>
+<li><p>短参数：最常见的参数形式就是一个短横线后接一个字母。例如：<code>command -p</code>，如果要一次性加好几个参数，可以使用空格隔开，例如：<code>command -p -a -T -c</code>，多个短参数可以合并在一起，例如 ：<code>command -paTc</code>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224552.png" srcset="/img/loading.gif" lazyload alt="image-20200510165559766"></p>
+</li>
+<li><p>长参数：长参数是以两个短横开始的，例如：<code>command --parameter</code>，如果有多个长参数，只能使用空格隔开，例如：<code>command --parameter1 -parameter2</code>，可以组合使用短参数和长参数，例如：<code>command --parameter -acT</code>。</p>
+</li>
+<li><p>有时候，同一个意义的参数有短参数和长参数两种形式，效果是一样的，例如<code>ls -a</code>，<code>ls --all</code>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212714.png" srcset="/img/loading.gif" lazyload alt="image-20200510170046052"></p>
+</li>
+<li><p>参数的值：短参数的赋值：<code>command -p 10</code>，长参数的赋值：<code>command --parameter=10</code>。</p>
+</li>
+</ol>
+<h3 id="如何查找命令及历史记录"><a href="#如何查找命令及历史记录" class="headerlink" title="如何查找命令及历史记录"></a>如何查找命令及历史记录</h3><ul>
+<li><p>Tab 可以补全命令及路径</p>
+</li>
+<li><p><code>Ctrl+R</code>可以查找使用过的命令</p>
+</li>
+<li><p><code>history</code>命令用于列出之前使用过的所有命令</p>
+</li>
+<li><p>一些实用的快捷键</p>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Ctrl + L</code></td>
+<td>清屏，同<code>clear</code>命令</td>
+</tr>
+<tr>
+<td align="center"><code>Ctrl + D</code></td>
+<td>给终端传递 EOF</td>
+</tr>
+<tr>
+<td align="center"><code>Shift + PgUp</code></td>
+<td>向上滚屏</td>
+</tr>
+<tr>
+<td align="center"><code>Shift + PgDn</code></td>
+<td>向下滚屏</td>
+</tr>
+<tr>
+<td align="center"><code>Ctrl + A</code></td>
+<td>光标跳到一行命令的开头，<code>Home</code>键有相同的效果</td>
+</tr>
+<tr>
+<td align="center"><code>Ctrl + E</code></td>
+<td>光标跳到一行命令的结尾，<code>End</code>键有相同的效果</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="文件组织，pwd和which命令"><a href="#文件组织，pwd和which命令" class="headerlink" title="文件组织，pwd和which命令"></a>文件组织，<code>pwd</code>和<code>which</code>命令</h3><ul>
+<li><p>Linux 的两种类型文件</p>
+<ol>
+<li>普通的文件：是我们已经熟知的文件类型，这样的文件包括：文本类型的文件、声音文件、程序等。</li>
+<li>特殊的文件：这类特殊的文件表示一些东西。例如，光盘驱动就是特殊的文件。甚至根目录也是文件。</li>
+</ol>
+</li>
+<li><p>根目录：Linux 中只有一个根目录，就是<code>/</code>。根目录就是Linux 的最顶层目录。</p>
+</li>
+<li><p>根目录的直属子目录</p>
+<ol>
+<li><p><code>bin</code>：英语 binary 的缩写，表示二进制文件，包含了会被所有用户使用的可执行程序</p>
+</li>
+<li><p><code>boot</code>：英语 boot 表示启动，包含与 Linux 启动密切相关的文件</p>
+</li>
+<li><p><code>dev</code>：英语 device 的缩写，表示设备，包含外设。它里面的子目录，每一个对应一个外设</p>
+</li>
+<li><p><code>etc</code>：包含系统的配置文件</p>
+</li>
+<li><p><code>home</code>：用户的私人目录，Linux 中每个用户在<code>home</code>目录下都有自己的私人目录</p>
+</li>
+<li><p><code>lib</code>：英语 library 的缩写，表示库，包含程序所调用的库文件</p>
+</li>
+<li><p><code>media</code>：当一个可移动的外设插入电脑时，Linux 就可以让我们通过 media 的子目录来访问这些外设的内容</p>
+</li>
+<li><p><code>mnt</code>：表示挂载，一般用于临时挂载一些装置</p>
+</li>
+<li><p><code>opt</code>：英语 optionnal application software package 的缩写，表示可选的应用程序，用于安装多数第三方软件和插件</p>
+</li>
+<li><p><code>root</code>：超级用户 root 的家目录/主目录</p>
+</li>
+<li><p><code>sbin</code>：系统二进制文件，包含系统级的重要可执行程序</p>
+</li>
+<li><p><code>srv</code>：service 的缩写，包含一些网络服务启动之后所需要存取的数据</p>
+</li>
+<li><p><code>tmp</code>：temporary 的缩写，表示临时的，普通用户和程序存放临时文件的地方</p>
+</li>
+<li><p><code>usr</code>：Unix Software Resource 的缩写，表示 Unix 操作系统软件资源，安装了大部分用户要调用的程序</p>
+</li>
+<li><p><code>var</code>：variable 的缩写，表示动态的、可变的。通常包含程序的数据，比如一些日志文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224553.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+</ol>
+</li>
+<li><p><code>pwd</code>命令，显示当前目录的路径。Print Working Director 的缩写，表示打印当前工作目录</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212723.png" srcset="/img/loading.gif" lazyload alt="image-20200516205610545"></p>
+</li>
+<li><p><code>which</code>命令，获取命令的可执行文件的位置</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212726.png" srcset="/img/loading.gif" lazyload alt="image-20200516205807314"></p>
+</li>
+</ul>
+<h3 id="目录相关的命令：ls、cd、du"><a href="#目录相关的命令：ls、cd、du" class="headerlink" title="目录相关的命令：ls、cd、du"></a>目录相关的命令：<code>ls</code>、<code>cd</code>、<code>du</code></h3><ul>
+<li><p><code>ls</code>是<code>list</code>的缩写，用于列出文件和目录</p>
+<ol>
+<li><p><code>-a</code>：显示所有的文件和目录，包括隐藏的，<code>-A</code>不列出<code>.</code>和<code>..</code>两个文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212733.png" srcset="/img/loading.gif" lazyload alt="image-20200516210244203"></p>
+</li>
+<li><p><code>-l</code>：列出一个显示文件和目录的详细信息列表</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224555.png" srcset="/img/loading.gif" lazyload alt="image-20200516210406392"></p>
+</li>
+<li><p><code>-h</code>：以 Ko、Mo、Go 的形式显示文件大小</p>
+<p>仅用<code>ls -l</code>时，列出的文件详细信息中，文件的大小是以字节为单位的，可以加一个参数<code>-h</code>，<code>h</code>是 human-readable 的缩写，表示适合人阅读的。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212741.png" srcset="/img/loading.gif" lazyload alt="image-20200516210935889"></p>
+</li>
+<li><p><code>-t</code>：按文件最近一次修改时间排序</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224557.png" srcset="/img/loading.gif" lazyload alt="image-20200516211204284"></p>
+</li>
+</ol>
+</li>
+<li><p><code>cd</code>命令：切换目录</p>
+<p><code>cd</code>是 change directory 的缩写，表示切换目录。</p>
+<ol>
+<li><code>cd ..</code>：切换到当前目录的上级目录</li>
+<li><code>cd -</code>：切换到前一个目录</li>
+<li><code>cd ~</code>或<code>cd</code>返回到家目录</li>
+</ol>
+</li>
+<li><p><code>du</code>命令：显示目录包含的文件大小</p>
+<p>du命令会深入遍历每个目录的子目录，把所有文件的大小都做一个统计。<code>du</code>是 disk usage 的缩写。</p>
+<ol>
+<li><p><code>-h</code>，同<code>ls -lh</code>，以 Ko、Mo、Go 的形式显示文件大小</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212812.png" srcset="/img/loading.gif" lazyload alt="image-20200516212014414"></p>
+</li>
+<li><p><code>-a</code>,显示文件和目录大小</p>
+</li>
+<li><p><code>-s</code>，只显示当前目录的总大小</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224558.png" srcset="/img/loading.gif" lazyload alt="image-20200516212031765"></p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="文件操作，创建和浏览文件：cat、less、head、tail、touch、mkdir"><a href="#文件操作，创建和浏览文件：cat、less、head、tail、touch、mkdir" class="headerlink" title="文件操作，创建和浏览文件：cat、less、head、tail、touch、mkdir"></a>文件操作，创建和浏览文件：<code>cat</code>、<code>less</code>、<code>head</code>、<code>tail</code>、<code>touch</code>、<code>mkdir</code></h3><ul>
+<li><p><code>cat</code>命令：一次性显示文件的所有内容</p>
+<p><code>cat</code>命令的描述是：concatenate files and print on the standard output，意思是：把文件链接起来，一并打在在标准输出。</p>
+<ol>
+<li><p><code>-n</code>，在显示的文件内容上加上行号</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224559.png" srcset="/img/loading.gif" lazyload alt="截屏2020-05-30 22.48.36"></p>
+</li>
+</ol>
+</li>
+<li><p><code>less</code>命令：分页显示文件内容</p>
+<p><code>less</code>命令用法和<code>cat</code>命令是一样的，也是在命令后直接加文件的路径。<code>less</code>命令的好处是它会先读入文件开始的若干行，然后就停在那里，而这若干行的行数取决于终端屏幕的大小。</p>
+<ul>
+<li>空格键：文件内容读取下一个终端屏幕的行数，相当于前进一个屏幕。</li>
+<li>回车键：文件内容读取下一行，也就是前进一行。</li>
+<li>d 键：前进半页。</li>
+<li>b 键：后退一页。</li>
+<li>y 键：后退一行。</li>
+<li>u 键：后退半页。</li>
+<li>q 键：停止读取文件，终止<code>less</code>命令。</li>
+<li><code>/</code>：进入搜索模式，只要在斜杠后面输入要搜索的文字，按下回车键，就会把素有符合的结果标识出来。要在搜索所得结果中跳转，可以按 n 键（跳到下一个结果），N 键（跳到上一个结果）。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>head</code>命令：显示文件开头</p>
+<p>默认情况下，<code>head</code>会显示文件的头 10 行。</p>
+<p><img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202005/233406.png" srcset="/img/loading.gif" lazyload alt="image-20200530230420952"></p>
+<ol>
+<li><p><code>-n</code>，指定显示的行数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212831.png" srcset="/img/loading.gif" lazyload alt="image-20200530230546793"></p>
+</li>
+</ol>
+</li>
+<li><p><code>tail</code>命令：显示文件结尾</p>
+<p>默认情况下，<code>tail</code>命令会显示文件的尾10 行</p>
+<ol>
+<li><code>-n</code>，指定显示的行数</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224602.png" srcset="/img/loading.gif" lazyload alt="image-20200530230742256"></p>
+<ol start="2">
+<li><p><code>-f</code>，实时追踪文件的更新，默认地，<code>tail -f</code>每隔 1 秒检车一下文件是否有更新。可以使用<code>-s</code>参数指定间隔检查的秒数。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212843.png" srcset="/img/loading.gif" lazyload alt="image-20200530231351046"></p>
+</li>
+</ol>
+</li>
+<li><p><code>touch</code>命令：创建一个空白文件</p>
+<p><code>touch</code>命令设计初衷是修改文件的时间戳，就是可以修改文件的创建时间或修改时间，让电脑以为文件就是在那个时候被修改或创建的。如果<code>touch</code>后面跟着的文件名是不存在的，那么它就会新建一个。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224603.png" srcset="/img/loading.gif" lazyload alt="image-20200530231710427"></p>
+</li>
+<li><p><code>mkdir</code>命令：创建一个目录</p>
+<p><code>mkdir</code>其实是<code>mk</code>和<code>dir</code>的缩合，<code>mk</code>是<code>make</code>的缩写，表示创建，<code>dir</code>是<code>directory</code>的缩写，表示目录。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212852.png" srcset="/img/loading.gif" lazyload alt="image-20200530232002164"></p>
+<ol>
+<li><p><code>-p</code>，递归地创建目录结构</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212856.png" srcset="/img/loading.gif" lazyload alt="image-20200530232138483"></p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="文件的复制，移动，删除和链接：cp、mv、rm、ln"><a href="#文件的复制，移动，删除和链接：cp、mv、rm、ln" class="headerlink" title="文件的复制，移动，删除和链接：cp、mv、rm、ln"></a>文件的复制，移动，删除和链接：<code>cp</code>、<code>mv</code>、<code>rm</code>、<code>ln</code></h3><ul>
+<li><p><code>cp</code>命令，复制文件和目录</p>
+<p><code>cp</code>命令是<code>copy</code>的缩写，用于文件和目录的拷贝。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224604.png" srcset="/img/loading.gif" lazyload alt="image-20200601222836656"></p>
+<ol>
+<li><p><code>-r</code>、<code>-R</code>，拷贝目录</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212902.png" srcset="/img/loading.gif" lazyload alt="image-20200601223101653"></p>
+</li>
+</ol>
+</li>
+<li><p><code>mv</code>命令，移动文件或目录（重命名文件或目录）</p>
+<p><img src="https://raw.githubusercontent.com/xianglin2020/gallery/master/202006/223258.png" srcset="/img/loading.gif" lazyload alt="image-20200601223258402"></p>
+</li>
+<li><p><code>rm</code>命令，删除文件和目录</p>
+<p><code>rm</code>是<code>remove</code>的缩写，表示移除，<code>rm</code>命令可以删除一个文件、多个文件、目录。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224605.png" srcset="/img/loading.gif" lazyload alt="image-20200601224405343"></p>
+<ol>
+<li><p><code>-i</code>，向用户确认是否删除，对于每一个要删除的文件，终端都会询问我们是否确定删除，<code>i</code>是<code>inform</code>的缩写。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212915.png" srcset="/img/loading.gif" lazyload alt="image-20200601224604689"></p>
+</li>
+<li><p><code>-f</code>，不会询问是否删除，强制删除，<code>f</code>是<code>force</code>的缩写。</p>
+</li>
+<li><p><code>-r</code>，递归地删除，使用<code>-r</code>参数，可以删除目录，并且递归地删除其包含的子目录和文件。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224606.png" srcset="/img/loading.gif" lazyload alt="image-20200601224852674"></p>
+</li>
+</ol>
+</li>
+<li><p><code>ln</code>命令，创建链接</p>
+<p><code>ln</code>是<code>link</code>的缩写，用于在文件之间创建链接。Linux 有两种链接类型：</p>
+<ul>
+<li>Physical link：物理链接或硬链接</li>
+<li>Symbolic link：符号链接或软链接</li>
+</ul>
+<ol>
+<li><p>创建硬链接，一般情况下，只能创建指向文件的硬链接</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224607.png" srcset="/img/loading.gif" lazyload alt="image-20200601225457231"></p>
+</li>
+<li><p><code>-s</code>，创建软连接</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212929.png" srcset="/img/loading.gif" lazyload alt="image-20200601225746103"></p>
+</li>
+</ol>
+<h3 id="用户和权限、用户管理"><a href="#用户和权限、用户管理" class="headerlink" title="用户和权限、用户管理"></a>用户和权限、用户管理</h3></li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/learn/">learn</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/linux/">linux</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/09/06/java%E5%88%9D%E8%AF%86/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">java初识</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/06/start-new-year/">
+                        <span class="hidden-mobile">start-new-year</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鄂ICP备20008384号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>鄂ICP备20008384号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
