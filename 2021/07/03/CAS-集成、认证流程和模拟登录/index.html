@@ -20,9 +20,25 @@
   <meta name="author" content="XiangLin">
   <meta name="keywords" content="Java">
   
-  <title>归档 - XiangLin</title>
+  <title>CAS 集成、认证流程和模拟登录 - XiangLin</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -50,7 +66,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -144,14 +160,51 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/46.jpg') no-repeat center center;
+         style="background: url('https://raw.githubusercontent.com/xianglin2020/gallery/master/202102/45.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="学习记录">
+            <span class="h2" id="subtitle" title="CAS 集成、认证流程和模拟登录">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-03 15:48" pubdate>
+        2021年7月3日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      28 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -164,100 +217,91 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 44 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/09/15/MyBatis%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">MyBatis基础</span>
-      <time style="float: right;">09-15</time>
-    </a>
-  
-    
-    <a href="/2020/09/12/Lambda%E3%80%81Stream%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Lambda、Stream与函数式编程</span>
-      <time style="float: right;">09-12</time>
-    </a>
-  
-    
-    <a href="/2020/09/12/Java%E5%8F%8D%E5%B0%84/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Java反射</span>
-      <time style="float: right;">09-12</time>
-    </a>
-  
-    
-    <a href="/2020/09/12/Maven%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Maven基础</span>
-      <time style="float: right;">09-12</time>
-    </a>
-  
-    
-    <a href="/2020/09/07/MySQL%E4%BA%8B%E5%8A%A1/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">MySQL事务</span>
-      <time style="float: right;">09-07</time>
-    </a>
-  
-    
-    <a href="/2020/09/06/jdbc%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">jdbc基础</span>
-      <time style="float: right;">09-06</time>
-    </a>
-  
-    
-    <a href="/2020/09/06/MySQL%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">MySQL与数据库</span>
-      <time style="float: right;">09-06</time>
-    </a>
-  
-    
-    <a href="/2020/09/06/javaweb%E8%BF%9B%E9%98%B6/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">javaweb进阶</span>
-      <time style="float: right;">09-06</time>
-    </a>
-  
-    
-    <a href="/2020/09/06/javaweb%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">javaweb基础</span>
-      <time style="float: right;">09-06</time>
-    </a>
-  
-    
-    <a href="/2020/09/06/web%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">web基础</span>
-      <time style="float: right;">09-06</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CAS 集成、认证流程和模拟登录</h1>
+            
+            <div class="markdown-body">
+              <h1 id="CAS-集成、认证流程和模拟登录"><a href="#CAS-集成、认证流程和模拟登录" class="headerlink" title="CAS 集成、认证流程和模拟登录"></a>CAS 集成、认证流程和模拟登录</h1><h2 id="CAS-集成"><a href="#CAS-集成" class="headerlink" title="CAS 集成"></a>CAS 集成</h2><h3 id="CAS-Server-简单配置启动"><a href="#CAS-Server-简单配置启动" class="headerlink" title="CAS Server 简单配置启动"></a>CAS Server 简单配置启动</h3><p>[cas-overlay-template 地址</p>
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/09/page/2/#board">2</a><a class="extend next" rel="next" href="/archives/2020/09/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/work-record/">work record</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/cas/">cas</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/04/23/%E6%8E%A5%E5%8F%A3%E6%89%93%E5%8C%85%E3%80%81%E5%AE%89%E8%A3%85%E5%88%B0%E6%9C%AC%E5%9C%B0%E3%80%81%E4%B8%8A%E4%BC%A0%E8%87%B3%E4%BB%93%E5%BA%93/">
+                        <span class="hidden-mobile">接口打包、安装到本地、上传至仓库</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -364,9 +408,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
