@@ -316,7 +316,7 @@ public class SubClass extends BaseClass {
 
   ```java
   public InnerClass getInner() {
-          return new InnerClass();
+      return new InnerClass();
    }
   ```
 
@@ -348,8 +348,6 @@ public class SubClass extends BaseClass {
 * 编译后的文件命名：外部类$数字.class
 * 无法使用访问修饰符
 * 无法编写构造方法
-
-
 
 # 面试题
 
@@ -419,8 +417,6 @@ class SubClass extends Parent {
 子类构造器
 */
 ```
-
-
 
 ## Java 的异常体系
 

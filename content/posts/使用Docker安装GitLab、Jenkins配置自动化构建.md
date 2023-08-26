@@ -384,7 +384,3 @@ location / {
 ```
 
 启动 Nginx 即可。
-
-### GitLab webhook
-
-* [ ] 待完成

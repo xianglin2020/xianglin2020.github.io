@@ -37,7 +37,7 @@ public static void main(String[] args) {
     // 类不存在时抛出ClassNotFoundException 访问私有成员是抛出IllegalAccessException 类无法实例化时抛出InstantiationException
   } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
     e.printStackTrace();
-  }
+}
 ```
 
 `Constructor`
@@ -48,27 +48,27 @@ public static void main(String[] args) {
 
 ```java
 public static void main(String[] args) {
-        try {
-            Class<?> employeeClass = Class.forName("reflect.entity.Employee");
-            Constructor<?> constructor = employeeClass.getConstructor(Integer.class, String.class, Float.class, String.class);
-            Employee employee = (Employee) constructor.newInstance(1, "姓名", 300.4F, "部门");
-            System.out.println(employee);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            // 找不到特定方法时引发
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            // 无访问权限
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            // 无法实例化指定的类对象时引发
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            // 当被调用方法内部抛出异常而没有被捕获时
-            e.printStackTrace();
-        }
+    try {
+        Class<?> employeeClass = Class.forName("reflect.entity.Employee");
+        Constructor<?> constructor = employeeClass.getConstructor(Integer.class, String.class, Float.class, String.class);
+        Employee employee = (Employee) constructor.newInstance(1, "姓名", 300.4F, "部门");
+        System.out.println(employee);
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    } catch (NoSuchMethodException e) {
+        // 找不到特定方法时引发
+        e.printStackTrace();
+    } catch (IllegalAccessException e) {
+        // 无访问权限
+        e.printStackTrace();
+    } catch (InstantiationException e) {
+        // 无法实例化指定的类对象时引发
+        e.printStackTrace();
+    } catch (InvocationTargetException e) {
+        // 当被调用方法内部抛出异常而没有被捕获时
+        e.printStackTrace();
     }
+}
 ```
 
 ### `Method`
@@ -85,7 +85,6 @@ public static void main(String[] args) {
   } catch (ClassNotFoundException | InvocationTargetException | IllegalAccessException | InstantiationException | NoSuchMethodException e) {
     e.printStackTrace();
   }
-
 }
 ```
 
@@ -96,21 +95,21 @@ public static void main(String[] args) {
 
 ```java
 public static void main(String[] args) {
-        Class<Employee> aClass = Employee.class;
-        String ename = null;
-        try {
-            Constructor<Employee> constructor = aClass.getConstructor(Integer.class, String.class, Float.class, String.class);
-            Employee employee = constructor.newInstance(1, "姓名", 3000F, "部门");
-            Field field = aClass.getField("ename");
-            field.set(employee, "李磊");
-            ename = (String) field.get(employee);
-        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException | InstantiationException e) {
-            e.printStackTrace();
-        } catch (NoSuchFieldException e) {
-            // 表示类没有指定名称的字段
-            e.printStackTrace();
-        }
-        System.out.println("ename: " + ename);
+    Class<Employee> aClass = Employee.class;
+    String ename = null;
+    try {
+        Constructor<Employee> constructor = aClass.getConstructor(Integer.class, String.class, Float.class, String.class);
+        Employee employee = constructor.newInstance(1, "姓名", 3000F, "部门");
+        Field field = aClass.getField("ename");
+        field.set(employee, "李磊");
+        ename = (String) field.get(employee);
+    } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException | InstantiationException e) {
+        e.printStackTrace();
+    } catch (NoSuchFieldException e) {
+        // 表示类没有指定名称的字段
+        e.printStackTrace();
     }
+    System.out.println("ename: " + ename);
+}
 ```
 

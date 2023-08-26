@@ -301,8 +301,6 @@ public class FloatDemo {
 // f1 == f2 :true
 ```
 
-
-
 ### 生成随机数
 
 ```java
@@ -323,8 +321,6 @@ public class RandomDemo {
 }
 
 ```
-
-
 
 ### 求 1-1000 的质数
 

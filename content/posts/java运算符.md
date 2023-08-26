@@ -93,7 +93,7 @@ tags: [java]
 
   ```
   if(condition){
-  		code
+      code
   }
   ```
 
@@ -101,9 +101,9 @@ tags: [java]
 
   ```
   if(true){
-  		code
+      code
   }else{
-  		anothor code
+      anothor code
   }
   ```
   

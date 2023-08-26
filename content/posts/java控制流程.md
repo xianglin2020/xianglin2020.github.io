@@ -51,23 +51,23 @@ if (score >= 90) {
 * 将整个 if 块嵌套到另一个 if 块中
 
 ```java
-		public static void main(String[] args) {
-        // 定义两个整型变量并初始化
-        int x, y;
-        Scanner scanner = new Scanner(System.in);
-        x = scanner.nextInt();
-        y = scanner.nextInt();
-        // 判断 x 和 y 是否相等
-        if (x != y) {
-            if (x > y) {
-                System.out.println("x 大于 y!");
-            } else {
-                System.out.println("x 小于 y！");
-            }
+public static void main(String[] args) {
+    // 定义两个整型变量并初始化
+    int x, y;
+    Scanner scanner = new Scanner(System.in);
+    x = scanner.nextInt();
+    y = scanner.nextInt();
+    // 判断 x 和 y 是否相等
+    if (x != y) {
+        if (x > y) {
+            System.out.println("x 大于 y!");
         } else {
-            System.out.println("x 和 y 相等！");
+            System.out.println("x 小于 y！");
         }
+    } else {
+        System.out.println("x 和 y 相等！");
     }
+}
 ```
 
 
@@ -112,12 +112,12 @@ while(condition){
 
 ```java
 public static void main(String[] args) {
-        int sum = 0;
-        for (int i = 1; i <= 5; i++) {
-            sum += i;
-        }
-        System.out.println("1-5 的累加和是：" + sum);
+    int sum = 0;
+    for (int i = 1; i <= 5; i++) {
+        sum += i;
     }
+    System.out.println("1-5 的累加和是：" + sum);
+}
 ```
 
 ### **三种循环结构的应用场景**

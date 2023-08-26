@@ -198,7 +198,6 @@ tags: [java, web]
   }
   ```
 
-  
 
 # 过滤器
 
@@ -223,9 +222,12 @@ tags: [java, web]
 ### 过滤链
 
 * 每个过滤器应该只有单独的职能
+
 * 过滤器的执行顺序是以`<filter-mapping>`配置为准
+
 * 注解形式的过滤链是按照过滤器的类名的字母升序的顺序依次执行的而不是filterName名称
-* ![image-20200809134059344](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/225758.png)
+
+  ![image-20200809134059344](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/225758.png)
 
 
 
@@ -250,8 +252,6 @@ tags: [java, web]
 * 实现监听器中的独有方法
 * 在`web.xml`对监听器进行配置
 
-
-
 ## 重定向与请求转发
 
 * 请求转发是服务器跳转，只会产生一次请求
@@ -259,8 +259,6 @@ tags: [java, web]
 * 重定向是浏览器端的跳转，会产生两次请求 
 * `Status Code 302` `Location: /sb`
 * 重定向语句是：`response.sendRedirect()`
-
-
 
 ## Session原理
 
@@ -273,9 +271,3 @@ tags: [java, web]
 * 数据+模板=结果
 * 将数据与展示解耦
 * JSP、Freemarker
-
-# HTTP
-
-## HTTP 请求结构
-
-* HTTP 请求包含三个结构：请求行、请求头、请求体
