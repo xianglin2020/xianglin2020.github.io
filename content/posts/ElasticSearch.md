@@ -2,6 +2,7 @@
 title: ElasticSearch
 date: 2023-05-22 20:28:46
 tags: [es]
+summary: 分布式搜索引擎与ElasticSearch的基本使用。
 description: 分布式搜索引擎与ElasticSearch的基本使用。
 categories: [learn]
 ---

@@ -4,6 +4,7 @@ date: 2022-12-07 20:14:54
 tags: [vue]
 categories: [learn]
 description: Vue 组件语法与脚手架使用。
+summary: Vue 组件语法与脚手架使用。
 ---
 
 # Vue2 组件

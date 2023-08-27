@@ -4,6 +4,7 @@ date: 2022-12-24 17:13:56
 tags: [vue]
 categories: [learn]
 description: Vuex 和 Vue Router 的使用。
+summary: Vuex 和 Vue Router 的使用。
 ---
 
 # Vuex

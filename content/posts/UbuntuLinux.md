@@ -1,10 +1,15 @@
 ---
 title: ubuntu-linux
 description: Linux 发展至今，已经是一个相当复杂和丰富的操作系统了，其大部分源代码还是 GNU 项目的。
+summary: Linux 发展至今，已经是一个相当复杂和丰富的操作系统了，其大部分源代码还是 GNU 项目的。
 date: 2020-09-06 22:45:23
 tags: [linux]
 categories: [learn]
-featuredImagePreview: https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224547.jpg
+cover:
+  image: "https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/224547.jpg"
+  caption: ""
+  alt: ""
+  relative: false
 ---
 
 # Linux 介绍

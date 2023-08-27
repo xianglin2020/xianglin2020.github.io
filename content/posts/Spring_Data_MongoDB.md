@@ -4,6 +4,7 @@ date: 2022-08-13 11:52:27
 tags: [spring, MongoDB]
 categories: [learn]
 description: 学习 Spring Data MongoDB 的基础用法。
+summary: 学习 Spring Data MongoDB 的基础用法。
 ---
 
 # Spring Data MongoDB

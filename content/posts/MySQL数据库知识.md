@@ -3,7 +3,11 @@ title: MySQL 数据库知识
 date: 2020-12-26 18:58:00
 categories: [interview]
 tags: [MySQL]
-featuredImagePreview: https://cdn.jsdelivr.net/gh/xianglin2020/gallery/202101/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93.png
+cover:
+   image: "https://cdn.jsdelivr.net/gh/xianglin2020/gallery/202101/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93.png"
+   caption: ""
+   alt: ""
+   relative: false
 ---
 
 ![关系型数据库](https://cdn.jsdelivr.net/gh/xianglin2020/gallery/202101/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93.png)

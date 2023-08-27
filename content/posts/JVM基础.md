@@ -2,6 +2,7 @@
 title: "JVM基础"
 date: 2023-07-31T19:44:41+08:00
 description: JVM基础知识体系学习。
+summary: JVM基础知识体系学习。
 tags: [jvm]
 categories: [learn]
 ---

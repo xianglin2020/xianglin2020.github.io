@@ -3,6 +3,7 @@ title: Play2 in Java
 date: 2022-04-18 21:18:35
 tags: [play2]
 categories: [learn]
+summary: Play is a high-productivity Java and Scala web application framework that integrates the components and APIs you need for modern web application development.
 description: Play is a high-productivity Java and Scala web application framework that integrates the components and APIs you need for modern web application development.
 ---
 

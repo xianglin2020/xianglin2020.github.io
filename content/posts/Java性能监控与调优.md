@@ -2,7 +2,11 @@
 title: "Java性能监控与调优"
 date: 2023-08-17T20:46:41+08:00
 description: 生产环境可能存在的问题和常用的性能监控工具。
-tags: [jvm, nginx]
+summary: 生产环境可能存在的问题和常用的性能监控工具。
+tags: 
+  - jvm
+  - nginx
+  - tomcat
 categories: [learn]
 ---
 

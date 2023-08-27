@@ -4,6 +4,7 @@ date: 2022-05-21 15:32:19
 tags: [MongoDB]
 categories: [learn]
 description: MongoDB 入门知识，包括 MongoDB 介绍、安装、基本操作、复制集等内容。
+summary: MongoDB 入门知识，包括 MongoDB 介绍、安装、基本操作、复制集等内容。
 ---
 
 # MongoDB 基础知识

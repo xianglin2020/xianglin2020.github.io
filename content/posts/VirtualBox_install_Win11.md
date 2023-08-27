@@ -1,10 +1,15 @@
 ---
 title: VirtualBox_install_Win11
 description: 使用 VirtualBox 安装 Windows11。
+summary: 使用 VirtualBox 安装 Windows11。
 date: 2021-11-17 14:46:04
 categories: [daily]
 tags: [virtual box]
-featuredImagePreview: https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202111/290945.jpeg
+cover:
+  image: "https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202111/290945.jpeg"
+  caption: ""
+  alt: ""
+  relative: false
 ---
 
 # 使用 VirtualBox 安装 Windows11

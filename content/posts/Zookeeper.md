@@ -3,7 +3,11 @@ title: Zookeeper 基础
 date: 2020-12-13 13:25:23
 categories: [learn]
 tags: [Zookeeper]
-featuredImagePreview: https://zookeeper.apache.org/images/zookeeper_small.gif
+cover:
+  image: "https://zookeeper.apache.org/images/zookeeper_small.gif"
+  caption: ""
+  alt: ""
+  relative: false
 ---
 
 # Zookeeper

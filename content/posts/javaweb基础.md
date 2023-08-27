@@ -2,7 +2,9 @@
 title: Java Web 基础
 date: 2020-09-06 22:54:32
 categories: [learn]
-tags: [java, web]
+tags:
+  - java
+  - web
 ---
 
 # XML入门

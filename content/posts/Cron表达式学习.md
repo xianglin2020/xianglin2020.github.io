@@ -1,5 +1,6 @@
 ---
 title: Cron表达式学习
+summary: Cron 表达式是一种使用简单字符串来表示时间规则的方式。
 description: Cron 表达式是一种使用简单字符串来表示时间规则的方式。
 date: 2021-12-29 17:26:59
 tags: [cron]

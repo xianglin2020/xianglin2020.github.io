@@ -3,7 +3,11 @@ title: VirtualBox 的安装和使用
 date: 2020-10-04 21:16:32
 categories: [daily]
 tags: [virtual box]
-featuredImagePreview: https://www.virtualbox.org/graphics/button61.png
+cover:
+  image: "https://www.virtualbox.org/graphics/button61.png"
+  caption: ""
+  alt: ""
+  relative: false
 ---
 
 # VirtualBox

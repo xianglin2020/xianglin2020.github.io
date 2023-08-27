@@ -3,7 +3,11 @@ title: MyBatis 基础
 date: 2020-09-15 21:41:19
 categories: [learn]
 tags: [mybatis]
-featuredImagePreview: https://mybatis.org/images/mybatis-logo.png
+cover:
+  image: "https://mybatis.org/images/mybatis-logo.png"
+  caption: ""
+  alt: ""
+  relative: false
 ---
 
 # MyBatis 基础

@@ -3,7 +3,11 @@ title: Redis 基础
 date: 2020-10-03 20:53:49
 categories: [learn]
 tags: [redis]
-featuredImagePreview: https://cdn.jsdelivr.net/gh/xianglin2020/gallery/202101/Redis%E7%BC%93%E5%AD%98.png
+cover:
+  image: "https://cdn.jsdelivr.net/gh/xianglin2020/gallery/202101/Redis%E7%BC%93%E5%AD%98.png"
+  caption: ""
+  alt: ""
+  relative: false
 ---
 
 ![Redis 缓存](https://cdn.jsdelivr.net/gh/xianglin2020/gallery/202101/Redis%E7%BC%93%E5%AD%98.png)

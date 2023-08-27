@@ -3,7 +3,11 @@ title: Nginx 基础知识
 date: 2020-12-03 20:39:51
 categories: [learn]
 tags: [nginx]
-featuredImagePreview: https://nginx.org/nginx.png
+cover:
+  image: "https://nginx.org/nginx.png"
+  caption: ""
+  alt: ""
+  relative: false
 ---
 
 # Nginx

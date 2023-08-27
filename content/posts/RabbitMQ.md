@@ -3,7 +3,11 @@ title: RabbitMQ 基础
 date: 2020-12-05 13:20:00
 categories: [learn]
 tags: [mq]
-featuredImagePreview: https://www.rabbitmq.com/img/logo-rabbitmq.svg
+cover:
+  image: "https://www.rabbitmq.com/img/logo-rabbitmq.svg"
+  caption: ""
+  alt: ""
+  relative: false
 ---
 
 # RabbitMQ

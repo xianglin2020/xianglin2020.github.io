@@ -3,7 +3,8 @@ title: Virtual Box 安装配置 Ubuntu
 date: 2022-05-14 16:03:16
 tags: [virtual box, ubuntu]
 categories: [daily]
-description: 使用 VirtualBox 安装 Ubuntu 桌面版，并更换软件源。 
+description: 使用 VirtualBox 安装 Ubuntu 桌面版，并更换软件源。
+summary: 使用 VirtualBox 安装 Ubuntu 桌面版，并更换软件源。 
 ---
 
 # Ubuntu 安装 MySQL

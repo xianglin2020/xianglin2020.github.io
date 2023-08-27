@@ -4,6 +4,7 @@ date: 2023-01-06 13:04:14
 tags: [spring]
 categories: [learn]
 description: Spring v5.2.0.RELEASE 源码学习。
+summary: Spring v5.2.0.RELEASE 源码学习。
 ---
 
 # 源码下载编译

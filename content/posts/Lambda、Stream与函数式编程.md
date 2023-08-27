@@ -2,7 +2,9 @@
 title: Lambda、Stream与函数式编程
 date: 2020-09-12 18:24:41
 categories: [learn]
-tags: [lambda, stream]
+tags: 
+  - lambda
+  - stream
 ---
 
 # Lambda

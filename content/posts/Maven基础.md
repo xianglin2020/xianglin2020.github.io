@@ -1,9 +1,13 @@
 ---
 title: Maven 基础
 date: 2020-09-12 18:22:16
-categories: [learn]
-tags: [maven]
-featuredImagePreview: https://maven.apache.org/images/maven-logo-black-on-white.png
+categories: [ learn ]
+tags: [ maven ]
+cover:
+  image: "https://maven.apache.org/images/maven-logo-black-on-white.png"
+  caption: ""
+  alt: ""
+  relative: false
 ---
 
 # Maven

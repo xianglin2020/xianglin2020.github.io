@@ -4,6 +4,7 @@ date: 2022-08-11 21:22:49
 tags: [vue]
 categories: [learn]
 description: Vue 基础知识与语法。
+summary: Vue 基础知识与语法。
 ---
 
 # Vue2 基础

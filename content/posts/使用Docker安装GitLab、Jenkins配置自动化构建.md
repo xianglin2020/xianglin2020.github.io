@@ -4,6 +4,7 @@ date: 2022-04-16 17:20:05
 tags: [docker]
 categories: [daily]
 description: 使用 Docker 安装配置 GitLab，搭建代码托管平台，安装配置 Jenkins，实现自动化构建。
+summary: 使用 Docker 安装配置 GitLab，搭建代码托管平台，安装配置 Jenkins，实现自动化构建。
 ---
 
 # 使用 Docker 配置自动化构建

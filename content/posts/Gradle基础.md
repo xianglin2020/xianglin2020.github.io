@@ -1,8 +1,11 @@
 ---
 title: Gradle基础
 date: 2022-11-06 22:18:16
-tags: [gradle, groovy]
+tags: 
+  - gradle
+  - groovy
 description: gradle 的基础用法，以及 groovy 与 Java 语法的区别。
+summary: gradle 的基础用法，以及 groovy 与 Java 语法的区别。
 categories: [learn]
 ---
 

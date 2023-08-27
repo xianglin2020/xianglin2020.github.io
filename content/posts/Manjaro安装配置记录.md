@@ -4,6 +4,7 @@ date: 2022-04-30 16:21:51
 categories: [daily]
 tags: [linux]
 description: 把自己的台式机从 Hackintosh 转到 Manjaro，记录安装步骤。
+summary: 把自己的台式机从 Hackintosh 转到 Manjaro，记录安装步骤。
 ---
 
 # Manjaro 安装配置记录

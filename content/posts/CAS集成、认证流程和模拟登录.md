@@ -1,10 +1,18 @@
 ---
 title: CAS 集成、认证流程和模拟登录
+summary: CAS 集成、认证流程和模拟登录分享。
 description: CAS 集成、认证流程和模拟登录分享。
 date: 2021-07-03 15:48:55
-tags: [cas, java]
-categories: [work record]
-featuredImagePreview: https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/2021-10/155324.png
+tags: 
+   - cas
+   - java
+categories: 
+   - work record
+cover:
+   image: "https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/2021-10/155324.png"
+   caption: ""
+   alt: ""
+   relative: false
 ---
 
 # CAS 集成、认证流程和模拟登录

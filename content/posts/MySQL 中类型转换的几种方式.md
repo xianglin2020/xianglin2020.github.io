@@ -3,6 +3,7 @@ title: MySQL 中类型转换的几种方式
 date: 2022-02-11 18:53:36
 tags: [MySQL]
 categories: [daily]
+summary: MySQL 中类型转换的几种方式
 description: MySQL 中类型转换的几种方式
 ---
 

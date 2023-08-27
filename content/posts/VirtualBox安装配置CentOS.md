@@ -3,7 +3,8 @@ title: Virtual Box 安装配置 CentOS
 date: 2022-05-10 22:14:44
 tags: [virtual box, centos]
 categories: [daily]
-description: 使用 VirtualBox 安装 CentOS 服务器版，并安装增强功能。 
+description: 使用 VirtualBox 安装 CentOS 服务器版，并安装增强功能。
+summary: 使用 VirtualBox 安装 CentOS 服务器版，并安装增强功能。 
 ---
 
 # Virtual Box 安装配置 CentOS7

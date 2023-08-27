@@ -3,8 +3,13 @@ title: Java 线程池学习
 date: 2020-11-29 17:10:44
 categories: [learn]
 tags: [java]
+summary: 线程池是一种基于池化管理线程的工具，经常出现在多线程服务器中。既避免处理任务时创建销毁线程的开销，也避免了线程数据膨胀导致过分调度的问题。
 description: 线程池是一种基于池化管理线程的工具，经常出现在多线程服务器中。既避免处理任务时创建销毁线程的开销，也避免了线程数据膨胀导致过分调度的问题。
-featuredImagePreview: https://cdn.jsdelivr.net/gh/xianglin2020/gallery/202102/Executors.png
+cover:
+  image: "https://cdn.jsdelivr.net/gh/xianglin2020/gallery/202102/Executors.png"
+  caption: ""
+  alt: ""
+  relative: false
 ---
 
 # 线程池学习

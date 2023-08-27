@@ -3,12 +3,16 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: true
 categories:
-  - c1
-  - c2
+  - learn
 tags:
   - t1
-  - t2
+summary: ""
 description: ""
 author: ["XiangLin"]
+cover:
+  image: ""
+  caption: ""
+  alt: ""
+  relative: false
 ---
 

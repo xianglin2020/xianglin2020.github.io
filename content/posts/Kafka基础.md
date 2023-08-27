@@ -2,6 +2,7 @@
 title: Kafka基础
 date: 2023-07-23T12:01:41+08:00
 description: 分布式事件流处理平台Kafka学习。
+summary: 分布式事件流处理平台Kafka学习。
 tags: [Kafka]
 categories: [learn]
 ---

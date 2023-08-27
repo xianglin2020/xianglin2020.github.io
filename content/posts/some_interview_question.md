@@ -1,8 +1,13 @@
 ---
 title: 2022-03~04 面试记录
+summary: 社招的几次笔试面试记录。
 description: 社招的几次笔试面试记录。
 date: 2022-03-01 11:18:42
-tags: [面试, Java, Redis, MySQL]
+tags: 
+  - 面试
+  - Java
+  - Redis
+  - MySQL
 categories: [interview]
 ---
 
