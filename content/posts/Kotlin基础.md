@@ -17,9 +17,9 @@ cover:
 
 # Kotlin基础
 
-Kotlin官网：https://kotlinlang.org/
+Kotlin官网：[https://kotlinlang.org/](https://kotlinlang.org/)
 
-Kotlin官方文档中文版：https://book.kotlincn.net/
+Kotlin官方文档中文版：[https://book.kotlincn.net/](https://book.kotlincn.net/)
 
 ## 内置类型
 
@@ -424,7 +424,7 @@ data class Book(val id: Long,
 val (id, name, auther) = book
 ```
 
-### 枚举
+### 枚举类
 
 ```kotlin
 enum class State(val id: Int) {
@@ -638,7 +638,7 @@ fun <T> maxOf(t1: T, t2: T): T {}
 sealed class List<T>
 ```
 
-### 约束
+### 泛型约束
 
 ```kotlin
 fun <T : Comparable<T>> maxOf(t1: T, t2: T): T {
@@ -654,7 +654,7 @@ fun <T, R> callMax(a: T, b: T): R where T : Comparable<T>, T : () -> R, R : Numb
 }
 ```
 
-### 型变
+### 泛型型变
 
 泛型实参的继承关系对泛型类型的继承关系的影响：
 
@@ -686,6 +686,8 @@ val c = MyClass::class
 
 ## 注解
 
+### 注解概念
+
 注解是将元数据附加到代码的方法。注解的附加属性可以通过用元注解标注注解类来指定：
 
 - `@Target`指定可以用该注解标注的元素的可能的类型（类、函数、属性与表达式）；
@@ -710,3 +712,331 @@ annotation class Fancy
 * `kotlin.*`标准库的一些通用用途的注解
 * `kotlin.jvm.*`用于与Java虚拟机交互的注解
 
+## 协程
+
+### 协程的概念
+
+协程是可以由程序自行控制挂起、恢复的程序。
+
+协程可以用来实现多任务的协作执行。
+
+协程可以用来解决异步任务控制流的灵活转移。
+
+协程可以让异步代码同步化、降低程序的设计复杂度。
+
+![image-20230912093622330](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/2023/202309120936481.png)
+
+### 协程的分类
+
+按调用栈分类
+
+* 有栈协程：每个协程会分配单独的调用栈，类似线程的调用栈
+* 无栈协程：不会分配单独的调用栈，挂起点状态通过闭包或对象保存
+
+按调用关系分类
+
+* 对称协程：调度权可以转移给任意协程，协程之间是对等关系
+* 非对称协程：调度权只能转移给调用自己的协程，协程存在父子关系
+
+![image-20230912100618447](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/2023/202309171421327.png)
+
+### 协程的常见实现
+
+Python Generator：无栈的非对称协程。
+
+```python
+def numbers():
+    i = 0
+    while True:
+        yield i
+        i += 1
+        time.sleep(1)
+        
+        
+gen = numbers()
+
+print(f"[0]{next(gen)}")
+print(f"[1]{next(gen)}")
+```
+
+Lua Coroutine：有栈的非对称协程。
+
+* 创建协程：coroutine.create(\<function>)
+* 查询状态：coroutine.status(\<Coroutine-Object>)
+* 挂起协程：coroutine.yield(\<Values-to-Yield>)
+* 恢复协程：coroutine.resume(\<Coroutine-Object>)
+
+```lua
+function producer()
+    for i = 0,3 do
+        print("send"..i)
+        coroutine.yield(i)
+    end
+    print("End Producer")
+end
+
+function consumer(value)
+    repeat
+        print("receive"..value)
+        value = coroutine.yield()
+    until(not value)
+    print("End Consumer")
+end
+
+producerCoroutine = coroutine.create(producer)
+consumerCoroutine = coroutine.create(consumer)
+repeat
+    status, product = coroutine.resume(producerCoroutine)
+    coroutine.resume(consumerCoroutine, product)
+until(not status)
+print("End Main")
+```
+
+Go rotine
+
+```go
+channel := make(chan int)
+var readChannel <-chan int = channel
+var writeChannel chan<- int = channel
+
+go func(){
+    for i :=0; i<3; i++{
+        fmt.Println("wirte",i)
+        wirteChannel <- i
+    }
+    close(writeChannel)
+}()
+
+go func(){
+    fmt.Println("wait for read")
+    for i:=range readChannel{
+        fmt.Println("read",i)
+    }
+    fmt.Println("read end")
+}()
+```
+
+async / await：无栈非对称的协程实现。
+
+```javascript
+// Promise<AxiosResponse<T>>
+function getUser(name){
+    return axios.get(`https://api.github.com/users/${name}`);
+}
+
+async function main(){
+    const user = await getUser("JetBrains");
+    console.log(user);
+}
+```
+
+### 协程的基本要素
+
+挂起函数：以suspend修饰的函数，挂起函数的调用处称为挂起点。
+
+挂起函数只能在其它挂起函数或协程中调用。
+
+挂起函数调用时包含了协程“挂起”的语义，挂起函数返回时则包含了协程“恢复”的语义。
+
+```kotlin
+public interface Continuation<in T> {
+    public val context: CoroutineContext
+    public fun resumeWith(result: Result<T>)
+}
+
+public inline fun <T> Continuation<T>.resume(value: T): Unit =
+    resumeWith(Result.success(value))
+
+public inline fun <T> Continuation<T>.resumeWithException(exception: Throwable): Unit =
+    resumeWith(Result.failure(exception))
+```
+
+挂起函数的类型
+
+```kotlin
+suspend fun foo(){}			suspend () -> Unit
+fun foo(continuation: Continuation<Unit>): Any{}
+
+suspend fun bar(a: Int):String{} suspend (Int) -> String
+fun bar(a:Int continuation: Continuation<String>):Any {}
+```
+
+在没有真正挂起时，Any承载返回值，真正挂起时，Any承载挂起标志`COROUTINE_SUSPENDED`。
+
+使用suspendCoroutine获取到挂起函数的Continuation。
+
+```kotlin
+public suspend inline fun <T> suspendCoroutine(crossinline block: (Continuation<T>) -> Unit): T {}
+```
+
+协程执行过程中需要携带数据，使用协程上下文CoroutineContext表示。
+
+拦截器ContinuationInterceptor是一类协程上下文元素，可以对协程上下文所在的Continuation进行拦截。
+
+```kotlin
+public interface ContinuationInterceptor : CoroutineContext.Element {
+	public fun <T> interceptContinuation(continuation: Continuation<T>): Continuation<T>
+}
+```
+
+### 协程的创建
+
+```kotlin
+public fun <T> (suspend () -> T).createCoroutine(
+    completion: Continuation<T>
+): Continuation<Unit> 
+public fun <R, T> (suspend R.() -> T).createCoroutine(
+    receiver: R,
+    completion: Continuation<T>
+): Continuation<Unit>
+
+public fun <T> (suspend () -> T).startCoroutine(
+    completion: Continuation<T>
+) 
+public fun <R, T> (suspend R.() -> T).startCoroutine(
+    receiver: R,
+    completion: Continuation<T>
+)
+```
+
+* suspend函数本身执行需要一个Continuation实例在恢复时调用，即参数：completion。
+* 返回值Continuation\<Unit>则是创建出来的协程的载体，receiver、suspend函数会被传递给该实例作为协程的实际执行体。
+
+### 协程的启动模式
+
+* DEAFULT：立即开始调度协程体，调度前若取消则直接取消
+
+  ![image-20230916194348937](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/2023/202309161944632.png)
+
+* ATOMIC：立即开始调度，且在第一个挂起点前不能被取消
+
+  ![image-20230916194418982](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/2023/202309161944052.png)
+
+* LAZY：只有在需要（start/join/await）时开始调度
+
+  ![image-20230916194606873](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/2023/202309161946944.png)
+
+* UNDISPATCHED：立即在当前线程执行协程体，指导遇到第一个挂起点，后面取决于调度器
+
+  ![image-20230916194654818](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/2023/202309161946887.png)
+
+### 协程的调度器
+
+| 调度器     | JVM      | JavaScript | Native     |
+| ---------- | -------- | ---------- | ---------- |
+| Default    | 线程池   | 主线程循环 | 主线程循环 |
+| Main       | UI线程   | 主线程循环 | 主线程循环 |
+| Unconfined | 直接执行 | 直接执行   | 直接执行   |
+| IO         | 线程池   | --         | --         |
+
+ ### 协程框架
+
+#### Channel的概念
+
+* 非阻塞的通信基础设施，类似于BlockingQueue+挂起函数。
+
+| 分类       | 描述                                                         |
+| ---------- | ------------------------------------------------------------ |
+| RENDEZVOUS | send调用后挂起直到receive到达                                |
+| UNLIMITED  | 无限容量，send调用后直接返回                                 |
+| CONFLATED  | 保留最新，receive只能获得最近一次send的值                    |
+| BUFFERED   | 默认容量，可通过`kotlinx.coroutines.channels.defaultBuffer`参数设置大小，默认为64 |
+
+```kotlin
+suspend fun main() {
+    val channel = Channel<Int>()
+    val producer = GlobalScope.launch {
+        for (i in 0..5) {
+            log("send $i")
+            channel.send(i)
+            log("sent $i")
+        }
+        channel.close()
+    }
+    val consumer = GlobalScope.launch {
+        while (!channel.isClosedForReceive) {
+            log("receiving")
+            val i = channel.receiveCatching().getOrNull()
+            log("received $i")
+        }
+    }
+    producer.join()
+    consumer.join()
+
+
+    val receiver = GlobalScope.produce(capacity = Channel.UNLIMITED) {
+        for (i in 0..5) {
+            send(i)
+        }
+    }
+    for (i in receiver) {
+        println(i)
+    }
+
+    
+    val sender = GlobalScope.actor<Int>(capacity = Channel.BUFFERED){
+        println(receive())
+    }
+    for (i in 0..4) {
+        sender.send(i)
+    }
+}
+```
+
+#### Select的概念
+
+* Select是一个IO多路复用的概念，协程的Select用于挂起函数的多路复用。
+* select总是按顺序检查事件，selectUnbiased会随机检查事件，对事件处理更公平。
+
+#### Flow的概念
+
+Flow是一个按顺序产生值的异步数据流。
+
+```kotlin
+val intFlow = flow {
+    emit(1)
+    delay(100)
+    emit(2)
+    emit(3)
+}
+intFlow.collect(::println)
+
+listOf(1,2,3).asFlow()
+flowOf(1,2,3)
+val intChannel = Channel<Int>()
+intChannel.consumeAsFlow()
+```
+
+使用调度器
+
+```kotlin
+intFlow
+    .flowOn(Dispatchers.IO)
+    .collect(::println)
+```
+
+异常处理
+
+```kotlin
+flow {
+    emit(1)
+    throw ArithmeticException("Div 0")
+}.catch { it: Throwable ->
+// 捕获之前的异常（不包括取消异常）
+}.onCompletion { it: Throwable? ->
+// 前序flow完成调用时，无异常时t为null
+}
+```
+
+Flow的取消
+
+* Flow的运行依赖于协程，Flow的取消取决于collect所在协程的取消。
+* collect作为挂起函数可以响应所在协程的取消状态。
+
+Back Pressure
+
+```kotlin
+intFlow.buffer(capacity = 10).collect {}
+intFlow.conflate().collect {}
+intFlow.collectLatest { }
+```
