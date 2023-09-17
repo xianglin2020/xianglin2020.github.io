@@ -25,13 +25,13 @@ Kotlin官方文档中文版：[https://book.kotlincn.net/](https://book.kotlincn
 
 ### 变量类型
 
-| 类型   | Kotlin         | Java                        |
-| ------ | -------------- | --------------------------- |
-| 字节   | Byte           | byte/Byte                   |
-| 整型   | Int & Long     | int/Integre & long/Long     |
-| 浮点型 | Float & Double | float/Float & double/Double |
-| 字符   | Char           | char/Character              |
-| 字符串 | String         | String                      |
+| 类型   | Kotlin             | Java                                  |
+| ------ | ------------------ | ------------------------------------- |
+| 字节   | Byte               | byte/Byte                             |
+| 整型   | Short & Int & Long | short/Short & int/Integre & long/Long |
+| 浮点型 | Float & Double     | float/Float & double/Double           |
+| 字符   | Char               | char/Character                        |
+| 字符串 | String             | String                                |
 
 ### 声明变量
 
@@ -109,7 +109,7 @@ val intRange = 1..10 // [1, 10]
 val charRange = 'a'..'z'
 val longRange = 1L..100L
 
-val intRangeExclusive = 1 until 10 // [1, 10)
+val intRangeExclusive = 1 until 10 step 2 // [1, 10)
 val intRangeReverse = 10 downTo 1 // [10, 9, ... , 1]
 ```
 
@@ -159,20 +159,20 @@ fun main(args: Array<String>):Unit{
 函数的类型
 
 ```kotlin
-fun foo(){}									() -> Unit
-fun foo(p0: Int): String {}					(Int) -> String
+fun foo(){}				() -> Unit
+fun foo(p0: Int): String {}		(Int) -> String
 class Foo{
-    fun bar(p0: String, p1: Long):Any{}		Foo.(String, Long) -> Any
+    fun bar(p0: String, p1: Long):Any{}	Foo.(String, Long) -> Any
 }
 ```
 
 函数的引用
 
 ```kotlin
-fun foo(){}									::foo		val f: () -> Unit = ::foo
-fun foo(p0: Int): String{} 					::foo		val g:(Int) -> String = ::foo
+fun foo(){}			::foo		val f: () -> Unit = ::foo
+fun foo(p0: Int): String{} 	::foo		val g:(Int) -> String = ::foo
 class Foo{
-    fun bar(p0: String, p1: Long):Any{}		Foo::bar	val h:(Foo, String, Long) -> Any = Foo:bar
+    fun bar(p0: String, p1: Long):Any{}	Foo::bar	val h:(Foo, String, Long) -> Any = Foo:bar
 }
 ```
 
@@ -237,7 +237,7 @@ val lambda: () -> Unit = {
 
 ### 高阶函数
 
-参数类型包含函数类型或返回值类型为函数类型的函数成为高阶函数。
+参数类型包含函数类型或返回值类型为函数类型的函数称为高阶函数。
 
 ```kotlin
 // 参数类型包含函数类型
@@ -274,6 +274,7 @@ cost {
     println("inline")
 }
 
+// 内联后等价于：
 val start = System.currentTimeMillis()
 println("inline")
 println("${System.currentTimeMillis() - start}ms")
@@ -282,7 +283,7 @@ println("${System.currentTimeMillis() - start}ms")
 高阶函数的内联：
 
 * 函数本身被内联到调用处
-* 函数的函数参数被内联到调用处
+* 内联函数的函数参数被内联到调用处
 
 ## 类和接口
 
@@ -678,7 +679,7 @@ interface Comparable<in T>{}
 
 ## 反射
 
-反射是可以在运行时自省你的程序的结构的一组语言和库功能。
+反射是可以在运行时自省程序结构的一组语言和库功能。
 
 ```kotlin
 val c = MyClass::class
