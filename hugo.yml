@@ -27,7 +27,7 @@ params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: ExampleSite
   description: "Daily Record for Lin"
-  keywords: [Blog, Java, XiangLin]
+  keywords: [blog, java, spring]
   author: XiangLin
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
