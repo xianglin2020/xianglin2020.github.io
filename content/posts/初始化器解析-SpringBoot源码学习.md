@@ -187,19 +187,19 @@ protected void applyInitializers(ConfigurableApplicationContext context) {
 ```java
 public class DelegatingApplicationContextInitializer
 		implements ApplicationContextInitializer<ConfigurableApplicationContext>, Ordered {
-  // 配置文件中的属性名
-	private static final String PROPERTY_NAME = "context.initializer.classes";
-	private int order = 0;
-	@Override
-	public void initialize(ConfigurableApplicationContext context) {
-		ConfigurableEnvironment environment = context.getEnvironment();
-    // 获取配置文件中注册的初始化器
-		List<Class<?>> initializerClasses = getInitializerClasses(environment);
-		if (!initializerClasses.isEmpty()) {
-      // 执行初始化器逻辑，由此可发现：配置文件注册的初始化器执行顺序取决于 DelegatingApplicationContextInitializer 的顺序
-			applyInitializerClasses(context, initializerClasses);
-		}
-	}
+    // 配置文件中的属性名
+    private static final String PROPERTY_NAME = "context.initializer.classes";
+    private int order = 0;
+    @Override
+    public void initialize(ConfigurableApplicationContext context) {
+      ConfigurableEnvironment environment = context.getEnvironment();
+      // 获取配置文件中注册的初始化器
+      List<Class<?>> initializerClasses = getInitializerClasses(environment);
+      if (!initializerClasses.isEmpty()) {
+        // 执行初始化器逻辑，由此可发现：配置文件注册的初始化器执行顺序取决于 DelegatingApplicationContextInitializer 的顺序
+        applyInitializerClasses(context, initializerClasses);
+      }
+    }
 }
 ```
 
