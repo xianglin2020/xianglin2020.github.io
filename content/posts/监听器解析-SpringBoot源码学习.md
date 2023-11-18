@@ -213,7 +213,7 @@ public interface SpringApplicationRunListener {
 
 ### 系统事件触发机制
 
-以 ApplicationStartingEvent 事件为例，最初是在 ConfigurableApplicationContext 的 run 方法中调用 starting 方法触发。
+以 ApplicationStartingEvent 事件为例，最初是在 SpringApplication 的 run 方法中调用 starting 方法触发。
 
 ```java
 public ConfigurableApplicationContext run(String... args) {

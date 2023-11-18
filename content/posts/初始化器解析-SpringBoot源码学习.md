@@ -37,13 +37,13 @@ public class FirstInitializer implements ApplicationContextInitializer<Configura
 }
 ```
 
-注册方式一，在 resources 文件夹中新建文件 META-INF/spring.factories，注册 FirstInitializer。
+注册方式一、在 resources 文件夹中新建文件 META-INF/spring.factories，注册 FirstInitializer。
 
 ```properties
 org.springframework.context.ApplicationContextInitializer=store.xianglin.sb2.Initializer.FirstInitializer
 ```
 
-注册方式二，通过调用 `SpringApplication.addInitializers()` 方法注册 SecondInitializer。
+注册方式二、通过调用 `SpringApplication.addInitializers()` 方法注册 SecondInitializer。
 
 ```java
 @SpringBootApplication
@@ -58,7 +58,7 @@ public class SpringBoot2Application {
 }
 ```
 
-注册方式三，通过配置文件注册 ThirdInitializer。
+注册方式三、通过配置文件注册 ThirdInitializer。
 
 ```properties
 context.initializer.classes=store.xianglin.sb2.Initializer.ThirdInitializer
