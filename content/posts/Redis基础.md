@@ -57,7 +57,7 @@ cover:
   1. `set key value [EX seconds] [PX milliseconds] [NX|XX]`
      * `EX`：将键的过期时间设置为`seconds`秒，`set key value ex seconds`等同于`setex key seconds value`
      * `PX`：将键的过期时间设置为`milliseconds`毫秒，与`psetex key milliseconds value` 等价
-     * `NX|XX`：只有在键不存在、存在时，才对键执行设置操作，`set key value NX`等同于`setnx key value`
+     * `NX|XX`：只有在键不存在|存在时，才对键执行设置操作，`set key value NX`等同于`setnx key value`
   2. `mset key value [key value ...] mget key [key ...]`
   3. `incr key | incrby k increment`
   4. `decr key | decrby key decrement`
