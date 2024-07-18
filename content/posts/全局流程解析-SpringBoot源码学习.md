@@ -128,6 +128,8 @@ public ConfigurableApplicationContext run(String... args) {
 
 上述过程中的事件定义在 `org.springframework.boot.SpringApplicationRunListener` 中。
 
+> 无头模式：[Selecting an AWT mode](https://www.ibm.com/docs/it/i/7.3?topic=toolkit-selecting-awt-mode)
+
 ### 自动化装配
 
 1. 收集配置文件中的配置工厂类
