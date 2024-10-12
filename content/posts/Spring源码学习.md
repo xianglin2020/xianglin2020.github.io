@@ -13,9 +13,9 @@ summary: Spring v5.2.0.RELEASE 源码学习。
 
 在 GitHub 上打开 [spring-framework 项目](https://github.com/spring-projects/spring-framework)，从源码分支中找到 `v5.2.0.RELEASE` 标签，点击 `Code` 按钮下载源码压缩包。
 
-![image-20230106130844454](https://cdn.staticaly.com/gh/xianglin2020/gallery/master/202301/06131500.png)
+![image-20230106130844454](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202301/06131500.png)
 
-![image-20230106130946905](https://cdn.staticaly.com/gh/xianglin2020/gallery/master/202301/06131511.png)
+![image-20230106130946905](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202301/06131511.png)
 
 ## 导入 IDEA
 
@@ -25,11 +25,11 @@ summary: Spring v5.2.0.RELEASE 源码学习。
 
 * 在 IDEA 中导入项目。
 
-  ![image-20230106132121166](https://cdn.staticaly.com/gh/xianglin2020/gallery/master/202301/06132121.png)
+  ![image-20230106132121166](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202301/06132121.png)
 
 * 排除 `spring-aspects` 模块
 
-  ![image-20230106133723159](https://cdn.staticaly.com/gh/xianglin2020/gallery/master/202301/06133723.png)
+  ![image-20230106133723159](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202301/06133723.png)
 
 # Spring IOC 容器
 
@@ -37,7 +37,7 @@ summary: Spring v5.2.0.RELEASE 源码学习。
 
 ### Bean 和 BeanDefinition
 
-![BeanDefinition](https://cdn.staticaly.com/gh/xianglin2020/gallery/master/202301/08143129.png)
+![BeanDefinition](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202301/08143129.png)
 
 Bean 的本质就是 Java 对象，只是这个对象的生命周期由容器管理。根据配置，生成用来描述 Bean 的 BeanDefinition，常用属性：
 
@@ -48,7 +48,7 @@ Bean 的本质就是 Java 对象，只是这个对象的生命周期由容器管
 
 ### 容器初始化主要做的事情
 
-![Spring 容器初始化主要脉络.drawio](https://cdn.staticaly.com/gh/xianglin2020/gallery/master/202301/10200953.png)
+![Spring 容器初始化主要脉络.drawio](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202301/10200953.png)
 
 解析配置
 
@@ -56,14 +56,14 @@ Bean 的本质就是 Java 对象，只是这个对象的生命周期由容器管
 
 ### BeanFactory
 
-![BeanFactory](https://cdn.staticaly.com/gh/xianglin2020/gallery/master/202301/08145334.png)
+![BeanFactory](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202301/08145334.png)
 
 * 组件扫描：Spring 自动发现应用容器中需要创建的 Bean。
 * 自动装配：自动满足 Bean 之间的依赖。
 
 ### ApplicationContext
 
-![ApplicationContext](https://cdn.staticaly.com/gh/xianglin2020/gallery/master/202301/08151639.png)
+![ApplicationContext](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202301/08151639.png)
 
 基于 XML 配置的经典容器
 
@@ -85,19 +85,19 @@ refresh() 功能
 
 ### Resource
 
-![ByteArrayResource.java](https://cdn.staticaly.com/gh/xianglin2020/gallery/master/202301/08152657.png)
+![ByteArrayResource.java](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202301/08152657.png)
 
 ### ResourceLoader
 
-![ResourceLoader](https://cdn.staticaly.com/gh/xianglin2020/gallery/master/202301/08153704.png)
+![ResourceLoader](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202301/08153704.png)
 
 ### BeanDefinitionReader
 
-![BeanDefinitionReader](https://cdn.staticaly.com/gh/xianglin2020/gallery/master/202301/08175136.png)
+![BeanDefinitionReader](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202301/08175136.png)
 
 ### BeanDefinitionRegistry
 
-![BeanDefinitionRegistry](https://cdn.staticaly.com/gh/xianglin2020/gallery/master/202301/11211047.png)
+![BeanDefinitionRegistry](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202301/11211047.png)
 
 ## 容器初始化 `refresh`
 
@@ -105,7 +105,7 @@ refresh() 功能
 
 ### 后置处理器 `PostProcessor`
 
-![PostProcessor](https://cdn.staticaly.com/gh/xianglin2020/gallery/master/202301/11220102.png)
+![PostProcessor](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202301/11220102.png)
 
 本身也是一种需要注册到容器里的 Bean，其里面的方法会在特定时机被容器调用，实现不改变容器或者 Bean 核心逻辑的情况下对 Bean 进行扩展：对 Bean 进行包装，影响其行为、修改 Bean 的内容。
 
@@ -115,7 +115,7 @@ Bean 级别的后置处理器：`BeanPostProcessor`。
 
 ### `Aware`
 
-![Aware](https://cdn.staticaly.com/gh/xianglin2020/gallery/master/202302/06210641.png)
+![Aware](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202302/06210641.png)
 
 ### 事件监听器
 

@@ -64,7 +64,7 @@ public class MethodReference {
 
 * Stream：函数式、流计算
 * Optional：流计算，减少空值检查
-* Try：https://github.com/jasongoodwin/better-java-monads
+* Try Monad：https://github.com/jasongoodwin/better-java-monads
 
 ### 接口的方法(static, default, private)
 
