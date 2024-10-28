@@ -643,7 +643,7 @@ Java内存模型规定了一些操作来实现内存间交互，JVM会保证其�
 
 * jconsole：一个用于监视Java虚拟机的符合JMX的图像工具。它可以监视本地和远程JVM，还可以监视和管理应用程序。
 
-* jmc（JDK Mission Control）：Java任务控制客户端包括用于监视和管理Java应用程序的工具，优点是不会引入与这些类型工具相关联的性能开销。下载地址：https://www.oracle.com/java/technologies/javase/products-jmc8-downloads.html。
+* jmc（JDK Mission Control）：Java任务控制客户端包括用于监视和管理Java应用程序的工具，优点是不会引入与这些类型工具相关联的性能开销。下载地址：https://www.oracle.com/java/technologies/jdk-mission-control.html。
 
   使用命令行工具记录JFR：`jcmd 15592 JFR.start delay=10s duration=1m filename="C:\Users\xiang\Desktop\log.jfr"`
 
@@ -652,6 +652,17 @@ Java内存模型规定了一些操作来实现内存间交互，JVM会保证其�
 ### 两种远程连接方式
 
 * JMX连接可以查看：系统信息、CPU使用情况，线程情况、手动执行GC等比较偏于系统级层面的信息；
+
+  JMC 远程连接参数示例：
+
+  ```bash
+  # 有多个网卡时，通过 java.rmi.server.hostname 指定，不然连不上
+  jdk-21.0.5+11/bin/java  -Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.port=7091 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=192.168.56.103  -jar jvm-goods-0.0.1-SNAPSHOT.jar
+  ```
+
+  > https://docs.oracle.com/html/E28023_02/mc_comm.htm#A1005288
+  >
+  > https://docs.oracle.com/en/java/java-components/jdk-mission-control/9/user-guide/faq.html#GUID-9B310BA1-A7FB-45AB-879D-F762E1AB34EF
 * jstatd连接可以提供：JVM内存分布详细信息、垃圾回收分布图、线程详细信息，以及某个对象使用内存的大小。
 
  # JVM调优基础
