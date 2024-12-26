@@ -1,27 +1,25 @@
 ---
 title: ElasticSearch 基础
 date: 2023-05-22 20:28:46
-tags: [es]
+tags: [ es ]
 summary: 分布式搜索引擎与ElasticSearch的基本使用。
 description: 分布式搜索引擎与ElasticSearch的基本使用。
-categories: [learn]
+categories: [ learn ]
 ---
 
-# 分布式搜索引擎概念
+## 分布式搜索引擎概念
 
-## 倒排序索引
+### 倒排序索引
 
+### `Lucene` `Solr` `ElasticSearch`
 
+#### `Lucene`
 
-## `Lucene` `Solr` `ElasticSearch`
+#### `Solr`
 
-### `Lucene`
+#### `ElasticSearch`
 
-### `Solr`
-
-### `ElasticSearch`
-
-## ES 核心术语
+### ES 核心术语
 
 `Elasticsearch` 是一个开源的分布式 `RESTful` 搜索和分析引擎，可用来集中存储数据，以便对形形色色、规模不一的数据进行搜索、索引和分析。
 
@@ -41,15 +39,13 @@ categories: [learn]
 
 shard replica
 
+## Elasticsearch 安装
 
-
-# Elasticsearch 安装
-
-## 从二进制安装
+### 从二进制安装
 
 参考文档：https://www.elastic.co/guide/en/elasticsearch/reference/8.7/targz.html
 
-### 下载
+#### 下载
 
 ```bash
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.7.0-linux-x86_64.tar.gz
@@ -63,7 +59,7 @@ tar -xzf elasticsearch-8.7.0-linux-x86_64.tar.gz
 cd elasticsearch-8.7.0/
 ```
 
-### 调整配置
+#### 调整配置
 
 调整 `config/elasticsearch.yml`：
 
@@ -80,7 +76,7 @@ network.host: 0.0.0.0
 -Xmx256m
 ```
 
-### 启动
+#### 启动
 
 ```bash
 ./bin/elasticsearch
@@ -88,7 +84,7 @@ network.host: 0.0.0.0
 
 ![image-20230524203813861](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master//202307021647724.png)
 
-### 验证
+#### 验证
 
 ```bash
 curl --cacert /home/xianglin/Documents/elasticsearch-8.7.0/config/certs/http_ca.crt -u elastic https://localhost:9200
@@ -99,7 +95,7 @@ Enter host password for user 'elastic'
 
 ![image-20230524210534153](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master//202307021648978.png)
 
-### 部分问题
+#### 部分问题
 
 `bootstrap check failure [1] of [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]`
 
@@ -109,20 +105,88 @@ Enter host password for user 'elastic'
 sudo sysctl -w vm.max_map_count=262144
 ```
 
-## 从 Docker 安装
+### 从 Docker 安装
 
 参考文档：https://www.elastic.co/guide/en/elasticsearch/reference/8.7/docker.html
 
-### 创建 Docker 网络
+#### 创建 Docker 网络
 
 ```bash
 docker network create elastic
 ```
 
-### 启动单节点集群
+#### 启动单节点集群
 
 ```bash
 docker run -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -e "network.host=0.0.0.0" --name es01 --net elastic -p 9200:9200 -it docker.elastic.co/elasticsearch/elasticsearch:8.7.1
+```
+
+### 使用 docker-compose 安装
+
+参照 https://github.com/deviantony/docker-elk 项目
+
+会部署 ElasticSearch、Logstash 和 Kibana 三个容器，如果暂不需要 Logstash，可以使用 `docker compose up -d --scale logstash=0` 命令或者直接在 docker-compose.yml 中注释掉 Logstash 相关内容。
+
+如果需要安装 IK 分词器，需要修改 Elasticsearch 的 Dockerfile 后，执行 `docker compose build` 重新构建镜像
+
+```dockerfile
+# elasticsearch/Dockerfile
+
+ARG ELASTIC_VERSION
+
+# https://www.docker.elastic.co/
+FROM docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION:-8.17.0}
+
+# Add your elasticsearch plugins setup here
+# Example: RUN elasticsearch-plugin install analysis-icu
+RUN elasticsearch-plugin install --batch https://get.infini.cloud/elasticsearch/analysis-ik/${ELASTIC_VERSION:-8.17.0}
+```
+
+> 跳过授权步骤：https://www.elastic.co/guide/en/elasticsearch/plugins/8.17/_other_command_line_parameters.html#_batch_mode
+
+### 连接到 Elastic Cloud
+
+打开 [Elastic 项目控制台](https://cloud.elastic.co/projects)，获取连接信息和生成用于访问的 API 秘钥
+
+![image-20241214162212402](https://cdn.jsdelivr.net/gh/xianglin2020/gallery/2024/202412141629174.png)
+
+*方便学习时测试，可以赋予 API KEY 所有权限*
+
+```bash
+{
+  "superuser_role": {
+    "cluster": [
+      "all"
+    ],
+    "indices": [
+      {
+        "names": [
+          "*"
+        ],
+        "privileges": [
+          "all"
+        ],
+        "allow_restricted_indices": false
+      }
+    ],
+    "applications": [],
+    "run_as": [],
+    "metadata": {},
+    "transient_metadata": {
+      "enabled": true
+    }
+  }
+}
+```
+
+通过 Rest API 操作时携带认证信息
+
+![image-20241214163018223](https://cdn.jsdelivr.net/gh/xianglin2020/gallery/2024/202412141630272.png)
+
+```http
+GET /my-index/_doc/WLcaxJMBOBfKeuyFiYkr HTTP/1.1
+Host: my-observability-project-f222f4.es.us-east-1.aws.elastic.cloud
+Authorization: ApiKey VzdjeXhKT**********************************b0tUQQ==
 ```
 
 ## 安装 Kibana
@@ -153,17 +217,11 @@ docker run --name kib-01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kib
 
 修改 `kibana.yml` 配置 `i18n.locale: "zh-CN"` 即可。
 
-## 使用 docker-compose 安装
+## Elasticsearch使用
 
+### 使用 Kibana Console 完成基础操作
 
-
-# Elasticsearch使用
-
-
-
-## 使用 Kibana Console 完成基础操作
-
-### 增删改查
+#### 增删改查
 
 ```http
 # 往索引 twitter 中添加一条 id 为 1 的记录 
@@ -221,7 +279,7 @@ POST twitter/_update_by_query
 GET twitter/_doc/1
 ```
 
-### 批量插入
+#### 批量插入
 
 ```http
 POST _bulk
@@ -239,7 +297,7 @@ POST _bulk
 {"user":"虹桥-老吴","message":"好友来了都今天我生日，好友来了，什么 birthday happy 就成!","uid":7,"age":90,"city":"上海","province":"上海","country":"中国","address":"中国上海市闵行区","location":{"lat":"31.175927","lon":"121.383328"}}
 ```
 
-### Mapping 操作
+#### Mapping 操作
 
 ```http
 GET twitter/_mapping
@@ -247,19 +305,13 @@ GET twitter/_mapping
 
 ```json
 {
-  "twitter":
-  {
-    "mappings":
-    {
-      "properties":
-      {
-        "address":
-        {
+  "twitter": {
+    "mappings": {
+      "properties": {
+        "address": {
           "type": "text",
-          "fields":
-          {
-            "keyword":
-            {
+          "fields": {
+            "keyword": {
               "type": "keyword",
               "ignore_above": 256
             }
@@ -319,7 +371,7 @@ PUT twitter/_mapping
 }
 ```
 
-### 基本查询
+#### 基本查询
 
 ```http
 GET twitter/_search
@@ -501,7 +553,7 @@ GET twitter/_search
 }
 ```
 
-### 聚合操作
+#### 聚合操作
 
 ```http
 GET twitter/_search
@@ -533,10 +585,8 @@ GET twitter/_search
 
 ```json
 {
-  "age":
-  {
-    "buckets":
-    [
+  "age": {
+    "buckets": [
       {
         "key": "20.0-30.0",
         "from": 20,
@@ -582,12 +632,10 @@ GET twitter/_search
 
 ```json
 {
-  "city":
-  {
+  "city": {
     "doc_count_error_upper_bound": 0,
     "sum_other_doc_count": 0,
-    "buckets":
-    [
+    "buckets": [
       {
         "key": "北京",
         "doc_count": 2
@@ -601,7 +649,7 @@ GET twitter/_search
 }
 ```
 
-### 分词操作
+#### 分词操作
 
 ```http
 # 标准分词器，按空格分词
@@ -670,9 +718,7 @@ GET _analyze
 }
 ```
 
-
-
-## 分词与内置分词器
+### 分词与内置分词器
 
 `standard`、`simple`、`whitespace`、`stop`、`keyword`
 
@@ -686,44 +732,43 @@ POST http://192.168.31.67:9200/_analyze
 
 ```json
 {
-    "tokens":
-    [
-        {
-            "token": "这",
-            "start_offset": 0,
-            "end_offset": 1,
-            "type": "<IDEOGRAPHIC>",
-            "position": 0
-        },
-        {
-            "token": "是",
-            "start_offset": 1,
-            "end_offset": 2,
-            "type": "<IDEOGRAPHIC>",
-            "position": 1
-        },
-        {
-            "token": "text",
-            "start_offset": 2,
-            "end_offset": 6,
-            "type": "<ALPHANUM>",
-            "position": 2
-        },
-        {
-            "token": "文",
-            "start_offset": 7,
-            "end_offset": 8,
-            "type": "<IDEOGRAPHIC>",
-            "position": 3
-        },
-        {
-            "token": "本",
-            "start_offset": 8,
-            "end_offset": 9,
-            "type": "<IDEOGRAPHIC>",
-            "position": 4
-        }
-    ]
+  "tokens": [
+    {
+      "token": "这",
+      "start_offset": 0,
+      "end_offset": 1,
+      "type": "<IDEOGRAPHIC>",
+      "position": 0
+    },
+    {
+      "token": "是",
+      "start_offset": 1,
+      "end_offset": 2,
+      "type": "<IDEOGRAPHIC>",
+      "position": 1
+    },
+    {
+      "token": "text",
+      "start_offset": 2,
+      "end_offset": 6,
+      "type": "<ALPHANUM>",
+      "position": 2
+    },
+    {
+      "token": "文",
+      "start_offset": 7,
+      "end_offset": 8,
+      "type": "<IDEOGRAPHIC>",
+      "position": 3
+    },
+    {
+      "token": "本",
+      "start_offset": 8,
+      "end_offset": 9,
+      "type": "<IDEOGRAPHIC>",
+      "position": 4
+    }
+  ]
 }
 ```
 

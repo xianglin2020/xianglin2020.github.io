@@ -51,7 +51,7 @@ https://www.oracle.com/cn/virtualization/technologies/vm/downloads/virtualbox-do
 
 https://forums.debian.net/viewtopic.php?p=785528&sid=57f61f8a7ff595de0e3e19c86b8140cf#p785528
 
-![img.png](https://raw.githubusercontent.com/xianglin2020/gallery/master/2024/202409111545973.png)
+![img.png](https://cdn.jsdelivr.net/gh/xianglin2020/gallery/2024/202409111545973.png)
 
 镜像地址：
 https://mirror.tuna.tsinghua.edu.cn/debian-cd/current/amd64/iso-dvd/
@@ -84,7 +84,7 @@ iface enp0s8 inet static
         address 192.168.56.101
         netmask 255.255.255.0
 ```
-![img_1.png](https://raw.githubusercontent.com/xianglin2020/gallery/master/2024/202409111545974.png)
+![img_1.png](https://cdn.jsdelivr.net/gh/xianglin2020/gallery/2024/202409111545974.png)
 https://unix.stackexchange.com/questions/757054/debian-virtual-machine-no-connectivity-with-two-network-adapters
 
 配置免密登录，在物理机上执行。
@@ -113,13 +113,16 @@ https://mirror.tuna.tsinghua.edu.cn/help/docker-ce/
 
 配置代理：[Docker代理](https://blog.xianglin.store/posts/docker%E4%BB%A3%E7%90%86/)
 
+### 配置容器运行时
+
+https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/#docker
+
 使用 cri-dockerd 适配器来将 Docker Engine 与 Kubernetes 集成，从 https://github.com/Mirantis/cri-dockerd/releases 下载 cri-dockerd 安装包安装。
+
 ```shell
 wget https://github.com/Mirantis/cri-dockerd/releases/download/v0.3.15/cri-dockerd_0.3.15.3-0.debian-bookworm_amd64.deb
 apt install ./cri-dockerd_0.3.15.3-0.debian-bookworm_amd64.deb
 ```
-https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/#docker
-
 同样可以安装其他容器运行时，比如：
 * Containerd
 * CRI-O
@@ -146,7 +149,8 @@ EOF
 sysctl --system
 ```
 
-启用所需的内核模块
+* 启用所需的内核模块
+
 ```shell
 tee /etc/modules-load.d/k8s.conf <<EOF
 overlay
@@ -175,10 +179,14 @@ Kubernetes 清华源和其他源最新只到 1.30，故使用官方源。如果�
 export https_proxy=http://192.168.31.113:7897 http_proxy=http://192.168.31.113:7897 all_proxy=socks5://192.168.31.113:7897
 ```
 
+清华源同步了最新的镜像，可以使用：
+
+https://mirror.tuna.tsinghua.edu.cn/help/kubernetes/
+
 ### 复制虚拟机
 
 为完成上述安装步骤的虚拟机生成快照，然后在此基础上复制新的虚拟机，最后登入虚拟机修改主机名称、静态IP地址。
-![img_2.png](https://raw.githubusercontent.com/xianglin2020/gallery/master/2024/202409111545975.png)
+![img_2.png](https://cdn.jsdelivr.net/gh/xianglin2020/gallery/2024/202409111545975.png)
 
 ### 使用 kubeadm 创建集群
 
@@ -192,7 +200,9 @@ kubeadm init \
 --pod-network-cidr=10.244.0.0/16
 ```
 
-各参数解释：https://kubernetes.io/zh-cn/docs/reference/setup-tools/kubeadm/kubeadm-init/
+各参数解释：
+
+https://kubernetes.io/zh-cn/docs/reference/setup-tools/kubeadm/kubeadm-init/
 
 上面的命令很可能因为网络原因拉取镜像失败，可以使用 `--image-repository registry.aliyuncs.com/google_containers` 命令指定镜像仓库，<s>不知道什么原因，我这里执行命令后也是安装失败</s>。
 
@@ -238,6 +248,18 @@ docker tag  swr.cn-north-4.myhuaweicloud.com/ddn-k8s/registry.k8s.io/kube-apiser
  kubectl get nodes -o wide
 ```
 
+### 重置安装状态
+
+如果上一步初始化失败，则需要重置安装状态才能再次初始化 Kubernetes 集群，执行如下命令：
+
+https://v1-31.docs.kubernetes.io/zh-cn/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#tear-down
+
+```bash
+kubeadm reset --cri-socket unix:///run/cri-dockerd.sock
+rm -rf  /etc/cni/net.d
+rm -rf $HOME/.kube/config
+```
+
 ### 增加子节点
 
 打开[复制虚拟机](#复制虚拟机)步骤创建的虚拟机，作为节点，添加到集群中，执行如下命令：
@@ -246,4 +268,4 @@ kubeadm join 192.168.56.101:6443 --token le0z57.zuagjq96utlicpjw \
 	--discovery-token-ca-cert-hash sha256:4b534e57748be736a8aacf08c9040ea00d3544a757ca2276eadf56706ed1b42d --cri-socket unix:///run/cri-dockerd.sock
 ```
 集群成功安装：
-![img_3.png](https://raw.githubusercontent.com/xianglin2020/gallery/master/2024/202409111545977.png)
+![img_3.png](https://cdn.jsdelivr.net/gh/xianglin2020/gallery/2024/202409111545977.png)

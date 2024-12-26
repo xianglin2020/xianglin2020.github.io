@@ -47,6 +47,12 @@ cover:
 docker image build -t web:latest  --build-arg HTTP_PROXY=http://192.168.31.113:7897 --build-arg HTTPS_PROXY=http://192.168.31.113:7897 .
 ```
 
+还可以试试直接添加环境变量
+
+```bash
+export https_proxy=http://192.168.31.86:7897 http_proxy=http://192.168.31.86:7897 all_proxy=socks5://192.168.31.86:7897
+```
+
 ### 为容器设置代理
 
 > [Automatic proxy configuration for containers](https://docs.docker.com/reference/cli/docker/#automatic-proxy-configuration-for-containers)
