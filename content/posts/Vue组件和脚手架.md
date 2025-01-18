@@ -1,13 +1,11 @@
 ---
 title: Vue2 组件和脚手架
 date: 2022-12-07 20:14:54
-tags: [vue]
+tags: [vue, web]
 categories: [learn]
 description: Vue 组件语法与脚手架使用。
 summary: Vue 组件语法与脚手架使用。
 ---
-
-# Vue2 组件
 
 组件是实现应用中局部功能代码和资源的集合，主要作用是复用代码，简化项目编码，提高运行效率。
 
@@ -18,64 +16,64 @@ summary: Vue 组件语法与脚手架使用。
 ```vue
 
 <div id="root">
-{{msg}}
-<hr>
-<!-- 使用组件 -->
-<school></school>
-<hr>
-<student></student>
+  {{msg}}
+  <hr>
+  <!-- 使用组件 -->
+  <school></school>
+  <hr>
+  <student></student>
 </div>
 
 <script>
-Vue.config.productionTip = false
+  Vue.config.productionTip = false
 
-// 定义组件
-const school = Vue.extend({
-  template: `
+  // 定义组件
+  const school = Vue.extend({
+    template: `
           <div>
           <h1>学校名称：{{ schoolName }}</h1>
           <h1>学校地址：{{ address }}</h1>
           <button @click="showName">显示学校名称</button>
           </div>
         `,
-  data() {
-    return {
-      schoolName: '学校',
-      address: '地址'
+    data() {
+      return {
+        schoolName: '学校',
+        address: '地址'
+      }
+    },
+    methods: {
+      showName() {
+        alert(this.schoolName)
+      }
     }
-  },
-  methods: {
-    showName() {
-      alert(this.schoolName)
-    }
-  }
-})
-const student = Vue.extend({
-  template: `
+  })
+  const student = Vue.extend({
+    template: `
           <div>
           <h2>学生姓名：{{ studentName }}</h2>
           <h2>学生年龄：{{ age }}</h2>
           </div>
         `,
-  data() {
-    return {
-      studentName: '姓名',
-      age: 18
+    data() {
+      return {
+        studentName: '姓名',
+        age: 18
+      }
     }
-  }
-})
+  })
 
-// 注册组件
-new Vue({
-  el: '#root',
-  components: {
-    school,
-    student
-  },
-  data: {
-    msg: 'Hello Vue!'
-  }
-})
+  // 注册组件
+  new Vue({
+    el: '#root',
+    components: {
+      school,
+      student
+    },
+    data: {
+      msg: 'Hello Vue!'
+    }
+  })
 </script>
 ```
 
@@ -219,7 +217,6 @@ export default {
 传递数据：
 
 ```vue
-
 <demo name="xxx"/>
 ```
 

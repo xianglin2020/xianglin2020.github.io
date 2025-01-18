@@ -1,22 +1,31 @@
 ---
-title: Vue2 基础
-date: 2022-08-11 21:22:49
-tags: [vue]
-categories: [learn]
-description: Vue 基础知识与语法。
-summary: Vue 基础知识与语法。
+title: "Vue2 基础"
+date: 2022-08-11T21:22:49+08:00
+categories:
+  - learn
+tags:
+  - vue
+  - web
+summary: "Vue 基础知识与语法"
+description: "Vue 基础知识与语法"
+author: [ "XiangLin" ]
+cover:
+  image: "https://v2.cn.vuejs.org/images/logo.svg"
+  caption: ""
+  alt: ""
+  relative: false
 ---
 
-# Vue2 基础
-
 Vue2：https://v2.cn.vuejs.org/
+
+Vue3：https://cn.vuejs.org/
 
 Vue 是一套用于构建用户界面的渐进式框架。
 
 ## Vue 特点
 
 * 采用组件化模式，提高代码复用率，且让代码更好维护；
-* 申明式编码，无需直接操作 DOM，提高开发效率；
+* 声明式编码，无需直接操作 DOM，提高开发效率；
 * 使用虚拟 DOM 和 Diff 算法，尽量复用 DOM。
 
 ## Vue 实例
@@ -57,31 +66,31 @@ Vue 实例和容器是一一对应的。
 ```vue
 
 <div id="root">
-<h1>Hello {{name}}</h1>
+  <h1>Hello {{name}}</h1>
 </div>
 
 <script>
-new Vue({
-  el: '#root',
-  data: {
-    name: 'Vue'
-  }
-})
+  new Vue({
+    el: '#root',
+    data: {
+      name: 'Vue'
+    }
+  })
 </script>
 
 
 <div id="root1">
-<h1>Hello {{name}}</h1>
+  <h1>Hello {{name}}</h1>
 </div>
 
 <script>
-new Vue({
-  data() {
-    return {
-      name: 'Vue'
+  new Vue({
+    data() {
+      return {
+        name: 'Vue'
+      }
     }
-  }
-}).$mount('#root1')
+  }).$mount('#root1')
 </script>
 ```
 
@@ -99,25 +108,25 @@ data 可以使用对象式或函数式写法；
 ```vue
 
 <div id="root">
-<h1>插值语法</h1>
-<h3>Hello,{{name}}</h3>
-<hr>
-<h1>指令语法</h1>
-<a href="https://www.bing.com">Bing</a>
-<br>
-<a v-bind:href="url">Bing</a>
+  <h1>插值语法</h1>
+  <h3>Hello,{{name}}</h3>
+  <hr>
+  <h1>指令语法</h1>
+  <a href="https://www.bing.com">Bing</a>
+  <br>
+  <a v-bind:href="url">Bing</a>
 </div>
 
 <script>
-Vue.config.productionTip = false
+  Vue.config.productionTip = false
 
-new Vue({
-  el: '#root',
-  data: {
-    name: 'Vue',
-    url: 'https://www.bing.com'
-  }
-})
+  new Vue({
+    el: '#root',
+    data: {
+      name: 'Vue',
+      url: 'https://www.bing.com'
+    }
+  })
 </script>
 ```
 
@@ -134,28 +143,28 @@ new Vue({
 ```vue
 
 <div id="root">
-<label>
-  单向数据绑定：
-  <input type="text" v-bind:value="name">
-  <input type="text" :value="name">
-</label>
-<br>
-<label>
-  双向数据绑定：
-  <input type="text" v-model:value="name">
-  <input type="text" v-model="name">
-</label>
+  <label>
+    单向数据绑定：
+    <input type="text" v-bind:value="name">
+    <input type="text" :value="name">
+  </label>
+  <br>
+  <label>
+    双向数据绑定：
+    <input type="text" v-model:value="name">
+    <input type="text" v-model="name">
+  </label>
 </div>
 
 <script>
-Vue.config.productionTip = false
+  Vue.config.productionTip = false
 
-new Vue({
-  el: '#root',
-  data: {
-    name: 'Vue'
-  }
-})
+  new Vue({
+    el: '#root',
+    data: {
+      name: 'Vue'
+    }
+  })
 </script>
 ```
 
@@ -172,7 +181,7 @@ MVVM 模型：https://zh.wikipedia.org/wiki/MVVM
 
 ![MVVMPattern](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202208/172859.png)
 
-![image-20220827172739393](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202208/172739.png)
+<img src="https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202208/172739.png" alt="image-20220827172739393" style="zoom: 33%;" />
 
 MVVM 模型代表 M、V 和 VM
 
@@ -223,30 +232,30 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
 ```vue
 
 <div id="root">
-<h1>Hello, {{msg}}</h1>
-<!--    <button v-on:click="showInfo">点击提示信息</button>-->
-<button @click="showInfo1">点击提示信息1</button>
+  <h1>Hello, {{msg}}</h1>
+  <!--    <button v-on:click="showInfo">点击提示信息</button>-->
+  <button @click="showInfo1">点击提示信息1</button>
 
-<button @click="showInfo2(66,$event)">点击提示信息2</button>
+  <button @click="showInfo2(66,$event)">点击提示信息2</button>
 </div>
 
 <script>
-new Vue({
-  el: '#root',
-  data: {
-    msg: 'Vue'
-  },
-  methods: {
-    showInfo1(event) {
-      // console.log(event.target)
-      // console.log(this)
-      alert('点击')
+  new Vue({
+    el: '#root',
+    data: {
+      msg: 'Vue'
     },
-    showInfo2(number, e) {
-      console.log(number, e)
+    methods: {
+      showInfo1(event) {
+        // console.log(event.target)
+        // console.log(this)
+        alert('点击')
+      },
+      showInfo2(number, e) {
+        console.log(number, e)
+      }
     }
-  }
-})
+  })
 </script>
 ```
 
@@ -257,28 +266,28 @@ new Vue({
 ```vue
 
 <div id="root">
-<!-- 阻止单击事件继续传播 -->
-<button v-on:click.stop="doThis">点击</button>
-<!-- 提交事件不再重载页面 -->
-<form v-on:submit.prevent="onSubmit">
-  <input type="submit" value="提交">
-</form>
-<!-- 点击事件将只会触发一次 -->
-<a v-on:click.once="doThis"></a>
+  <!-- 阻止单击事件继续传播 -->
+  <button v-on:click.stop="doThis">点击</button>
+  <!-- 提交事件不再重载页面 -->
+  <form v-on:submit.prevent="onSubmit">
+    <input type="submit" value="提交">
+  </form>
+  <!-- 点击事件将只会触发一次 -->
+  <a v-on:click.once="doThis"></a>
 </div>
 
 <script>
-new Vue({
-  el: '#root',
-  methods: {
-    doThis() {
-      console.log('doThis')
-    },
-    onSubmit() {
-      console.log('onSubmit')
+  new Vue({
+    el: '#root',
+    methods: {
+      doThis() {
+        console.log('doThis')
+      },
+      onSubmit() {
+        console.log('onSubmit')
+      }
     }
-  }
-})
+  })
 </script>
 ```
 
@@ -295,26 +304,26 @@ new Vue({
 ```vue
 
 <div id="root">
-<input type="text" placeholder="按下回车提示输入" @keyup="showInfo">
-<input type="text" placeholder="制表符" @keydown.tab="showKeyCode">
+  <input type="text" placeholder="按下回车提示输入" @keyup="showInfo">
+  <input type="text" placeholder="制表符" @keydown.tab="showKeyCode">
 </div>
 
 <script>
-Vue.config.productionTip = false
+  Vue.config.productionTip = false
 
-new Vue({
-  el: '#root',
-  methods: {
-    showInfo(e) {
-      if (e.keyCode === 13) {
-        console.log(e.target.value)
+  new Vue({
+    el: '#root',
+    methods: {
+      showInfo(e) {
+        if (e.keyCode === 13) {
+          console.log(e.target.value)
+        }
+      },
+      showKeyCode(e) {
+        console.log(e.key, e.keyCode)
       }
-    },
-    showKeyCode(e) {
-      console.log(e.key, e.keyCode)
     }
-  }
-})
+  })
 </script>
 ```
 
@@ -343,39 +352,39 @@ Vue 未提供按键别名的按键，可以使用按键原始的 key 值绑定�
 ```vue
 
 <div id="root">
-<label>
-  姓：
-  <input type="text" v-model="firstName">
-</label> <br><br>
-<label>
-  名：
-  <input type="text" v-model="lastName">
-</label> <br><br>
-全名：<span>{{fullName}}</span>
+  <label>
+    姓：
+    <input type="text" v-model="firstName">
+  </label> <br><br>
+  <label>
+    名：
+    <input type="text" v-model="lastName">
+  </label> <br><br>
+  全名：<span>{{fullName}}</span>
 </div>
 
 <script>
-Vue.config.productionTip = false
+  Vue.config.productionTip = false
 
-new Vue({
-  el: '#root',
-  data: {
-    firstName: '张',
-    lastName: '三'
-  },
-  computed: {
-    fullName: {
-      get() {
-        return this.firstName + '-' + this.lastName
-      },
-      set(val) {
-        let arr = val.split('-')
-        this.firstName = arr[0]
-        this.lastName = arr[1]
+  new Vue({
+    el: '#root',
+    data: {
+      firstName: '张',
+      lastName: '三'
+    },
+    computed: {
+      fullName: {
+        get() {
+          return this.firstName + '-' + this.lastName
+        },
+        set(val) {
+          let arr = val.split('-')
+          this.firstName = arr[0]
+          this.lastName = arr[1]
+        }
       }
     }
-  }
-})
+  })
 </script>
 ```
 
@@ -388,44 +397,44 @@ new Vue({
 ```vue
 
 <div id="root">
-<h2>今天天气很{{info}}</h2>
-<button @click="changeWeather">切换天气</button>
+  <h2>今天天气很{{info}}</h2>
+  <button @click="changeWeather">切换天气</button>
 </div>
 
 <script>
-Vue.config.productionTip = false
+  Vue.config.productionTip = false
 
-const vm = new Vue({
-  el: '#root',
-  data: {
-    isHot: true
-  },
-  computed: {
-    info() {
-      return this.isHot ? '炎热' : '凉爽'
-    }
-  },
-  watch: {
-    isHot: {
-      immediate: true,
-      handler(newValue, oldValue) {
-        console.log('isHot 被修改了', newValue, oldValue)
+  const vm = new Vue({
+    el: '#root',
+    data: {
+      isHot: true
+    },
+    computed: {
+      info() {
+        return this.isHot ? '炎热' : '凉爽'
+      }
+    },
+    watch: {
+      isHot: {
+        immediate: true,
+        handler(newValue, oldValue) {
+          console.log('isHot 被修改了', newValue, oldValue)
+        }
+      }
+    },
+    methods: {
+      changeWeather() {
+        this.isHot = !this.isHot
       }
     }
-  },
-  methods: {
-    changeWeather() {
-      this.isHot = !this.isHot
+  })
+  // 监视属性API
+  vm.$watch('isHot', {
+    immediate: true,
+    handler(newValue, oldValue) {
+      console.log('isHot 被修改了', newValue, oldValue)
     }
-  }
-})
-// 监视属性API
-vm.$watch('isHot', {
-  immediate: true,
-  handler(newValue, oldValue) {
-    console.log('isHot 被修改了', newValue, oldValue)
-  }
-})
+  })
 </script>
 ```
 
@@ -440,38 +449,38 @@ vm.$watch('isHot', {
 ```vue
 
 <div id="root">
-<h2>numbers 的 a 是 {{numbers.a}}</h2>
-<button @click="numbers.a++">点击 a + 1</button>
+  <h2>numbers 的 a 是 {{numbers.a}}</h2>
+  <button @click="numbers.a++">点击 a + 1</button>
 </div>
 
 <script>
-Vue.config.productionTip = false
+  Vue.config.productionTip = false
 
-const vm = new Vue({
-  el: '#root',
-  data: {
-    numbers: {
-      a: 1,
-      b: 2
-    }
-  },
-  computed: {
-    newNumbers() {
-      return JSON.parse(JSON.stringify(this.numbers))
-    }
-  },
-  watch: {
-    numbers: {
-      handler(newValue, oldValue) {
-        console.log('numbers 被改变了', newValue, oldValue)
-      },
-      deep: true
+  const vm = new Vue({
+    el: '#root',
+    data: {
+      numbers: {
+        a: 1,
+        b: 2
+      }
     },
-    newNumbers(newVal, oldVal) {
-      console.log('newNumbers 被改变了', newVal, oldVal)
-    }
-  },
-})
+    computed: {
+      newNumbers() {
+        return JSON.parse(JSON.stringify(this.numbers))
+      }
+    },
+    watch: {
+      numbers: {
+        handler(newValue, oldValue) {
+          console.log('numbers 被改变了', newValue, oldValue)
+        },
+        deep: true
+      },
+      newNumbers(newVal, oldVal) {
+        console.log('newNumbers 被改变了', newVal, oldVal)
+      }
+    },
+  })
 </script>
 ```
 
@@ -482,58 +491,58 @@ const vm = new Vue({
 ```vue
 
 <style>
-.basic {
-}
+  .basic {
+  }
 
-.normal {
-}
+  .normal {
+  }
 
-.happy {
-}
+  .happy {
+  }
 
-.sad {
-}
+  .sad {
+  }
 
-.s1 {
-}
+  .s1 {
+  }
 
-.s2 {
-}
+  .s2 {
+  }
 
-.s3 {
-}
+  .s3 {
+  }
 </style>
 
 <div id="root">
-<!-- 绑定 class 样式——字符串写法 -->
-<div class="basic" :class="mood" id="demo" @click="changeMood">{{name}}</div>
-<!-- 绑定 class 样式——数组写法 -->
-<div class="basic" :class="classArr">{{name}}</div>
-<!-- 绑定 class 样式——对象写法 -->
-<div class="basic" :class="classObj">{{name}}</div>
+  <!-- 绑定 class 样式——字符串写法 -->
+  <div class="basic" :class="mood" id="demo" @click="changeMood">{{name}}</div>
+  <!-- 绑定 class 样式——数组写法 -->
+  <div class="basic" :class="classArr">{{name}}</div>
+  <!-- 绑定 class 样式——对象写法 -->
+  <div class="basic" :class="classObj">{{name}}</div>
 </div>
 
 <script type="text/javascript">
-Vue.config.productionTip = false
+  Vue.config.productionTip = false
 
-new Vue({
-  el: '#root',
-  data: {
-    name: 'Vue',
-    mood: 'normal',
-    classArr: ['s1', 's2', 's3'],
-    classObj: {
-      s1: true,
-      s2: true,
-      s3: true,
+  new Vue({
+    el: '#root',
+    data: {
+      name: 'Vue',
+      mood: 'normal',
+      classArr: ['s1', 's2', 's3'],
+      classObj: {
+        s1: true,
+        s2: true,
+        s3: true,
+      }
+    },
+    methods: {
+      changeMood() {
+        this.mood = 'happy'
+      }
     }
-  },
-  methods: {
-    changeMood() {
-      this.mood = 'happy'
-    }
-  }
-})
+  })
 </script>
 ```
 
@@ -542,21 +551,21 @@ new Vue({
 ```vue
 
 <div id="root">
-<!-- 绑定 style 样式——对象写法 -->
-<div class="basic" :style="styleObj">{{name}}</div>
+  <!-- 绑定 style 样式——对象写法 -->
+  <div class="basic" :style="styleObj">{{name}}</div>
 </div>
 
 <script>
-Vue.config.productionTip = false
+  Vue.config.productionTip = false
 
-const vm = new Vue({
-  el: '#root',
-  data: {
-    styleObj: {
-      fontSize: '40px'
+  const vm = new Vue({
+    el: '#root',
+    data: {
+      styleObj: {
+        fontSize: '40px'
+      }
     }
-  }
-})
+  })
 </script>
 ```
 
@@ -565,39 +574,39 @@ const vm = new Vue({
 ```vue
 
 <div id="root">
-<h1 v-show="show">Hello,{{name}}</h1>
+  <h1 v-show="show">Hello,{{name}}</h1>
 
-<div v-if="type === 'A'">
-  A
-</div>
-<div v-else-if="type === 'B'">
-  B
-</div>
-<div v-else-if="type === 'C'">
-  C
-</div>
-<div v-else>
-  Not A/B/C
-</div>
+  <div v-if="type === 'A'">
+    A
+  </div>
+  <div v-else-if="type === 'B'">
+    B
+  </div>
+  <div v-else-if="type === 'C'">
+    C
+  </div>
+  <div v-else>
+    Not A/B/C
+  </div>
 
-<template v-if="show">
-  <h1>Title</h1>
-  <p>Paragraph 1</p>
-  <p>Paragraph 2</p>
-</template>
+  <template v-if="show">
+    <h1>Title</h1>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+  </template>
 </div>
 
 <script>
-Vue.config.productionTip = false
+  Vue.config.productionTip = false
 
-new Vue({
-  el: '#root',
-  data: {
-    name: 'Vue',
-    show: true,
-    type: 'D'
-  }
-})
+  new Vue({
+    el: '#root',
+    data: {
+      name: 'Vue',
+      show: true,
+      type: 'D'
+    }
+  })
 </script>
 ```
 
@@ -609,40 +618,40 @@ new Vue({
 ```vue
 
 <div id="root">
-<!-- 遍历数组 -->
-<h2>人员列表</h2>
-<ul>
-  <li v-for="(p, index) in persons" :key="p.id">
-    {{index}}-{{p.name}}-{{p.age}}
-  </li>
-</ul>
-<!-- 遍历对象 -->
-<h2>汽车信息</h2>
-<ul>
-  <li v-for="(v, k) of car" :key="k">
-    {{k}}: {{v}}
-  </li>
-</ul>
+  <!-- 遍历数组 -->
+  <h2>人员列表</h2>
+  <ul>
+    <li v-for="(p, index) in persons" :key="p.id">
+      {{index}}-{{p.name}}-{{p.age}}
+    </li>
+  </ul>
+  <!-- 遍历对象 -->
+  <h2>汽车信息</h2>
+  <ul>
+    <li v-for="(v, k) of car" :key="k">
+      {{k}}: {{v}}
+    </li>
+  </ul>
 </div>
 
 <script>
-Vue.config.productionTip = false
+  Vue.config.productionTip = false
 
-new Vue({
-  el: '#root',
-  data: {
-    persons: [
-      {id: '001', name: '张三', age: 18},
-      {id: '002', name: '李四', age: 19},
-      {id: '003', name: '王五', age: 20},
-    ],
-    car: {
-      name: 'A8',
-      price: '70W',
-      color: '黑色'
+  new Vue({
+    el: '#root',
+    data: {
+      persons: [
+        {id: '001', name: '张三', age: 18},
+        {id: '002', name: '李四', age: 19},
+        {id: '003', name: '王五', age: 20},
+      ],
+      car: {
+        name: 'A8',
+        price: '70W',
+        color: '黑色'
+      }
     }
-  }
-})
+  })
 </script>
 ```
 
@@ -653,24 +662,22 @@ new Vue({
 `key` 是虚拟 DOM 对象的标识，当数据发生变化时，Vue 会根据新数据生成新的虚拟 DOM，随后 Vue 进行新旧虚拟 DOM 的差异对比。
 虚拟 DOM 对比规则：
 
-* 旧虚拟 DOM 中存在与新虚拟 DOM `key` 相同的元素，如果虚拟 DOM 中内容没变，直接复用之前的真实 DOM。如果虚拟 DOM
-  中内容发生变化，生成新的真实 DOM。
-* 旧虚拟 DOM 中不存在与新虚拟 DIM `key` 相同的元素，生成新的真实 DOM，渲染到页面中。
+* 旧虚拟 DOM 中存在与新虚拟 DOM `key` 相同的元素，如果虚拟 DOM 中内容没变，直接复用之前的真实 DOM。如果虚拟 DOM中内容发生变化，生成新的真实 DOM。
+* 旧虚拟 DOM 中不存在与新虚拟 DOM `key` 相同的元素，生成新的真实 DOM，渲染到页面中。
 
-使用 `index` 作为 `key` 时对数据进行破环顺序的操作，会产生没有必要的真实 DOM 更新，效率较低。如果结构中还包含输入类的元素，会产生错误的
-DOM 更新。
+使用 `index` 作为 `key` 时对数据进行破环顺序的操作，会产生没有必要的真实 DOM 更新，效率较低。如果结构中还包含输入类的元素，会产生错误的 DOM 更新。
 
 ## Vue 监视数据的原理
 
 * Vue 会监视 `data` 中所有层次的数据。
 * 通过 `setter` 监视对象中的数据，且要在 `new Vue` 时传入监视的数据。对象中后追加的属性，Vue 默认不做响应式处理，可以使用如下
   API 为添加的属性做响应式：
-  ```vue
+  
+  ```javascript
   Vue.set(target, propertyName/index, value)
   vm.$set(target, propertyName/index, value)
   ```
-* 通过包裹数组更新方法监视数组中的数据，即调用数组原生方法更新数据，然后重新解析模板。这些方法包括：`push`、`pop`、`shift`
-  、`unshift`、`splice`、`sort` 和 `reverse`。
+* 通过包裹数组更新方法监视数组中的数据，即调用数组原生方法更新数据，然后重新解析模板。这些方法包括：`push`、`pop`、`shift`、`unshift`、`splice`、`sort` 和 `reverse`。
 * `Vue.set()` 和 `vm.$set()` 不能给 `vm` 或 `vm` 的根数据对象(`_data`) 添加属性。
 
 ## 过滤器
@@ -678,45 +685,45 @@ DOM 更新。
 ```vue
 
 <div id="root">
-<h1>当前时间</h1>
-<h2>时间戳：{{time}}</h2>
-<h2>格式化：{{fmtTime}}</h2>
-<h2>格式化：{{getFmtTime()}}</h2>
-<h2>格式化：{{time | timeFormatter('YYYY年MM月DD日')}}</h2>
-<h2>首字母大写：{{'hello' | capitalize}}</h2>
+  <h1>当前时间</h1>
+  <h2>时间戳：{{time}}</h2>
+  <h2>格式化：{{fmtTime}}</h2>
+  <h2>格式化：{{getFmtTime()}}</h2>
+  <h2>格式化：{{time | timeFormatter('YYYY年MM月DD日')}}</h2>
+  <h2>首字母大写：{{'hello' | capitalize}}</h2>
 </div>
 
 <script>
-Vue.config.productionTip = false
-Vue.filter('capitalize', function (val) {
-  if (!val) {
-    return ''
-  }
-  val = val.toString()
-  return val.charAt(0).toUpperCase() + val.slice(1)
-})
+  Vue.config.productionTip = false
+  Vue.filter('capitalize', function (val) {
+    if (!val) {
+      return ''
+    }
+    val = val.toString()
+    return val.charAt(0).toUpperCase() + val.slice(1)
+  })
 
-new Vue({
-  el: '#root',
-  data: {
-    time: 1669816105394
-  },
-  computed: {
-    fmtTime() {
-      return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+  new Vue({
+    el: '#root',
+    data: {
+      time: 1669816105394
+    },
+    computed: {
+      fmtTime() {
+        return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+      }
+    },
+    methods: {
+      getFmtTime() {
+        return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+      }
+    },
+    filters: {
+      timeFormatter(value, pattern = 'YYYY-MM-DD HH:mm:ss') {
+        return dayjs(value).format(pattern)
+      }
     }
-  },
-  methods: {
-    getFmtTime() {
-      return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
-    }
-  },
-  filters: {
-    timeFormatter(value, pattern = 'YYYY-MM-DD HH:mm:ss') {
-      return dayjs(value).format(pattern)
-    }
-  }
-})
+  })
 </script>
 ```
 
@@ -734,40 +741,40 @@ new Vue({
 ```vue
 
 <div id="root">
-<h2>当前的 n：<span v-text="n"></span></h2>
-<h2>放大的 n：<span v-big-number="n"></span></h2>
-<button @click="n++">点击+1</button>
-<br>
-<br>
-<input type="text" v-fbind="n">
+  <h2>当前的 n：<span v-text="n"></span></h2>
+  <h2>放大的 n：<span v-big-number="n"></span></h2>
+  <button @click="n++">点击+1</button>
+  <br>
+  <br>
+  <input type="text" v-fbind="n">
 </div>
 
 <script>
-Vue.config.productionTip = false
-// bind 和 update 触发相同行为
-Vue.directive('big-number', function (element, binding) {
-  element.innerText = binding.value * 10
-})
+  Vue.config.productionTip = false
+  // bind 和 update 触发相同行为
+  Vue.directive('big-number', function (element, binding) {
+    element.innerText = binding.value * 10
+  })
 
-new Vue({
-  el: '#root',
-  data: {
-    n: 0
-  },
-  directives: {
-    fbind: {
-      bind(element, binding) {
-        element.value = binding.value
-      },
-      inserted(element) {
-        element.focus()
-      },
-      update(element, binding) {
-        element.value = binding.value
+  new Vue({
+    el: '#root',
+    data: {
+      n: 0
+    },
+    directives: {
+      fbind: {
+        bind(element, binding) {
+          element.value = binding.value
+        },
+        inserted(element) {
+          element.focus()
+        },
+        update(element, binding) {
+          element.value = binding.value
+        }
       }
     }
-  }
-})
+  })
 </script>
 ```
 
