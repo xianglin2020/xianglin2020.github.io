@@ -19,7 +19,7 @@ cover:
 
 ### Java 各版本新特性
 
-[Java各版本语言特性](https://blog.xianglin.store/posts/java%E5%90%84%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7/)
+[Java各版本语言特性](https://blog.xianglin.store/posts/2024/java-version-features/)
 
 ### MySQL 大数据量如何优化处理
 
@@ -46,7 +46,7 @@ https://javaguide.cn/high-performance/read-and-write-separation-and-library-subt
 
 [SpringBoot 自动装配原理详解](https://javaguide.cn/system-design/framework/spring/spring-boot-auto-assembly-principles.html)
 
-[Starter原理解析](https://blog.xianglin.store/posts/starter%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90-springboot%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/)
+[Starter原理解析](https://blog.xianglin.store/posts/2023/starter-source-code-learning/)
 
 ### Spring 事务，哪些场景事物不生效
 
