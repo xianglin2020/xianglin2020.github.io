@@ -3,8 +3,9 @@ languageCode: "zh-CN"
 title: "Daily Record"
 theme: "PaperMod"
 
+pagination:
+  pagerSize: 10
 defaultContentLanguage: zh
-paginate: 10
 enableInlineShortcodes: true #允许内联短码
 enableRobotsTXT: true
 buildDrafts: false

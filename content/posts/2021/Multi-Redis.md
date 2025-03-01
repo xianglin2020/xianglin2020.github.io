@@ -1,9 +1,16 @@
 ---
-title: Redis Sentinel
+title: 多机 Redis
 date: 2021-02-27 10:44:46
 categories: [learn]
 tags: [redis]
+summary: "Redis 主从复制、哨兵、集群配置。"
 ---
+
+## 单机问题
+
+* 机器故障
+* 容量瓶颈
+* QPS瓶颈
 
 ## Redis 安装
 
@@ -26,6 +33,8 @@ make
 ```
 
 ## Redis 主从复制
+
+提供了数据副本、扩展了读性能。
 
 ### 主从结构搭建
 
@@ -95,6 +104,10 @@ info replication
 
 ![image-20241014203639703](https://cdn.jsdelivr.net/gh/xianglin2020/gallery/2024/202410142037670.png)
 
+### 取消复制
+
+在 slave 节点上执行 `slaveof no one`。
+
 ## Redis Sentinel
 
 ### Redis Sentinel 的作用
@@ -104,10 +117,13 @@ Redis 的 Sentinel 系统用于管理多个 Redis 服务器（instance），Redi
 * 监控（Monitoring）：Sentinel 会不断的检查 Redis 主服务器和从服务器是否运行正常。
 * 提醒（Notification）：当被监控的某个 Redis 服务器出现问题时，Sentinel 可以通过 API 向管理员或其它应用程序发送通知。
 * 自动故障迁移（Atomic failover）：当一个主服务器不能正常工作时，Sentinel 会开始启动一次自动故障迁移。它会将失效主服务器的其中一个从服务器升级为新的主服务器，并让其它从服务器改为同步新主服务器的数据。当客户端试图连接失效主服务器时，集群会向客户端返回新主服务器的地址。
+* 配置提供（Configuration provider）：客户端连接 sentinel，以查询当前负责特定服务的 Redis 主节点地址，如果发生故障转移，sentinel 会报告新的地址。
 
 Redis Sentinel 是一个分布式系统，可以在一个架构中运行多个 Sentinel 进程，这些进程使用流言协议（Gossip Protocol）来接收关于主服务器是否下线的信息，并使用投票协议（Agreement Protocol）来决定是否执行自动故障迁移，以及选择哪个从服务器作为新的主服务器。
 
 ### Sentinel 搭建
+
+先配置开启主从节点。
 
 创建配置文件 `conf/sentinel.conf`
 
@@ -134,6 +150,47 @@ redis-stable/src/redis-sentinel conf/sentinel.conf
 
 ![image-20241014213641945](https://cdn.jsdelivr.net/gh/xianglin2020/gallery/2024/202410142137521.png)
 
+### 客户端通过 Sentinel 获取主节点地址
+
+1. 连接到一个或多个 sentinel 节点；
+2. 通过 `sentinel get-master-addr-by-name <name>` 命令查询主节点信息；
+3. 客户端解析 sentinel 返回的主节点信息；
+4. 客户端使用获取到的主节点信息连接到主节点，开始进行数据操作；
+5. 如果主节点故障，sentinel 会选举新的主节点，客户端需要重新查询 sentinel 获取新的主节点地址并重新连接；
+6. 客户端可以订阅 sentinel 的事件通知 `+switch-master`，以便在主节点变更时及时获取通知并重新连接；
+
+   `+convert-to-slave`：切换从节点（元主节点将为从节点）
+
+   `+sdown`：主观下线
+
+### Sentinel 故障转移
+
+1. 检测主节点故障
+
+   sentinel 节点会定期向主节点、从节点和其他 sentinel 节点发送心跳检测（PING 命令）；
+
+   如果主节点在配置的超时时间内（`down-after-milliseconds`）未响应，sentinel 会将其标记为主观下线（SDOWN）；
+
+   当多个 sentinel 节点都认为主节点不可用时，sentinel 会将其标记为客观下线（ODOWN）；
+
+2. sentinel 集群会通过 Raft 算法选举 Sentinel Leader 来负责故障转移；
+
+3. Sentinel Leader 从当前从节点中选择一个作为新的主节点，选举规则包括：
+
+   1. 优先级：从节点的 `slave-priority` 配置值；
+   2. 复制偏移量：选择复制数据最完整的从节点；
+   3. 运行 ID：选择 run_id 最小的从节点。
+
+4. Sentinel Leader 会向选中的从节点发送 `slaveof no one` 命令，将其提升为新的主节点；
+
+5. Sentinel Leader 会向其他从节点发送 `slaveof` 命令，让它们开始复制新的主节点；
+
+6. Sentinel 会通过发布订阅向客户端发送 `+switch-master` 事件，通知主节点已变更；
+
+7. 故障转移完成后 sentinel 会更新其内部状态，同时将故障转移结果持久化到配置文件中，以便再重启后保持一致性。
+
+8. 如果旧的主节点恢复，Sentinel 会将其降级为从节点，并让其复制新的主节点。
+
 ### sentinel 工作原理
 
 Sentinel 内部有3个定时任务：
@@ -143,6 +200,8 @@ Sentinel 内部有3个定时任务：
 * 每10秒每个 sentinel 会对 master 和 slave 执行 `INFO` 命令。
 
 ## Redis 集群架构
+
+Redis Cluster 主要解决并发量和数据量问题。
 
 ### 集群搭建
 

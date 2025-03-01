@@ -20,7 +20,7 @@ cover:
 
 - 向林 / 男 / 1996
 - 本科 / 重庆交通大学计算机科学与技术专业
-- 工作年限：5 年
+- 工作年限：6 年
 - 求职意向：Java 中高级后端开发工程师
 - Email：xianglin2020@outlook.com
 - 个人博客：https://blog.xianglin.store
@@ -29,6 +29,12 @@ cover:
 ---
 
 ## 工作经历
+
+### 广州青芒软件开发有限责任公司
+
+参与[CoolCash](https://www.coolcashcam.com/index.html)移动支付类产品开发和维护。
+
+*省略2份工作*
 
 ### 广东省超算绿色科技股份有限公司
 
