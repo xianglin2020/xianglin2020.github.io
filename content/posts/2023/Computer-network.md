@@ -368,7 +368,7 @@ BGP（Border Gateway Protocol）边际网关协议，是运行在 AS 之间的�
 
 # 传输层
 
-[网络相关知识总结](https://blog.xianglin.store/posts/%E7%BD%91%E5%85%B3%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/)
+[网络相关知识总结](https://blog.xianglin.uk/posts/%E7%BD%91%E5%85%B3%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/)
 
 ## UDP 协议
 

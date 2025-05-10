@@ -19,7 +19,7 @@ cover:
 
 ### Java 各版本新特性
 
-[Java各版本语言特性](https://blog.xianglin.store/posts/2024/java-version-features/)
+[Java各版本语言特性](https://blog.xianglin.uk/posts/2024/java-version-features/)
 
 ### MySQL 大数据量如何优化处理
 
@@ -46,7 +46,7 @@ https://javaguide.cn/high-performance/read-and-write-separation-and-library-subt
 
 [SpringBoot 自动装配原理详解](https://javaguide.cn/system-design/framework/spring/spring-boot-auto-assembly-principles.html)
 
-[Starter原理解析](https://blog.xianglin.store/posts/2023/starter-source-code-learning/)
+[Starter原理解析](https://blog.xianglin.uk/posts/2023/starter-source-code-learning/)
 
 ### Spring 事务，哪些场景事物不生效
 
@@ -93,7 +93,7 @@ https://blog.csdn.net/huwei2003/article/details/123862132
 
 [Kafka 性能篇：为何 Kafka 这么快](https://segmentfault.com/a/1190000039702782)
 
-[Kafka吞吐量大的原因](https://blog.xianglin.store/posts/2023/kafka-basics/#kafka%E5%90%9E%E5%90%90%E9%87%8F%E5%A4%A7%E7%9A%84%E5%8E%9F%E5%9B%A0)
+[Kafka吞吐量大的原因](https://blog.xianglin.uk/posts/2023/kafka-basics/#kafka%E5%90%9E%E5%90%90%E9%87%8F%E5%A4%A7%E7%9A%84%E5%8E%9F%E5%9B%A0)
 
 ### MySQL 死锁
 
@@ -105,7 +105,7 @@ https://blog.csdn.net/AlbenXie/article/details/118613349
 
 ### Redis Sentinel | Cluster
 
-[多机 Redis](https://blog.xianglin.store/posts/2021/multi-redis/)
+[多机 Redis](https://blog.xianglin.uk/posts/2021/multi-redis/)
 
 ### MySQL binlog | redo log | undo log
 

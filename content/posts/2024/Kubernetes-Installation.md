@@ -111,7 +111,7 @@ https://docs.docker.com/engine/install/debian/
 Docker CE 软件仓库： 
 https://mirror.tuna.tsinghua.edu.cn/help/docker-ce/
 
-配置代理：[Docker代理](https://blog.xianglin.store/posts/docker%E4%BB%A3%E7%90%86/)
+配置代理：[Docker代理](https://blog.xianglin.uk/posts/docker%E4%BB%A3%E7%90%86/)
 
 ### 配置容器运行时
 

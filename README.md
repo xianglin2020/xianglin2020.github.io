@@ -2,4 +2,4 @@
 
 ![](https://cdn.jsdelivr.net/gh/xianglin2020/gallery@master/202009/212557.jpg)
 
-https://blog.xianglin.store/
+https://blog.xianglin.uk/

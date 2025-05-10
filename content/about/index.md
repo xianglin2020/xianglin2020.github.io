@@ -23,7 +23,7 @@ cover:
 - 工作年限：6 年
 - 求职意向：Java 中高级后端开发工程师
 - Email：xianglin2020@outlook.com
-- 个人博客：https://blog.xianglin.store
+- 个人博客：https://blog.xianglin.uk
 - Github：https://github.com/xianglin2020
 
 ---
@@ -74,15 +74,15 @@ ByteGreen 绿色科技云平台项目的核心开发和主要负责人。
 
 ### 技术文章
 
-- [JVM 基础](https://blog.xianglin.store/posts/jvm%E5%9F%BA%E7%A1%80/)
-- [MyBatis 基础](https://blog.xianglin.store/posts/mybatis%E5%9F%BA%E7%A1%80/)
-- [Spring Boot 源码学习](https://blog.xianglin.store/categories/springboot%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/)
+- [JVM 基础](https://blog.xianglin.uk/posts/jvm%E5%9F%BA%E7%A1%80/)
+- [MyBatis 基础](https://blog.xianglin.uk/posts/mybatis%E5%9F%BA%E7%A1%80/)
+- [Spring Boot 源码学习](https://blog.xianglin.uk/categories/springboot%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/)
 
 ### 演讲和讲义
 
-- [Java 线程池介绍](https://blog.xianglin.store/posts/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%AD%A6%E4%B9%A0/)
-- [CAS 集成、认证流程和模拟登录](https://blog.xianglin.store/posts/cas%E9%9B%86%E6%88%90%E8%AE%A4%E8%AF%81%E6%B5%81%E7%A8%8B%E5%92%8C%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95/)
-- [MyBatis 插件原理及 PageHelper 介绍](https://blog.xianglin.store/2020/10/31/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8/)
+- [Java 线程池介绍](https://blog.xianglin.uk/posts/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%AD%A6%E4%B9%A0/)
+- [CAS 集成、认证流程和模拟登录](https://blog.xianglin.uk/posts/cas%E9%9B%86%E6%88%90%E8%AE%A4%E8%AF%81%E6%B5%81%E7%A8%8B%E5%92%8C%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95/)
+- [MyBatis 插件原理及 PageHelper 介绍](https://blog.xianglin.uk/2020/10/31/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8/)
 
 ## 技能清单
 

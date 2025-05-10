@@ -207,7 +207,7 @@ public interface SpringApplicationRunListener {
 
 ### 监听器注册
 
-系统监听器和系统初始化器的注册流程基本一致，即在 SpringApplication 的构造方法中通过 SpringFactoriesLoader 加载 ApplicationListener 的实现类，具体流程参照[初始化器解析-springboot源码学习/#springfactoriesloader-介绍](https://blog.xianglin.store/posts/%E5%88%9D%E5%A7%8B%E5%8C%96%E5%99%A8%E8%A7%A3%E6%9E%90-springboot%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/#springfactoriesloader-%E4%BB%8B%E7%BB%8D)。
+系统监听器和系统初始化器的注册流程基本一致，即在 SpringApplication 的构造方法中通过 SpringFactoriesLoader 加载 ApplicationListener 的实现类，具体流程参照[初始化器解析-springboot源码学习/#springfactoriesloader-介绍](https://blog.xianglin.uk/posts/%E5%88%9D%E5%A7%8B%E5%8C%96%E5%99%A8%E8%A7%A3%E6%9E%90-springboot%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/#springfactoriesloader-%E4%BB%8B%E7%BB%8D)。
 
 ## 监听器事件触发机制
 
